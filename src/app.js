@@ -5,7 +5,7 @@ const { engine } = require('express-handlebars')
 const path = require('path')
 const Handlebars = require('express-handlebars')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
-
+const db = require('./models')
 const Sequelize = require('sequelize')
 const DataTypes = require('sequelize')
 
@@ -37,6 +37,7 @@ app.engine(
     '.hbs',
     engine({
         extname: '.hbs',
+        partialsDir: path.join(__dirname, 'views', 'partials'),
     })
 )
 app.set('view engine', 'hbs')
@@ -50,10 +51,10 @@ const sequelize = new Sequelize('edandb', 'root', '', {
 })
 
 //apetura de servidor
+
 app.listen(app.get('port'), () => {
     console.log(`servidor: http://localhost:${app.get('port')}`)
 })
-
 //Creacion de sesiones para login
 
 //habilitar uso de rutas

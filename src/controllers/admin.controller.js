@@ -3,18 +3,20 @@ const { Usuario, Administrador } = require('./../models/')
 const adminController = {
     index: async (req, res) => {
         const usuarios = await Usuario.findAll({
-            where: {
+            here: {
                 isAdmin: true,
             },
             include: Administrador,
+            raw: true,
+            nest: true,
         })
-        console.log(usuarios)
-        res.render('administrador/index', usuarios)
+
+        res.render('administrador/index', { usuarios })
     },
     add: async (req, res) => {
         try {
-            const { alias, email, password, isAdmin, nombre, apellido, dui, telefono } = req.body
-            const usuario = await Usuario.create({ nombre: alias, email, password, isAdmin })
+            const { alias, email, password, nombre, apellido, dui, telefono } = req.body
+            const usuario = await Usuario.create({ nombre: alias, email, password, isAdmin: true })
             const admin = await Administrador.create({
                 UsuarioId: usuario.id,
                 nombre,
@@ -22,7 +24,7 @@ const adminController = {
                 dui,
                 telefono,
             })
-            res.status(200).send('Consulta creada con exito')
+            res.redirect('/admins')
         } catch (err) {
             console.log(err)
             res.status(500).json(err)
