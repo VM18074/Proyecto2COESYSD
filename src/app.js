@@ -2,7 +2,7 @@
 
 const express = require('express')
 const { engine } = require('express-handlebars')
-
+const path = require('path')
 const Handlebars = require('express-handlebars')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
@@ -32,6 +32,7 @@ app.use(bodyParser.json())
 
 //Definicion para ejecutar vistas
 app.set('views', __dirname + '/views')
+app.use(express.static(path.join(__dirname, 'public')))
 app.engine(
     '.hbs',
     engine({
