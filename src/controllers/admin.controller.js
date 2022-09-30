@@ -2,7 +2,14 @@ const { Usuario, Administrador } = require('./../models/')
 
 const adminController = {
     index: async (req, res) => {
-        res.render('administrador/index')
+        const usuarios = await Usuario.findAll({
+            where: {
+                isAdmin: true,
+            },
+            include: Administrador,
+        })
+        console.log(usuarios)
+        res.render('administrador/index', usuarios)
     },
     add: async (req, res) => {
         try {
