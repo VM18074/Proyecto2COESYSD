@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAdminLabel">New message</h5>
+                <h5 class="modal-title" id="modalAdminLabel">Agregar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,12 +12,12 @@
 
                         <div class="mb-3 col-6">
                             <label for="nombre" class="col-form-label">Nombres:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre">
+                            <input type="text" required class="form-control" id="nombre" name="nombre">
                         </div>
 
                         <div class="mb-3 col-6">
                             <label for="apellido" class="col-form-label">Apellidos: </label>
-                            <input type="text" class="form-control" id="apellido" name="apellido">
+                            <input type="text" required class="form-control" id="apellido" name="apellido">
                         </div>
                     </div>
 
@@ -25,30 +25,34 @@
 
                         <div class="mb-3 col-4">
                             <label for="alias" class="col-form-label">Alias</label>
-                            <input type="text" class="form-control" id="alias" name="alias">
+                            <input type="text" required class="form-control" id="alias" name="alias">
 
                         </div>
 
 
                         <div class="mb-3 col-8">
                             <label for="telefono" class="col-form-label">Teléfono</label>
-                            <input type="tel" maxlength="8" class="form-control" id="telefono" name="telefono">
+                            <input type="tel" required maxlength="8" class="form-control" minlength="8" id="telefono"
+                                name="telefono">
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="email" class="col-form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email">
+                        <input type="email" required class="form-control" placeholder="carlosvargas@gmail.com"
+                            id="email" name="email">
                     </div>
 
                     <div class="mb-3">
                         <label for="password" class="col-form-label">Contraseña: </label>
-                        <input type="text" class="form-control" id="password" name="password">
+                        <input type="password" minlength="4" required class="form-control" id="password"
+                            name="password">
                     </div>
 
                     <div class="mb-3">
                         <label for="dui" class="col-form-label">DUI: </label>
-                        <input type="text" maxlength="9" class="form-control" id="dui" name="dui">
+                        <input type="text" required placeholder="547864389" minlength="9" maxlength="9"
+                            class="form-control" id="dui" name="dui">
                     </div>
 
                     <div class="modal-footer">
