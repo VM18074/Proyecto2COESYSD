@@ -1,7 +1,6 @@
 'use strict'
 const { Model } = require('sequelize')
-const Usuario = require('./usuario')
-const Administrador = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     class Administrador extends Model {
         /**
          * Helper method for defining associations.
@@ -10,24 +9,25 @@ const Administrador = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            this.belongsTo(models.Usuario, { foreignKey: 'UsuarioId' })
         }
     }
     Administrador.init(
         {
             nombre: DataTypes.STRING,
             apellido: DataTypes.STRING,
-            dui: DataTypes.STRING(9),
+            dui: {
+                type: DataTypes.STRING(9),
+                primaryKey: true,
+                allowNull: false,
+            },
             telefono: DataTypes.STRING,
         },
         {
             sequelize,
             modelName: 'Administrador',
+            tableName: 'Administradores',
         }
     )
     return Administrador
 }
-// asociacion uno a uno
-Usuario.hasOne(Administrador)
-Administrador.belongsTo(usuario)
-
-module.exports = Administrador
