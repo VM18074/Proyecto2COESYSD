@@ -32,9 +32,11 @@ const adminController = {
                 },
             })
             if (oldUser) {
+                req.flash('error_msg', 'Ya existe un Usuario con el mismo Correo')
                 res.redirect('/admins')
                 return
             } else if (oldAdmin) {
+                req.flash('error_msg', 'Ya existe un administrador con el mismo DUI')
                 res.redirect('/admins')
             } else {
                 const usuario = await Usuario.create({ nombre: alias, email, password, isAdmin: true })
@@ -45,6 +47,7 @@ const adminController = {
                     dui,
                     telefono,
                 })
+                req.flash('success_msg', 'Administrador agregado correctamente')
                 res.redirect('/admins')
             }
         } catch (err) {

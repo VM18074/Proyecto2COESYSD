@@ -11,6 +11,7 @@ const DataTypes = require('sequelize')
 
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
+const flash = require('connect-flash')
 
 //Librerias para login
 const session = require('express-session') //sesiones
@@ -29,6 +30,22 @@ app.use(
     })
 )
 app.use(bodyParser.json())
+
+app.use(
+    session({
+        secret: 'secrect',
+        resave: true,
+        saveUninitialized: true,
+    })
+)
+app.use(flash())
+
+// variables globales
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg')
+    next()
+})
 
 //Definicion para ejecutar vistas
 app.set('views', __dirname + '/views')
