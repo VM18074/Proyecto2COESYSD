@@ -55,6 +55,17 @@ const adminController = {
             res.status(500).json(err)
         }
     },
+    delete: async (req, res) => {
+        try{
+            let id = req.params.id
+            const user= await Usuario.findOne({ where: { id:id }})
+            await user.destroy()
+            res.redirect('/admins')
+        }catch(err){
+            console.log(err)
+            res.redirect('/admins')
+        }
+    }
 }
 
 module.exports = adminController
