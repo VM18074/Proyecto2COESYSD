@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            this.hasOne(models.Administrador)
+            this.hasOne(models.Administrador,{
+                onDelete: 'CASCADE',
+                hooks:true,
+            })
         }
     }
     Usuario.init(
