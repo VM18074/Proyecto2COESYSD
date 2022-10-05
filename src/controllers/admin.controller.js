@@ -11,7 +11,6 @@ const adminController = {
             raw: true,
             nest: true,
         })
-
         res.render('administrador/index', { usuarios })
     },
 
@@ -71,10 +70,13 @@ const adminController = {
     //permite editar un administrador de la base de datos
     edit: async (req, res) => {
         try{
-            let id = req.params.id;
-            const user= await Administrador.findOne({ where: { UsuarioId:id },
-                raw:true, 
-            })
+            let id = req.params.id
+            const user= await Administrador.findOne({ 
+                where: { 
+                    UsuarioId:id 
+                },
+                raw:true
+            })           
             res.render('administrador/edit', {user})
         }catch(err){
             console.log(err)
@@ -97,7 +99,7 @@ const adminController = {
             admin.dui= dui
             admin.telefono= telefono
             await admin.save()
-            res.redirect('/admins')
+            res.render('/admins')
         }catch(err){
             console.log(err)
             res.redirect('/admins')
