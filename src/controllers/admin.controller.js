@@ -55,6 +55,7 @@ const adminController = {
             res.status(500).json(err)
         }
     },
+    //permite eliminar un administrador de la base de datos
     delete: async (req, res) => {
         try{
             let id = req.params.id
@@ -65,7 +66,42 @@ const adminController = {
             console.log(err)
             res.redirect('/admins')
         }
+
+    },
+    //permite editar un administrador de la base de datos
+    edit: async (req, res) => {
+        try{
+            let id = req.params.id
+            const user= await Administrador.findOne({ where: { UsuarioId:id }});
+            res.render('/admis', {user})
+        }catch(err){
+            console.log(err)
+            res.redirect('/admins')
+        }
+    },
+    //permite actualizar un administrador de la base de datos
+    update: async (req, res) => {
+        try{
+            let id = req.params.id
+            const { alias, email, password, nombre, apellido, dui, telefono } = req.body
+            const user= await Usuario.findOne({ where: { id:id }})
+            user.nombre= alias
+            user.email= email
+            user.password= password
+            await user.save()
+            const admin= await Administrador.findOne({ where: { UsuarioId:id }})
+            admin.nombre= nombre
+            admin.apellido= apellido
+            admin.dui= dui
+            admin.telefono= telefono
+            await admin.save()
+            res.redirect('/admins')
+        }catch(err){
+            console.log(err)
+            res.redirect('/admins')
+        }
     }
+    
 }
 
 module.exports = adminController

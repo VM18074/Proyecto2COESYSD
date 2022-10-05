@@ -2,6 +2,7 @@
 
 const express = require('express')
 const { engine } = require('express-handlebars')
+ 
 const path = require('path')
 const Handlebars = require('express-handlebars')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
@@ -12,6 +13,7 @@ const DataTypes = require('sequelize')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const flash = require('connect-flash')
+
 
 //Librerias para login
 const session = require('express-session') //sesiones
@@ -48,7 +50,7 @@ app.use((req, res, next) => {
 })
 
 //Definicion para ejecutar vistas
-app.set('views', __dirname + '/views')
+app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.engine(
     '.hbs',
@@ -75,8 +77,16 @@ app.listen(app.get('port'), () => {
 //Creacion de sesiones para login
 
 //habilitar uso de rutas
-app.use('/', require('./routes/admin.route'))
+app.use('/',require('./routes/admin.route'))
 
 //mostrar pagina principal al entrar al servidor
-
+app.get('/', (req, res) => {
+    res.render('administrador/index')
+    })
 //vinculación de modelos a DB
+const Administrador = require('./models/administrador')(sequelize, DataTypes);
+
+sequelize.sync({force : false}).then(() => {
+    console.log('Tablas sincronizadas');})
+
+module.exports = Administrador;
