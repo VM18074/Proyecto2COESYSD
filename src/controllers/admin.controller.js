@@ -71,9 +71,9 @@ const adminController = {
     //permite editar un administrador de la base de datos
     edit: async (req, res) => {
         try{
-            let id = req.params.id
-            const user= await Administrador.findOne({ where: { UsuarioId:id }});
-            res.render('/admis', {user})
+            let id = req.params.id;
+            const user= await Administrador.findOne({ where: { UsuarioId:id }})
+            res.render('administrador/edit', {user})
         }catch(err){
             console.log(err)
             res.redirect('/admins')
