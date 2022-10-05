@@ -72,7 +72,9 @@ const adminController = {
     edit: async (req, res) => {
         try{
             let id = req.params.id;
-            const user= await Administrador.findOne({ where: { UsuarioId:id }})
+            const user= await Administrador.findOne({ where: { UsuarioId:id },
+                raw:true, 
+            })
             res.render('administrador/edit', {user})
         }catch(err){
             console.log(err)
