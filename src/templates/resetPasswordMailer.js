@@ -1,6 +1,6 @@
 const mailer = require('nodemailer')
 
-function sendMail(name, receiver, password) {
+function sendMail(receiver, password) {
     let transporter = mailer.createTransport({
         service: 'hotmail',
         auth: {
@@ -12,7 +12,7 @@ function sendMail(name, receiver, password) {
     let mailOptions = {
         from: 'ProyectoCOESYSD <proyectoCOESYSD@hotmail.com>',
         to: receiver,
-        subject: 'Cuenta de administrador',
+        subject: 'Nueva contraseña de cuenta de administrador',
         html: `
         <div
             style="
@@ -26,13 +26,13 @@ function sendMail(name, receiver, password) {
                 <tr>
                     <th>
                         <h1 style="margin: 0; padding: 3rem 1rem; color: white; background-color: rgb(39, 142, 13)">
-                            Cuenta de Administrador Creada con éxito
+                            Contraseña para cuenta de Administrador Creada con éxito
                         </h1>
                     </th>
                 </tr>
                 <tr>
                     <td style="font-size: 1.2em">
-                        <p>Hola <strong>${name}</strong></p>
+                        <p>Hola, tu nueva contraseña se creo con éxito</p>
                         <p>Tus credenciales de Administrador son las siguientes:</p>
                         <p>Correo: <strong>${receiver}</strong></p>
                         <p>Contraseña: <strong>${password}</strong></p>
