@@ -95,7 +95,6 @@ const adminController = {
     //permite actualizar un administrador de la base de datos
     update: async (req, res) => {
         try {
-            console.log('hola')
             let id = req.params.id
             const { alias, email, password, nombre, apellido, dui, telefono } = req.body
             const user = await Usuario.findOne({ where: { id: id } })
