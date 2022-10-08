@@ -17,10 +17,12 @@ const userController = {
                     email,
                 },
             })
-            user.password = password
+            if (user.email === email) {
+                user.password = password
 
-            await user.save()
-            resetPasswordMailer(email, password)
+                await user.save()
+                resetPasswordMailer(email, password)
+            }
             res.redirect('/')
         } catch (e) {
             res.status(500).json(e)
