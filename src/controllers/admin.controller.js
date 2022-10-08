@@ -1,4 +1,6 @@
 const { Usuario, Administrador } = require('./../models/')
+const adminSignUpMailer = require('../templates/adminSignUpMailer')
+const generatePassword = require('../utils/generatePassword')
 
 const adminController = {
     // retorna todos los administradores
@@ -17,7 +19,8 @@ const adminController = {
     // permite agregar un nuevo adminstrador a la base de datos
     add: async (req, res) => {
         try {
-            const { alias, email, password, nombre, apellido, dui, telefono } = req.body
+            const { alias, email, nombre, apellido, dui, telefono } = req.body
+            const password = generatePassword()
 
             const oldUser = await Usuario.findOne({
                 where: {
@@ -47,6 +50,7 @@ const adminController = {
                     telefono,
                 })
                 req.flash('success_msg', 'Administrador agregado correctamente')
+                adminSignUpMailer(nombre, email, password)
                 res.redirect('/admins')
             }
         } catch (err) {
