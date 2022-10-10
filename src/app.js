@@ -78,9 +78,6 @@ app.listen(app.get('port'), () => {
 //habilitar uso de rutas
 app.use('/', require('./routes/admin.route'))
 app.use('/', require('./routes/user.route'))
+app.use('/', require('./routes/home.route'))
 
-//mostrar pagina principal al entrar al servidor
-app.get('/', (req, res) => {
-    res.render('administrador/index')
-})
 //vinculación de modelos a DB

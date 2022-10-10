@@ -1,0 +1,13 @@
+<div class="container">
+    <div id="map" class="map"></div>
+</div>
+<script src="/js/leaflet.js"></script>
+
+<script>
+
+    var map = L.map('map').setView([13.682016, -88.720093], 9.35);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+</script>

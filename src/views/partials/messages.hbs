@@ -33,7 +33,10 @@
 
 {{!-- Codigo para cerrar automaticamente las alertas --}}
 <script>
-    setTimeout(function () {
-        bootstrap.Alert.getOrCreateInstance(document.querySelector(".alert")).close();
-    }, 3000)
+    if (document.querySelector(".alert")) {
+
+        setTimeout(function () {
+            bootstrap.Alert.getOrCreateInstance(document.querySelector(".alert")).close();
+        }, 3000)
+    }
 </script>
