@@ -1,7 +1,7 @@
-.container{
-    height: 90vh;
-    max-height: 700px;
+body{
+    height: 100vh;
 }
-.map{
-    height: 100%;
+
+#map{
+    height: 90vh;
 }
