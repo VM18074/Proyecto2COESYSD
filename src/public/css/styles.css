@@ -5,3 +5,7 @@ body{
 #map{
     height: 90vh;
 }
+.scrollable{
+    height:80vh;
+    overflow-y: scroll;
+}

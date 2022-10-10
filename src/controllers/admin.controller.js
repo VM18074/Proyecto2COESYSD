@@ -5,15 +5,16 @@ const generatePassword = require('../utils/generatePassword')
 const adminController = {
     // retorna todos los administradores
     index: async (req, res) => {
-        const usuarios = await Usuario.findAll({
-            here: {
+        const data = await Usuario.findAll({
+            where: {
                 isAdmin: true,
             },
             include: Administrador,
             raw: true,
             nest: true,
         })
-        res.render('administrador/index', { usuarios })
+
+        res.render('administrador/index', { dataRows: data })
     },
 
     // permite agregar un nuevo adminstrador a la base de datos
