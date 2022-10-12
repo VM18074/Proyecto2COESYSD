@@ -15,7 +15,7 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      idInstitucion: {
+      direccion: {
         type: Sequelize.STRING
       },
       createdAt: {
