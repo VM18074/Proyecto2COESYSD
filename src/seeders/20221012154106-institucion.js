@@ -18,7 +18,7 @@ module.exports = {
                 ...inst,
                 {
                   
-                    name: faker.name.firstName(),
+                    name: faker.company.companyName(),
                     direccion: faker.address.cityName(),   
                     email: faker.internet.email().toLowerCase(),              
                   

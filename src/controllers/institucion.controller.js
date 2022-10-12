@@ -13,7 +13,7 @@ const institucionController = {
         res.render('institucion/index', { dataRows: data })
     },
 
-    // permite agregar un nuevo adminstrador a la base de datos
+    // permite agregar una nueva institución a la base de datos
     add: async (req, res) => {
         try {
             const { id, name, email, direccion } = req.body           
@@ -44,39 +44,39 @@ const institucionController = {
             res.status(500).json(err)
         }
     },
-    //permite eliminar un administrador de la base de datos
+    //permite eliminar una institución de la base de datos
     delete: async (req, res) => {
         try {
             let id = req.params.id
             const user = await Usuario.findOne({ where: { id: id } })
             await user.destroy()
 
-            req.flash('success_msg', 'Administrador eliminado correctamente')
+            req.flash('success_msg', 'Institución eliminada correctamente')
             res.redirect('/admins')
         } catch (err) {
             console.log(err)
 
-            req.flash('error_msg', 'Lo siento, ha ocurrido un error al momento de eliminar el administrador')
+            req.flash('error_msg', 'Lo siento, ha ocurrido un error al momento de eliminar la institución')
             res.redirect('/admins')
         }
     },
-    //permite editar un administrador de la base de datos
+    //Permite editar una institución de la base de datos
     edit: async (req, res) => {
         try {
             let id = req.params.id
-            const user = await Administrador.findOne({
+            const user = await Institucion.findOne({
                 where: {
                     UsuarioId: id,
                 },
                 raw: true,
             })
-            res.render('administrador/edit', { user })
+            res.render('institucion/edit', { user })
         } catch (err) {
             console.log(err)
-            res.redirect('/admins')
+            res.redirect('/institucion')
         }
     },
-    //permite actualizar un administrador de la base de datos
+    //permite actualizar una institución a la base de datos
     update: async (req, res) => {
         try {
             let id = req.params.id
@@ -93,13 +93,13 @@ const institucionController = {
             admin.telefono = telefono
             await admin.save()
 
-            req.flash('success_msg', 'Administrador actualizado correctamente')
-            res.redirect('/admins')
+            req.flash('success_msg', 'Institucion actualizado correctamente')
+            res.redirect('/institucion')
         } catch (err) {
             console.log(err)
 
-            req.flash('error_msg', 'No es posible actualizar el administrador')
-            res.redirect('/admins')
+            req.flash('error_msg', 'No es posible actualizar la institucion')
+            res.redirect('/institucion')
         }
     },
 }
