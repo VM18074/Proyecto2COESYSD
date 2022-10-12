@@ -1,15 +1,11 @@
-const { id, institucion } = require('./../models/institucion')
-const adminSignUpMailer = require('../templates/instSignUpMailer')
-const generatePassword = require('../utils/generatePassword')
+const {Institucion} = require('./../models/')
 
-const adminController = {
-    // retorna todos los administradores
+
+const institucionController = {
+    // retorna todas las instituciones
     index: async (req, res) => {
-        const data = await Usuario.findAll({
-            where: {
-                isInst: true,
-            },
-            include: Institucion,
+        const data = await Institucion.findAll({
+           
             raw: true,
             nest: true,
         })
@@ -20,38 +16,26 @@ const adminController = {
     // permite agregar un nuevo adminstrador a la base de datos
     add: async (req, res) => {
         try {
-            const { id, nombre, email, direccion } = req.body
-            const password = generatePassword()
+            const { id, name, email, direccion } = req.body           
 
-            const oldId = await Id.findOne({
+            const oldId = await Institucion.findOne({
                 where: {
                     email,
                 },
             })
-
-            const oldInst = await Institucion.findOne({
-                where: {
-                    direccion,
-                },
-            })
+          
             if (oldId) {
-                req.flash('error_msg', 'Ya existe un Usuario con el mismo ID')
-                res.redirect('/inst')
+                req.flash('error_msg', 'Ya existe un Usuario con el mismo correo')
+                res.redirect('/institucion')
                 return
-            } else if (oldInst) {
-                req.flash('error_msg', 'La direccion ya ha sido registrada')
-                res.redirect('/inst')
             } else {
-                const id = await Id.create({ nombre, email, direccion, isInst: true })
-                const inst = await Institucion.create({
-                    id: id.id,
-                    nombre,
-                                     
-                })
+                const id = await Institucion.create({ name, email, direccion})
                 
-                req.flash('success_msg', 'Institución agregado correctamente!')
-                adminSignUpMailer(nombre, email)
-                res.redirect('/admins')
+                   
+                
+                
+                req.flash('success_msg', 'Institución agregado correctamente!')               
+                res.redirect('/institucion')
             }
         } catch (err) {
             console.log(err)
@@ -120,4 +104,4 @@ const adminController = {
     },
 }
 
-module.exports = adminController
+module.exports = institucionController
