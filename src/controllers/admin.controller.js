@@ -1,6 +1,7 @@
 const { Usuario, Administrador } = require('./../models/')
 const adminSignUpMailer = require('../templates/adminSignUpMailer')
 const generatePassword = require('../utils/generatePassword')
+const bcryptjs=require('bcryptjs'); //Encriptar password en bd
 
 const adminController = {
     // retorna todos los administradores
@@ -21,7 +22,6 @@ const adminController = {
     add: async (req, res) => {
         try {
             const { alias, email, nombre, apellido, dui, telefono } = req.body
-            const password = generatePassword()
 
             const oldUser = await Usuario.findOne({
                 where: {
@@ -42,17 +42,24 @@ const adminController = {
                 req.flash('error_msg', 'Ya existe un administrador con el mismo DUI')
                 res.redirect('/admins')
             } else {
-                const usuario = await Usuario.create({ nombre: alias, email, password, isAdmin: true })
-                const admin = await Administrador.create({
+                const password = generatePassword()
+                const passwordSave = password;
+                let passwordBD = await bcryptjs.hash(passwordSave, 12);
+        
+                const usuario =  await Usuario.create({ nombre: alias, email, passwordBD, isAdmin: true })
+                const admin =  await Administrador.create({
                     UsuarioId: usuario.id,
                     nombre,
                     apellido,
                     dui,
                     telefono,
                 })
+                
                 req.flash('success_msg', 'Administrador agregado correctamente')
-                adminSignUpMailer(nombre, email, password)
-                res.redirect('/admins')
+                adminSignUpMailer(nombre, email, passwordSave)
+                res.redirect('/admins')   
+                console.log(passwordBD);         
+            
             }
         } catch (err) {
             console.log(err)
