@@ -58,7 +58,7 @@ const adminController = {
                 req.flash('success_msg', 'Administrador agregado correctamente')
                 adminSignUpMailer(nombre, email, passwordSave)
                 res.redirect('/admins')   
-                console.log(passwordBD);         
+                         
             
             }
         } catch (err) {
