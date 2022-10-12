@@ -46,7 +46,7 @@ const adminController = {
                 const passwordSave = password;
                 let passwordBD = await bcryptjs.hash(passwordSave, 12);
         
-                const usuario =  await Usuario.create({ nombre: alias, email, passwordBD, isAdmin: true })
+                const usuario =  await Usuario.create({ nombre: alias, email, password: passwordBD, isAdmin: true })
                 const admin =  await Administrador.create({
                     UsuarioId: usuario.id,
                     nombre,
