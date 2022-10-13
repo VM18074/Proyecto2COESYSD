@@ -12,7 +12,7 @@ function sendMail(name, receiver, password) {
     let mailOptions = {
         from: 'ProyectoCOESYSD <proyectoCOESYSD@hotmail.com>',
         to: receiver,
-        subject: 'Cuenta de Empleado',
+        subject: 'Cuenta de Personal',
         html: `
         <div
             style="

@@ -31,7 +31,12 @@
                     <td>{{Empleado.nombre}} {{Empleado.apellido}}</td>
                     <td>{{email}}</td>
                     <td>{{Empleado.telefono}} </td>
+                    {{#if RolNombre}}
                     <td class="text-capitalize">{{RolNombre}} </td>
+
+                    {{else}}
+                    <td class="text-capitalize">Personal</td>
+                    {{/if}}
                     <td>
                         <a class="btn btn-light" href="/users/edit/{{id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
