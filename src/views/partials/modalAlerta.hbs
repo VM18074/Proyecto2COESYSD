@@ -1,0 +1,53 @@
+<div class="modal fade" id="modalAlerta" tabindex="-1" aria-labelledby="modalAlertaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAlertaLabel">Agregar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="container-fluid" method="post" action="/alerta/add">
+
+                    <div class="row">
+
+                        <div class="mb-3 col-6">
+                            <label for="nombre" class="col-form-label">Nombre:</label>
+                            <input type="text" required class="form-control" id="nombre" name="nombre">
+                        </div>
+
+                        <div class="mb-3 col-6">
+                            <label for="descripcion" class="col-form-label">Descripcion: </label>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="mb-3 col-6">
+                            <label for="nombre" class="col-form-label">Nombre Daño:</label>
+                            <input type="text" required class="form-control" id="nombreD" name="nombreD">
+                        </div>
+
+                        <div class="mb-3 col-6">
+                            <label for="descripcion" class="col-form-label">Descripcion: </label>
+                            <input type="text" class="form-control" id="descripcionD" name="descripcionD">
+                        </div>
+                    </div>                                 
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+                            </svg>
+                            Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

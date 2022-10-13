@@ -1,5 +1,7 @@
 'use strict';
-const {Model} = require('sequelize');
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Alerta extends Model {
     /**
@@ -9,17 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      this.hasOne(models.Daño, {
+        onDelete: 'CASCADE',
+        hooks: true,
+      })
     }
+    
   }
   Alerta.init({
     nombre: DataTypes.STRING,
     descripcion: DataTypes.STRING,
-    activo: DataTypes.STRING,
-    nivelAlerta: DataTypes.STRING
+    nivelAlerta: DataTypes.STRING,
+    activo: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Alerta',
-    tableName: 'Alerta',
   });
   return Alerta;
 };
