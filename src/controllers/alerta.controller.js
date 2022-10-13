@@ -1,4 +1,4 @@
-const { Alerta, Daño, Medida } = require('../models')
+const { Alerta, Daño, Medida, Ubicacion } = require('../models')
 
 
 
@@ -12,7 +12,11 @@ const alertaController = {
         }, {
             model: Medida,
           
-        }],  
+        },  
+        {
+            model: Ubicacion,
+          
+        }],
         raw: true,
             nest: true,
         })
@@ -29,7 +33,11 @@ const alertaController = {
             }, {
                 model: Medida,
               
-            }],  
+            },  
+            {
+                model: Ubicacion,
+              
+            }],
             raw: true,
                 nest: true,
             })
@@ -42,7 +50,7 @@ const alertaController = {
     // permite agregar un nuevo usuario a la base de datos
     add: async (req, res) => {
         try {
-            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM } = req.body
+            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenada, departamento, municipio } = req.body
             var esActivo;
                 if(activo==null){
                     esActivo=0;
@@ -63,6 +71,12 @@ const alertaController = {
                     alertumId: alerta.id,
                     nombre: nombreM,
                     descripcion: descripcionM,
+                })
+                await Ubicacion.create({
+                    alertumId: alerta.id,
+                    coordenada: coordenada,
+                    departamento: departamento,
+                    municipio: municipio,
                 })
 
                 req.flash('success_msg', 'Alerta registrada correctamente')
@@ -100,7 +114,17 @@ const alertaController = {
                 where: {
                     id,
                 },
-                include: Daño,
+                include: [{
+                    model: Daño,
+                    
+                }, {
+                    model: Medida,
+                  
+                },  
+                {
+                    model: Ubicacion,
+                  
+                }],
                 raw: true,
                 nest: true,
             })
@@ -113,7 +137,7 @@ const alertaController = {
     update: async (req, res) => {
         try {
             let id = req.params.id
-            const { nombre, descripcion, nombreD, descripcionD } = req.body
+            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenada, departamento, municipio } = req.body
             const alerta = await Alerta.findOne({ where: { id: id } })
             alerta.nombre = nombre
             alerta.descripcion = descripcion
@@ -122,6 +146,16 @@ const alertaController = {
             daño.nombre = nombreD
             daño.descripcion = descripcionD
             await daño.save()
+            const medida = await Medida.findOne({ where: { alertumId: id } })
+            medida.nombre = nombreM
+            medida.descripcion = descripcionM
+            await medida.save()
+
+            const ubicacion = await Ubicacion.findOne({ where: { alertumId: id } })
+            ubicacion.coordenada = coordenada
+            ubicacion.departamento = departamento
+            ubicacion.municipio = municipio
+            await ubicacion.save()
             req.flash('success_msg', 'Alerta actualizado correctamente')
             res.redirect('/alerta')
         } catch (err) {

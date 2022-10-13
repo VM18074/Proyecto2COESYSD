@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         hooks: true,
       })
+
+      this.hasOne(models.Ubicacion, {
+        onDelete: 'CASCADE',
+        hooks: true,
+      })
     }
     
   }
