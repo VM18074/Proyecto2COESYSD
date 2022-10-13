@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 hooks: true,
             })
 
-            this.belongsTo(models.Rol, { foreignKey: 'id' })
+            this.belongsTo(models.Rol, { foreignKey: 'nombre' })
         }
     }
     Usuario.init(

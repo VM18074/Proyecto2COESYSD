@@ -20,13 +20,13 @@ module.exports = {
                 type: Sequelize.STRING,
             },
 
-            rolId: {
-                type: Sequelize.DataTypes.INTEGER,
+            rol: {
+                type: Sequelize.DataTypes.STRING,
                 references: {
                     model: {
                         tableName: 'roles',
                     },
-                    key: 'id',
+                    key: 'nombre',
                 },
                 allowNull: true,
             },
