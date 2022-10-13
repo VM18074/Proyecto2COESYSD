@@ -10,8 +10,9 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Activo</th>
-                    <th scope="col">Daños</th>
+                    <th scope="col">Daños</th>                  
                     <th scope="col">Nivel Alerta</th>
+                    <th scope="col">Medidas de respuesta</th>
 
                 </tr>
             </thead>
@@ -23,7 +24,8 @@
                     <td>{{descripcion}}</td>
                     <td>A sido aprobado </td>  
                     <td>{{Daño.nombre}}</td>
-                    <td>{{nivelAlerta}}</td>                             
+                    <td>{{nivelAlerta}}</td>  
+                    <td>{{Medida.nombre}}</td>                           
 
                     <td>
                         <a class="btn btn-danger" href="/alerta/activar/{{id}}">
@@ -42,6 +44,7 @@
                     <td>En proceso de aprobar</td>
                     <td>{{Daño.nombre}}</td>
                     <td>{{nivelAlerta}}</td> 
+                    <td>{{Medida.nombre}}</td> 
 
                     <td>
                         <a class="btn btn-success" href="/alerta/activar/{{id}}">

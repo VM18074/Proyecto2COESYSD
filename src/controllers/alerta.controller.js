@@ -1,12 +1,18 @@
-const { Alerta, Daño } = require('../models')
+const { Alerta, Daño, Medida } = require('../models')
 
 
 
-const userController = {
+const alertaController = {
     // retorna todos los Usuarios
     index: async (req, res) => {
        const data = await Alerta.findAll({
-        include: Daño,    
+        include: [{
+            model: Daño,
+            
+        }, {
+            model: Medida,
+          
+        }],  
         raw: true,
             nest: true,
         })
@@ -17,10 +23,16 @@ const userController = {
 
     indexAmin: async (req, res) => {
         const data = await Alerta.findAll({
-            include: Daño,  
-             raw: true,
-             nest: true,
-         })
+            include: [{
+                model: Daño,
+                
+            }, {
+                model: Medida,
+              
+            }],  
+            raw: true,
+                nest: true,
+            })
        
  
          res.render('alerta/admin/index', {dataRows:data})
@@ -30,7 +42,7 @@ const userController = {
     // permite agregar un nuevo usuario a la base de datos
     add: async (req, res) => {
         try {
-            const { nombre, descripcion, activo, nombreD, descripcionD } = req.body
+            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM } = req.body
             var esActivo;
                 if(activo==null){
                     esActivo=0;
@@ -46,6 +58,11 @@ const userController = {
                     alertumId: alerta.id,
                     nombre: nombreD,
                     descripcion: descripcionD,
+                })
+                await Medida.create({
+                    alertumId: alerta.id,
+                    nombre: nombreM,
+                    descripcion: descripcionM,
                 })
 
                 req.flash('success_msg', 'Alerta registrada correctamente')
@@ -166,4 +183,4 @@ const userController = {
 
 }
 
-module.exports = userController
+module.exports = alertaController
