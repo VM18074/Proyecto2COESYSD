@@ -101,6 +101,10 @@ const userController = {
             alerta.nombre = nombre
             alerta.descripcion = descripcion
             await alerta.save()
+            const daño = await Daño.findOne({ where: { alertumId: id } })
+            daño.nombre = nombreD
+            daño.descripcion = descripcionD
+            await daño.save()
             req.flash('success_msg', 'Alerta actualizado correctamente')
             res.redirect('/alerta')
         } catch (err) {
