@@ -2,35 +2,44 @@
 
     <div class="row">
 
-        <form class="container-fluid mw-75 shadow p-3 mb-5 bg-body rounded col-sm-12 col-md-10" method="post"
-            action="/admins/edit/{{user.UsuarioId}}">
-            <h2 class="">Editar Administrador</h2>
+        <form class="container-fluid w-50 shadow p-3 mb-5 bg-body rounded col-sm-12 col-md-10" method="post"
+            action="/users/edit/{{user.id}}">
+            <h2 class="">Editar Usuario</h2>
             <div class="row">
                 <div class="mb-3 col-12">
                     <label for="nombre" class="col-form-label">Nombres:</label>
-                    <input type="text" required class="form-control" id="nombre" name="nombre" value="{{user.nombre}}">
+                    <input type="text" required class="form-control" id="nombre" name="nombre"
+                        value="{{user.Empleado.nombre}}">
                 </div>
 
                 <div class="mb-3 col-12">
                     <label for="apellido" class="col-form-label">Apellidos: </label>
                     <input type="text" required class="form-control" id="apellido" name="apellido"
-                        value="{{user.apellido}}">
+                        value="{{user.Empleado.apellido}}">
                 </div>
-            </div>
-
-            <div class="row">
-
-
 
                 <div class="mb-3 col-12">
                     <label for="telefono" class="col-form-label">Teléfono</label>
-                    <input type="tel" required maxlength="8" pattern="[0-9]{8}" value="{{user.telefono}}"
+                    <input type="tel" required maxlength="8" pattern="[0-9]{8}" value="{{user.Empleado.telefono}}"
                         class="form-control" minlength="8" id="telefono" name="telefono">
                 </div>
+
+                <div class="mb-3 col-12">
+
+                    <div class="form-check">
+                        <input class="form-check-input" data-rol="{{user.RolNombre}}" name="rol" id="rolInputEdit"
+                            type="checkbox" value="admin">
+                        <label class="form-check-label" for="rolInputEdit">Administrador</label>
+                    </div>
+
+                </div>
+
             </div>
 
+
+
             <div class="modal-footer">
-                <a href="/admins" class="btn btn-secondary">
+                <a href="/users" class="btn btn-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -56,3 +65,9 @@
 
     </div>
 </div>
+<script>
+    const inputRol = document.getElementById('rolInputEdit')
+    const rol = inputRol.dataset.rol
+    if (rol) inputRol.checked = true
+
+</script>

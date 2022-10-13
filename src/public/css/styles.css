@@ -1,5 +1,6 @@
 body{
     height: 100vh;
+    position: relative;
 }
 
 #map{
@@ -8,4 +9,28 @@ body{
 .scrollable{
     height:80vh;
     overflow-y: scroll;
+}
+.alert{
+    position: absolute;
+    top: 50px;
+    right:0;
+    max-width: 50vw;
+    opacity: 0;
+    animation-name: alertAparition;
+    animation-duration: 10s;
+    animation-delay: 200ms;
+    
+}
+@keyframes alertAparition {
+    0%{
+        opacity: 0;
+    }
+
+    20%{
+        opacity:  1;
+    }
+    80%{
+        opacity: 0;
+    }
+    
 }

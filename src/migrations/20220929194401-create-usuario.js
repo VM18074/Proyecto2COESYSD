@@ -20,7 +20,7 @@ module.exports = {
                 type: Sequelize.STRING,
             },
 
-            rol: {
+            RolNombre: {
                 type: Sequelize.DataTypes.STRING,
                 references: {
                     model: {

@@ -76,7 +76,6 @@ app.listen(app.get('port'), () => {
 //Creacion de sesiones para login
 
 //habilitar uso de rutas
-app.use('/', require('./routes/admin.route'))
 app.use('/', require('./routes/user.route'))
 app.use('/', require('./routes/home.route'))
 app.use('/', require('./routes/inst.route'))

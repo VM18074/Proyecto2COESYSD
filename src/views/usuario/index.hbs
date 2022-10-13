@@ -1,5 +1,4 @@
-{{>modalAdmins}}
-{{>messages}}
+{{>modalUsers}}
 <div class="container mt-2">
     <p>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAdmin">
@@ -9,7 +8,7 @@
                     d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
             </svg>
 
-            Agregar Administrador
+            Agregar Usuario
 
         </button>
     </p>
@@ -28,11 +27,11 @@
             <tbody>
                 {{#each dataRows}}
                 <tr>
-                    <td>{{Administrador.nombre}} {{Administrador.apellido}}</td>
+                    <td>{{Empleado.nombre}} {{Empleado.apellido}}</td>
                     <td>{{email}}</td>
-                    <td>{{Administrador.telefono}} </td>
+                    <td>{{Empleado.telefono}} </td>
                     <td>
-                        <a class="btn btn-light" href="/admins/edit/{{id}}">
+                        <a class="btn btn-light" href="/users/edit/{{id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil-fill" viewBox="0 0 16 16">
 
@@ -41,7 +40,7 @@
                             </svg>
                         </a>
 
-                        <a class="btn btn-danger" href="admins/delete/{{id}}">
+                        <a class="btn btn-danger" href="users/delete/{{id}}">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-trash-fill" viewBox="0 0 16 16">

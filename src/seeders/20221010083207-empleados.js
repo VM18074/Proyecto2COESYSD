@@ -14,10 +14,10 @@ module.exports = {
          * }], {});
          */
 
-        let admins = []
+        let users = []
         for (let i = 1; i <= 30; i++) {
-            admins = [
-                ...admins,
+            users = [
+                ...users,
                 {
                     nombre: faker.name.firstName(),
                     apellido: faker.name.lastName(),
@@ -30,7 +30,7 @@ module.exports = {
                 },
             ]
         }
-        await queryInterface.bulkInsert('Administradores', admins, {})
+        await queryInterface.bulkInsert('Empleados', users, {})
     },
 
     async down(queryInterface, Sequelize) {
