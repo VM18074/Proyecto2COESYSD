@@ -48,16 +48,16 @@ const institucionController = {
     delete: async (req, res) => {
         try {
             let id = req.params.id
-            const user = await Usuario.findOne({ where: { id: id } })
-            await user.destroy()
+            const inst = await Institucion.findOne({ where: { id: id } })
+            await inst.destroy()
 
             req.flash('success_msg', 'Institución eliminada correctamente')
-            res.redirect('/admins')
+            res.redirect('/institucion')
         } catch (err) {
             console.log(err)
 
             req.flash('error_msg', 'Lo siento, ha ocurrido un error al momento de eliminar la institución')
-            res.redirect('/admins')
+            res.redirect('/institucion')
         }
     },
     //Permite editar una institución de la base de datos
@@ -66,7 +66,7 @@ const institucionController = {
             let id = req.params.id
             const user = await Institucion.findOne({
                 where: {
-                    UsuarioId: id,
+                    id: id,
                 },
                 raw: true,
             })
@@ -80,18 +80,12 @@ const institucionController = {
     update: async (req, res) => {
         try {
             let id = req.params.id
-            const { alias, email, password, nombre, apellido, dui, telefono } = req.body
-            const user = await Usuario.findOne({ where: { id: id } })
-            user.nombre = alias
-            user.email = email
-            user.password = password
-            await user.save()
-            const admin = await Administrador.findOne({ where: { UsuarioId: id } })
-            admin.nombre = nombre
-            admin.apellido = apellido
-            admin.dui = dui
-            admin.telefono = telefono
-            await admin.save()
+            const {name, direccion} = req.body
+            const inst = await Institucion.findOne({ where: { id: id } })
+            inst.name = name
+            inst.direccion = direccion
+            await inst.save()
+            console.log(inst);
 
             req.flash('success_msg', 'Institucion actualizado correctamente')
             res.redirect('/institucion')
