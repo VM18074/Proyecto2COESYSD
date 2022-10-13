@@ -8,10 +8,12 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            this.hasOne(models.Administrador,{
+            this.hasOne(models.Empleado, {
                 onDelete: 'CASCADE',
-                hooks:true,
+                hooks: true,
             })
+
+            this.belongsTo(models.Rol, { foreignKey: 'id' })
         }
     }
     Usuario.init(
@@ -19,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             nombre: DataTypes.STRING,
             email: DataTypes.STRING,
             password: DataTypes.STRING,
-            isAdmin: DataTypes.BOOLEAN,
         },
         {
             sequelize,
