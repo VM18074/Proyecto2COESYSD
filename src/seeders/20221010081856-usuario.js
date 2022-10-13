@@ -21,7 +21,7 @@ module.exports = {
                     nombre: faker.internet.userName(),
                     email: faker.internet.email().toLowerCase(),
                     password: faker.internet.password(),
-                    RolNombre: 'admin',
+                    RolNombre: 'administrador',
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },

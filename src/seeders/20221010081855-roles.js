@@ -16,7 +16,7 @@ module.exports = {
          */
         let roles = [
             {
-                nombre: 'admin',
+                nombre: 'administrador',
 
                 createdAt: new Date(),
                 updatedAt: new Date(),
