@@ -1,15 +1,11 @@
-const { id, institucion } = require('./../models/institucion')
-const adminSignUpMailer = require('../templates/instSignUpMailer')
-const generatePassword = require('../utils/generatePassword')
+const {Institucion} = require('./../models/')
 
-const adminController = {
-    // retorna todos los administradores
+
+const institucionController = {
+    // retorna todas las instituciones
     index: async (req, res) => {
-        const data = await Usuario.findAll({
-            where: {
-                isInst: true,
-            },
-            include: Institucion,
+        const data = await Institucion.findAll({
+           
             raw: true,
             nest: true,
         })
@@ -17,41 +13,29 @@ const adminController = {
         res.render('institucion/index', { dataRows: data })
     },
 
-    // permite agregar un nuevo adminstrador a la base de datos
+    // permite agregar una nueva institución a la base de datos
     add: async (req, res) => {
         try {
-            const { id, nombre, email, direccion } = req.body
-            const password = generatePassword()
+            const { id, name, email, direccion } = req.body           
 
-            const oldId = await Id.findOne({
+            const oldId = await Institucion.findOne({
                 where: {
                     email,
                 },
             })
-
-            const oldInst = await Institucion.findOne({
-                where: {
-                    direccion,
-                },
-            })
+          
             if (oldId) {
-                req.flash('error_msg', 'Ya existe un Usuario con el mismo ID')
-                res.redirect('/inst')
+                req.flash('error_msg', 'Ya existe un Usuario con el mismo correo')
+                res.redirect('/institucion')
                 return
-            } else if (oldInst) {
-                req.flash('error_msg', 'La direccion ya ha sido registrada')
-                res.redirect('/inst')
             } else {
-                const id = await Id.create({ nombre, email, direccion, isInst: true })
-                const inst = await Institucion.create({
-                    id: id.id,
-                    nombre,
-                                     
-                })
+                const id = await Institucion.create({ name, email, direccion})
                 
-                req.flash('success_msg', 'Institución agregado correctamente!')
-                adminSignUpMailer(nombre, email)
-                res.redirect('/admins')
+                   
+                
+                
+                req.flash('success_msg', 'Institución agregado correctamente!')               
+                res.redirect('/institucion')
             }
         } catch (err) {
             console.log(err)
@@ -60,64 +44,58 @@ const adminController = {
             res.status(500).json(err)
         }
     },
-    //permite eliminar un administrador de la base de datos
+    //permite eliminar una institución de la base de datos
     delete: async (req, res) => {
         try {
             let id = req.params.id
-            const user = await Usuario.findOne({ where: { id: id } })
-            await user.destroy()
+            const inst = await Institucion.findOne({ where: { id: id } })
+            await inst.destroy()
 
-            req.flash('success_msg', 'Administrador eliminado correctamente')
-            res.redirect('/admins')
+            req.flash('success_msg', 'Institución eliminada correctamente')
+            res.redirect('/institucion')
         } catch (err) {
             console.log(err)
 
-            req.flash('error_msg', 'Lo siento, ha ocurrido un error al momento de eliminar el administrador')
-            res.redirect('/admins')
+            req.flash('error_msg', 'Lo siento, ha ocurrido un error al momento de eliminar la institución')
+            res.redirect('/institucion')
         }
     },
-    //permite editar un administrador de la base de datos
+    //Permite editar una institución de la base de datos
     edit: async (req, res) => {
         try {
             let id = req.params.id
-            const user = await Administrador.findOne({
+            const user = await Institucion.findOne({
                 where: {
-                    UsuarioId: id,
+                    id: id,
                 },
                 raw: true,
             })
-            res.render('administrador/edit', { user })
+            res.render('institucion/edit', { user })
         } catch (err) {
             console.log(err)
-            res.redirect('/admins')
+            res.redirect('/institucion')
         }
     },
-    //permite actualizar un administrador de la base de datos
+    //permite actualizar una institución a la base de datos
     update: async (req, res) => {
         try {
             let id = req.params.id
-            const { alias, email, password, nombre, apellido, dui, telefono } = req.body
-            const user = await Usuario.findOne({ where: { id: id } })
-            user.nombre = alias
-            user.email = email
-            user.password = password
-            await user.save()
-            const admin = await Administrador.findOne({ where: { UsuarioId: id } })
-            admin.nombre = nombre
-            admin.apellido = apellido
-            admin.dui = dui
-            admin.telefono = telefono
-            await admin.save()
+            const {name, direccion} = req.body
+            const inst = await Institucion.findOne({ where: { id: id } })
+            inst.name = name
+            inst.direccion = direccion
+            await inst.save()
+            console.log(inst);
 
-            req.flash('success_msg', 'Administrador actualizado correctamente')
-            res.redirect('/admins')
+            req.flash('success_msg', 'Institucion actualizado correctamente')
+            res.redirect('/institucion')
         } catch (err) {
             console.log(err)
 
-            req.flash('error_msg', 'No es posible actualizar el administrador')
-            res.redirect('/admins')
+            req.flash('error_msg', 'No es posible actualizar la institucion')
+            res.redirect('/institucion')
         }
     },
 }
 
-module.exports = adminController
+module.exports = institucionController

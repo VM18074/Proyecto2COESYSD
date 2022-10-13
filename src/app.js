@@ -79,5 +79,5 @@ app.listen(app.get('port'), () => {
 app.use('/', require('./routes/admin.route'))
 app.use('/', require('./routes/user.route'))
 app.use('/', require('./routes/home.route'))
-
+app.use('/', require('./routes/inst.route'))
 //vinculación de modelos a DB

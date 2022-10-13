@@ -28,12 +28,12 @@
             <tbody>
                 {{#each dataRows}}
                 <tr>
-                    <td>{{Institucion.id}} </td>
-                    <td>{{Institucion.nombre}}</td>
+                    <td>{{id}} </td>
+                    <td>{{name}}</td>
                     <td>{{email}}</td>
-                    <td>{{Institucion.direccion}} </td>
+                    <td>{{direccion}} </td>
                     <td>
-                        <a class="btn btn-light" href="/inst/edit/{{id}}">
+                        <a class="btn btn-light" href="/institucion/edit/{{id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil-fill" viewBox="0 0 16 16">
 
@@ -42,7 +42,7 @@
                             </svg>
                         </a>
 
-                        <a class="btn btn-danger" href="inst/delete/{{id}}">
+                        <a class="btn btn-danger" href="/institucion/delete/{{id}}">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-trash-fill" viewBox="0 0 16 16">

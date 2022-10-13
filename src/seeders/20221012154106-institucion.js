@@ -1,8 +1,8 @@
 'use strict';
-const  {faker} = require.company.companyName()
+const { faker } = require('@faker-js/faker')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+ async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -12,17 +12,17 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-
      let inst = []
         for (let i = 1; i <= 30; i++) {
             inst = [
                 ...inst,
                 {
-                    id: i,
-                    name: faker.name.firstName(),
-                    email: faker.internet.email().toLowerCase(),
-                    
-                    
+                  
+                    name: faker.company.companyName(),
+                    direccion: faker.address.cityName(),   
+                    email: faker.internet.email().toLowerCase(),              
+                  
+
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
@@ -30,6 +30,7 @@ module.exports = {
         }
         await queryInterface.bulkInsert('Institucion', inst, {})
   },
+
 
   async down (queryInterface, Sequelize) {
     /**

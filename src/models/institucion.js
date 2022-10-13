@@ -14,10 +14,11 @@ module.exports = (sequelize, DataTypes) => {
   Institucion.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    idInstitucion: DataTypes.STRING
+    direccion: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Institucion',
+    tableName: 'Institucion',
   });
   return Institucion;
 };

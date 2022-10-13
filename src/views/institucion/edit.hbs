@@ -3,17 +3,23 @@
     <div class="row">
 
         <form class="container-fluid mw-75 shadow p-3 mb-5 bg-body rounded col-sm-12 col-md-10" method="post"
-            action="/inst/edit/{{user.id}}">
-            <h2 class="">Editar Institucionh2>
+            action="/institucion/edit/{{user.id}}">
+            <h2 class="">Editar Institucion<h2>
             <div class="row">
                 <div class="mb-3 col-12">
                     <label for="nombre" class="col-form-label">Nombres:</label>
-                    <input type="text" required class="form-control" id="nombre" name="nombre" value="{{user.nombre}}">
+                    <input type="text" required class="form-control" id="name" name="name" value="{{user.name}}">
                 </div>
               
+              <div class="mb-3 col-12">
+                    <label for="direccion" class="col-form-label">Direccion:</label>
+                    <input type="direcc"  value="{{user.direccion}}"
+                        class="form-control"  id="direccion" name="direccion">
+                </div>
+            </div>
 
             <div class="modal-footer">
-                <a href="/inst" class="btn btn-secondary">
+                <a href="/institucion" class="btn btn-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
