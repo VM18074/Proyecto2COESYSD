@@ -11,10 +11,10 @@
                     <th scope="col">Descripcion</th>
                     <th scope="col">Activo</th>
                     <th scope="col">Daños</th>                  
-                    <th scope="col">Nivel Alerta</th>
+                    <th scope="col">Nivel</th>
                     <th scope="col">Departamento</th>
-                      <th scope="col">Municipio</th>
-                    <th scope="col">Medidas de respuesta</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Respuesta</th>
 
                 </tr>
             </thead>
@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{nombre}}</td>
                     <td>{{descripcion}}</td>
-                    <td>A sido aprobado </td>  
+                    <td>{{activo}}</td> 
                     <td>{{Daño.nombre}}</td>
                     <td>{{nivelAlerta}}</td>  
                     <td>{{Ubicacion.departamento}}</td>
@@ -45,7 +45,7 @@
                 <tr>
                     <td>{{nombre}}</td>
                     <td>{{descripcion}}</td>
-                    <td>En proceso de aprobar</td>
+                    <td>{{activo}}</td>
                     <td>{{Daño.nombre}}</td>
                     <td>{{nivelAlerta}}</td> 
                     <td>{{Ubicacion.departamento}}</td>
