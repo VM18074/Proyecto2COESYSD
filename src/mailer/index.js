@@ -1,5 +1,6 @@
 const mailer = require('nodemailer')
-const canSendEmail = false
+// cambie esta variable para poder enviar emails
+const canSendEmail = false // true para poder enviar emails
 
 function sendEmail(name, receiver, password, template) {
     let transporter = mailer.createTransport({
