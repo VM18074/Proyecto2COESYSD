@@ -1,15 +1,5 @@
-const mailer = require('nodemailer')
-
-function sendMail(name, receiver, password) {
-    let transporter = mailer.createTransport({
-        service: 'hotmail',
-        auth: {
-            user: 'proyectoCOESYSD@hotmail.com',
-            pass: 'Universidaddeelsalvador@1',
-        },
-    })
-
-    let mailOptions = {
+const getOptions = (name, receiver, password) => {
+    return {
         from: 'ProyectoCOESYSD <proyectoCOESYSD@hotmail.com>',
         to: receiver,
         subject: 'Cuenta de Personal',
@@ -49,15 +39,6 @@ function sendMail(name, receiver, password) {
         
         `,
     }
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            res.json(error)
-        } else {
-            console.log('Email sent: ' + info.response)
-            res.send('cuenta enviada con exito')
-        }
-    })
 }
 
-module.exports = sendMail
+module.exports = getOptions

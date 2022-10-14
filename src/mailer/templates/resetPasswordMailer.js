@@ -1,18 +1,8 @@
-const mailer = require('nodemailer')
-
-function sendMail(name, receiver, password) {
-    let transporter = mailer.createTransport({
-        service: 'hotmail',
-        auth: {
-            user: 'proyectoCOESYSD@hotmail.com',
-            pass: 'Universidaddeelsalvador@1',
-        },
-    })
-
-    let mailOptions = {
+const getOptions = (name, receiver, password) => {
+    return {
         from: 'ProyectoCOESYSD <proyectoCOESYSD@hotmail.com>',
         to: receiver,
-        subject: 'Cuenta de administrador',
+        subject: 'Nueva contraseña de cuenta',
         html: `
         <div
             style="
@@ -26,14 +16,14 @@ function sendMail(name, receiver, password) {
                 <tr>
                     <th>
                         <h1 style="margin: 0; padding: 3rem 1rem; color: white; background-color: rgb(39, 142, 13)">
-                            Cuenta de Administrador Creada con éxito
+                            Contraseña para cuenta creada con éxito
                         </h1>
                     </th>
                 </tr>
                 <tr>
                     <td style="font-size: 1.2em">
-                        <p>Hola <strong>${name}</strong></p>
-                        <p>Tus credenciales de Administrador son las siguientes:</p>
+                        <p>Hola, tu nueva contraseña se creo con éxito</p>
+                        <p>Tus credenciales son las siguientes:</p>
                         <p>Correo: <strong>${receiver}</strong></p>
                         <p>Contraseña: <strong>${password}</strong></p>
                     </td>
@@ -49,15 +39,6 @@ function sendMail(name, receiver, password) {
         
         `,
     }
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            res.json(error)
-        } else {
-            console.log('Email sent: ' + info.response)
-            res.send('cuenta enviada con exito')
-        }
-    })
 }
 
-module.exports = sendMail
+module.exports = getOptions

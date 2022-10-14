@@ -1,9 +1,11 @@
 const { Usuario, Empleado } = require('../models')
-const adminSignUpMailer = require('../templates/adminSignUpMailer')
-const empleadoSignUpMailer = require('../templates/empleadoSignUpMailer')
-const generatePassword = require('../utils/generatePassword')
-const resetPasswordMailer = require('../templates/resetPasswordMailer')
 const bcryptjs = require('bcryptjs') //Encriptar password en bd
+const generatePassword = require('../utils/generatePassword')
+
+const sendEmail = require('../mailer/index')
+const adminTemplate = require('../mailer/templates/adminSignUpMailer')
+const empleadoTemplate = require('../mailer/templates/empleadoSignUpMailer')
+const resetPasswordTemplate = require('../mailer/templates/resetPasswordMailer')
 
 const userController = {
     // retorna todos los Usuarios
@@ -61,9 +63,9 @@ const userController = {
 
                 req.flash('success_msg', 'Usuario agregado correctamente')
                 if (rol === 'administrador') {
-                    adminSignUpMailer(nombre, email, passwordSave)
+                    sendEmail(nombre, email, passwordSave, adminTemplate)
                 } else {
-                    empleadoSignUpMailer(nombre, email, passwordSave)
+                    sendEmail(nombre, email, passwordSave, empleadoTemplate)
                 }
                 res.redirect('/users')
             }
@@ -154,7 +156,7 @@ const userController = {
                 user.password = password
 
                 await user.save()
-                resetPasswordMailer(email, password)
+                sendEmail('', email, password, resetPasswordTemplate)
             }
             res.redirect('/')
         } catch (e) {
