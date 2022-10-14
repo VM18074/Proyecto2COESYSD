@@ -6,7 +6,7 @@ function sendEmail(name, receiver, password, template) {
     let transporter = mailer.createTransport({
         service: 'hotmail',
         auth: {
-            user: '@yahoo.com',
+            user: 'coesysd@hotmail.com',
             pass: 'Universidaddeelsalvador@1',
         },
     })
