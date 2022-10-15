@@ -7,9 +7,12 @@ body{
     background-color: blue;
     color: white;
 }
+.navbar{
+    height: 4.3rem;
+}
 
 #map{
-    height: 90vh;
+    height: calc(100vh - 4.3rem);
 }
 .scrollable{
     height:80vh;
