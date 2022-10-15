@@ -12,9 +12,9 @@
 
         </button>
     </p>
-    
-    <div class="scrollable shadow p-2 mb-5 bg-body  rounded">
-        
+
+    <div class="scrollable shadow mb-5 bg-body  rounded">
+
         <table class="table">
             <thead>
                 <tr>
@@ -25,13 +25,14 @@
                     <th scope="col">Nivel</th>
                     <th scope="col">Departamento</th>
                     <th scope="col">Municipio</th>
-                    <th scope="col">Respuesta</th>      
+                    <th scope="col">Respuesta</th>
+                    <th scope="col"></th>
 
                 </tr>
             </thead>
             <tbody>
                 {{#each dataRows}}
-                 {{#if activo}}
+                {{#if activo}}
                 <tr>
                     <td>{{nombre}}</td>
                     <td>{{descripcion}}</td>
@@ -40,7 +41,7 @@
                     <td>{{nivelAlerta}}</td>
                     <td>{{Ubicacion.departamento}}</td>
                     <td>{{Ubicacion.municipio}}</td>
-                    <td>{{Medida.nombre}}</td>                          
+                    <td>{{Medida.nombre}}</td>
 
                     <td>
                         <a class="btn btn-light" href="alerta/edit/{{id}}">
@@ -52,24 +53,24 @@
                             </svg>
                         </a>
                     </td>
-                </tr>  
+                </tr>
                 {{else}}
                 <tr>
                     <td>{{nombre}}</td>
-                    <td>{{descripcion}}</td>                    
+                    <td>{{descripcion}}</td>
                     <td>{{activo}}</td>
                     <td>{{Daño.nombre}}</td>
-                    <td>{{nivelAlerta}}</td> 
+                    <td>{{nivelAlerta}}</td>
                     <td>{{Ubicacion.departamento}}</td>
                     <td>{{Ubicacion.municipio}}</td>
-                    <td>{{Medida.nombre}}</td> 
-                    
+                    <td>{{Medida.nombre}}</td>
+
                 </tr>
                 {{/if}}
                 {{/each}}
             </tbody>
         </table>
-           
+
     </div>
     <!--
     <div class="scrollable shadow p-3 mb-5 bg-body  rounded">
@@ -96,5 +97,5 @@
             </tbody>
         </table>
         </div>-->
-        
+
 </div>

@@ -3,6 +3,11 @@ body{
     position: relative;
 }
 
+::selection{
+    background-color: blue;
+    color: white;
+}
+
 #map{
     height: 90vh;
 }
@@ -32,40 +37,24 @@ body{
     80%{
         opacity: 0;
     }
-   
     
 }
-/*Segmento de codigo css que cambia las cabeceras de las tablas a color naranja*/
-table th{
-    width:10em;
-}
-table{
-    border-collapse: collapse;
-}
-tr:nth-of-type(1)>th{
-    background-color: darkorange;
-}
 
-/*Segmento de codigo css para bordes y aliniamiento de escritura.*/
-table {
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-    margin: 0 0 1em 0;
-    caption-side: top;
- }
- caption, td, th {
-    padding: 0.3em;
- }
- th, td {
-    border-bottom: 1px solid #000;
-    border-right: 1px solid #000;
- }
- th:lastchild, td:lastchild {
-     border-right: 0;
- }
- th {
-    width: 25%;
- }
+thead tr{
+    font-size: 1.1em;
+    background-color: rgb(255, 130, 5);
+    color: white;
 
+}
+th{
+    font-weight: 400;
+    font-size: 1.1em;
+}
+.table tbody tr:nth-child(even){
+    background-color: rgb(246, 246, 246);
+
+}
+.table tbody tr:hover{
+    background-color: rgba(255, 187, 61, 0.2);
+}
 
