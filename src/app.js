@@ -80,4 +80,5 @@ app.use('/', require('./routes/user.route'))
 app.use('/', require('./routes/home.route'))
 app.use('/', require('./routes/inst.route'))
 app.use('/', require('./routes/alerta.route'))
+app.use('/', require('./routes/login.route'))
 //vinculación de modelos a DB

@@ -1,0 +1,59 @@
+<tr>
+    <form class="container-fluid w-50 shadow p-5 mb-5 bg-body rounded col-sm-16 col-md-15 " method="post"
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mb-5">Ingrese su Usuario</h5>
+                
+            </div>
+            <div class="modal-body">
+                <form class="container-fluid" method="post" action="/user/add">
+
+                    <div class="row">
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="mb-5" <label for="email" class="col-form-label">Email</label>
+                        <input type="email" required class="form-control" placeholder="carlosvargas@gmail.com"
+                            id="email" name="email">
+                    </div>
+
+                        <div class="mb-3 ">
+                            <label for="password" class="col-form-label">Contraseña</label>
+                            <input type="password" required class="form-control" id="password" name="password">
+
+                        </div>
+
+
+                      
+                    </div>
+
+                    <div class="modal-footer">
+                        
+                        <button type="submit" class="btn btn-primary ms-4">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+                                class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                            </svg>
+                            Ingresar</button>
+
+                        {{>modalUsers}}
+
+        <button class="btn btn-primary ms-4" data-bs-toggle="modal" data-bs-target="#modalAdmin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+  
+            </svg>
+
+            Crear Usuario
+
+        </button>
+   
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
