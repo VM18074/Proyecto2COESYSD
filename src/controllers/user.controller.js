@@ -15,8 +15,9 @@ const userController = {
             raw: true,
             nest: true,
         })
-
-        res.render('usuario/index', { dataRows: data })
+        req.session.loggedin=true;
+        req.session.admin=true;
+        res.render('usuario/index', { dataRows: data, admin: req.session.admin,logueado: req.session.loggedin })
     },
 
     // permite agregar un nuevo usuario a la base de datos

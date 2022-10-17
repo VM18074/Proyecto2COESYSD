@@ -2,42 +2,61 @@ const { Usuario } = require('./../models/')
 const bcryptjs = require('bcryptjs')
 
 const loginController= {
-    index: async (req, res) => {   
-    res.render('login/index')
+    index: async (req, res) => {  
+        if(req.session.loggedin != true){
+            res.render('login/index')             
+        } 
+    res.render('home/index')
     },
 
     
-    login:async  (req, res)=>{
-        if(req.session.loggedin != true){
-            res.render('login/index')             
-        }
+    logout:async  (req, res)=>{
+        
+        if (req.session.loggedin == true) {
+            req.session.destroy();
+          }
+          //req.session.loggedin == null;
+          res.render('home/index');
 
     },
 
 
     // permite agregar un nuevo usuario a la base de datos
-    outh: async (req, res) => {
+    auth: async (req, res) => {
         try {
             const data = req.body
-            const { email, password} = req.body
+           // const { email, password} = req.body
 
             const oldUser = await Usuario.findOne({
                 where: {
-                    email,
+                    email: data.email,
                 },
             })
 
             if (oldUser ) {
-                         bcryptjs.compare(data.password, oldUser.password(err, isMatch));{
+                         bcryptjs.compare(data.password, oldUser.password,(err, isMatch)=>{
                         if(!isMatch){
-                            res.render('/')
+                            req.flash('error_msg', 'La contraseña no coincide')
+                            res.redirect('login')
+                            
                             return
-                        } 
-                    }
+                        } else{
+                            if(oldUser.RolNombre!=null){
+                                req.session.loggedin=true;
+                                req.session.admin=true;
+                                res.render('home/index', {logueado: req.session.loggedin, admin: req.session.admin})
+                            }else{
+                                req.session.loggedin=true;
+                                req.session.admin=null;
+                                res.render('home/index', {logueado: req.session.loggedin, admin: req.session.admin})
+                            }
+                            
+                        }
+                    });
             }
                     else{
                 req.flash('error_msg', 'No existe un Usuario con ese email.')
-                res.redirect('/')
+                res.redirect('login')
                 return }
                 
             
