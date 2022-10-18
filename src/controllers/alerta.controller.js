@@ -42,10 +42,20 @@ const alertaController = {
             raw: true,
                 nest: true,
             })
+<<<<<<< HEAD
             req.session.loggedin=true;
             req.session.admin=true;
  
          res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
+=======
+       
+            if(req.session.loggedin==true && req.session.admin==true){
+                res.render('alerta/admin/index', {dataRows:data})
+            }else{
+                res.render('home/index')
+            }
+         
+>>>>>>> 0670d8d97d3d7b07abe38d9ee1357f3202a975fc
      },
  
 
