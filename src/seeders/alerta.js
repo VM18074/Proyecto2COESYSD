@@ -14,18 +14,34 @@ module.exports = {
          * }], {});
          */
         let alerta = []
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 15; i++) {
             alerta = [
                 ...alerta,
                 {
                     nombre: faker.lorem.word(),
                     descripcion: faker.lorem.paragraph(),
+                    activo: true,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                },
+            ]
+        }
+
+        let alertano = []
+        for (let i = 15; i < 30; i++) {
+            alertano = [
+                ...alertano,
+                {
+                    nombre: faker.lorem.word(),
+                    descripcion: faker.lorem.paragraph(),
+                    activo: false,
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
             ]
         }
         await queryInterface.bulkInsert('Alerta', alerta, {})
+        await queryInterface.bulkInsert('Alerta', alertano, {})
     },
 
     async down(queryInterface, Sequelize) {

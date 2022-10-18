@@ -42,8 +42,12 @@ const alertaController = {
                 nest: true,
             })
        
- 
-         res.render('alerta/admin/index', {dataRows:data})
+            if(req.session.loggedin==true && req.session.admin==true){
+                res.render('alerta/admin/index', {dataRows:data})
+            }else{
+                res.render('home/index')
+            }
+         
      },
  
 
