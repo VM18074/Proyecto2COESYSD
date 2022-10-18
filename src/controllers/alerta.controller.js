@@ -20,9 +20,10 @@ const alertaController = {
         raw: true,
             nest: true,
         })
-      
+        req.session.loggedin=true;
+        req.session.admin=true;
 
-        res.render('alerta/index', {dataRows:data})
+        res.render('alerta/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
     },
 
     indexAmin: async (req, res) => {
@@ -41,9 +42,10 @@ const alertaController = {
             raw: true,
                 nest: true,
             })
-       
+            req.session.loggedin=true;
+            req.session.admin=true;
  
-         res.render('alerta/admin/index', {dataRows:data})
+         res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
      },
  
 
@@ -128,7 +130,9 @@ const alertaController = {
                 raw: true,
                 nest: true,
             })
-            res.render('alerta/edit', { alerta })
+            req.session.loggedin=true;
+        req.session.admin=true;
+            res.render('alerta/edit', { alerta, admin: req.session.admin,logueado: req.session.loggedin  })
         } catch (err) {
             console.log(err)
             res.redirect('/alerta')
@@ -177,7 +181,9 @@ const alertaController = {
                 raw: true,
                 nest: true,
             })
-            res.render('alerta/admin/aprobarAlerta', { alerta })
+            req.session.loggedin=true;
+        req.session.admin=true;
+            res.render('alerta/admin/aprobarAlerta', { alerta,admin: req.session.admin,logueado: req.session.loggedin  })
         } catch (err) {
             console.log(err)
             res.redirect('/alerta')

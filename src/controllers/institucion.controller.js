@@ -9,8 +9,9 @@ const institucionController = {
             raw: true,
             nest: true,
         })
-
-        res.render('institucion/index', { dataRows: data })
+        req.session.loggedin=true;
+        req.session.admin=true;
+        res.render('institucion/index', { dataRows: data,admin: req.session.admin,logueado: req.session.loggedin  })
     },
 
     // permite agregar una nueva institución a la base de datos
@@ -70,7 +71,8 @@ const institucionController = {
                 },
                 raw: true,
             })
-            res.render('institucion/edit', { user })
+            
+            res.render('institucion/edit', { user})
         } catch (err) {
             console.log(err)
             res.redirect('/institucion')
