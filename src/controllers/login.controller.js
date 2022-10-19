@@ -14,6 +14,7 @@ const loginController= {
         
         if (req.session.loggedin == true) {
             req.session.destroy();
+            console.log('sesion cerrada')
           }
           //req.session.loggedin == null;
           res.render('home/index');

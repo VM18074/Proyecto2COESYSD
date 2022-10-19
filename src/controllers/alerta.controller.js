@@ -18,10 +18,8 @@ const alertaController = {
           
         }],
         raw: true,
-            nest: true,
+        nest: true,
         })
-        req.session.loggedin=true;
-        req.session.admin=true;
 
         res.render('alerta/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
     },
@@ -42,20 +40,7 @@ const alertaController = {
             raw: true,
                 nest: true,
             })
-<<<<<<< HEAD
-            req.session.loggedin=true;
-            req.session.admin=true;
- 
          res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
-=======
-       
-            if(req.session.loggedin==true && req.session.admin==true){
-                res.render('alerta/admin/index', {dataRows:data})
-            }else{
-                res.render('home/index')
-            }
-         
->>>>>>> 0670d8d97d3d7b07abe38d9ee1357f3202a975fc
      },
  
 
@@ -110,12 +95,12 @@ const alertaController = {
             await alerta.destroy()
 
             req.flash('success_msg', 'Alerta eliminada correctamente')
-            res.redirect('/alerta')
+            res.redirect('/alerta/admin')
         } catch (err) {
             console.log(err)
 
             req.flash('error_msg', 'Lo siento, ha ocurrido un error al momento de eliminar la alerta')
-            res.redirect('/alerta')
+            res.redirect('/alerta/admin')
         }
     },
     //permite editar un Usuario de la base de datos
@@ -140,8 +125,6 @@ const alertaController = {
                 raw: true,
                 nest: true,
             })
-            req.session.loggedin=true;
-        req.session.admin=true;
             res.render('alerta/edit', { alerta, admin: req.session.admin,logueado: req.session.loggedin  })
         } catch (err) {
             console.log(err)
@@ -190,13 +173,12 @@ const alertaController = {
                 },
                 raw: true,
                 nest: true,
-            })
-            req.session.loggedin=true;
-        req.session.admin=true;
+            }) 
+            
             res.render('alerta/admin/aprobarAlerta', { alerta,admin: req.session.admin,logueado: req.session.loggedin  })
         } catch (err) {
             console.log(err)
-            res.redirect('/alerta')
+            res.redirect('/alerta/admin')
         }
     },
 

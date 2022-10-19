@@ -2,10 +2,22 @@ const { Router } = require('express')
 const institucionController = require('../controllers/institucion.controller')
 const router = Router()
 
-router.get('/institucion', institucionController.index)
-router.post('/institucion/add', institucionController.add)
-router.get('/institucion/delete/:id' , institucionController.delete)
-router.get('/institucion/edit/:id', institucionController.edit) 
-router.post('/institucion/edit/:id', institucionController.update)
+const permisos = async(req,res,next) => {
+    if(req.session.loggedin == true){
+        if(req.session.admin == true){
+            next()
+        }else{
+            res.render('home/index', {logueado: req.session.loggedin, admin: req.session.admin})
+        }
+    }else{
+        res.render('home/index')
+    }
+}
+   
+router.get('/institucion', permisos, institucionController.index)
+router.post('/institucion/add', permisos, institucionController.add)
+router.get('/institucion/delete/:id',permisos , institucionController.delete)
+router.get('/institucion/edit/:id',permisos , institucionController.edit) 
+router.post('/institucion/edit/:id',permisos , institucionController.update)
 
 module.exports = router
