@@ -15,9 +15,9 @@ const userController = {
             raw: true,
             nest: true,
         })
-        req.session.loggedin=true;
-        req.session.admin=true;
-        res.render('usuario/index', { dataRows: data, admin: req.session.admin,logueado: req.session.loggedin })
+        req.session.loggedin = true
+        req.session.admin = true
+        res.render('usuario/index', { dataRows: data, admin: req.session.admin, logueado: req.session.loggedin })
     },
 
     // permite agregar un nuevo usuario a la base de datos
@@ -146,6 +146,7 @@ const userController = {
 
     resetPassword: async (req, res) => {
         try {
+            let path = '/'
             const { email } = req.body
             let password = generatePassword()
 
@@ -154,14 +155,23 @@ const userController = {
                     email,
                 },
             })
-            if (user.email === email) {
-                user.password = password
+            if (user) {
+                if (user.email === email) {
+                    user.password = password
 
-                await user.save()
-                sendEmail('', email, password, resetPasswordTemplate)
+                    await user.save()
+                    sendEmail('', email, password, resetPasswordTemplate)
+                }
+
+                req.flash('success_msg', 'Contraseña restablecida con éxito')
+            } else {
+                req.flash('error_msg', 'No existe un usuario con ese email')
+                path = '/user/resetpassword'
             }
-            res.redirect('/')
+
+            res.redirect(path)
         } catch (e) {
+            console.log('error cachado: ', e)
             res.status(500).json(e)
         }
     },
