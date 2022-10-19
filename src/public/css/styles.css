@@ -27,6 +27,7 @@ body{
     animation-name: alertAparition;
     animation-duration: 10s;
     animation-delay: 200ms;
+    z-index: 900;
     
 }
 @keyframes alertAparition {

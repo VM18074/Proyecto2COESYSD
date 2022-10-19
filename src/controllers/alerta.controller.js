@@ -40,7 +40,7 @@ const alertaController = {
             raw: true,
                 nest: true,
             })
-         res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
+            res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
      },
  
 
