@@ -19,7 +19,7 @@ module.exports = {
                 ...alerta,
                 {
                     nombre: faker.lorem.word(),
-                    descripcion: faker.lorem.paragraph(),
+                    descripcion: faker.lorem.paragraph().substring(0, 100),
                     activo: true,
                     createdAt: new Date(),
                     updatedAt: new Date(),
@@ -33,7 +33,7 @@ module.exports = {
                 ...alertano,
                 {
                     nombre: faker.lorem.word(),
-                    descripcion: faker.lorem.paragraph(),
+                    descripcion: faker.lorem.paragraph().substring(0, 100),
                     activo: false,
                     createdAt: new Date(),
                     updatedAt: new Date(),
@@ -53,5 +53,3 @@ module.exports = {
          */
     },
 }
-
-

@@ -1,3 +1,6 @@
+html{
+     scroll-behavior: smooth;
+}
 body{
     height: 100vh;
     position: relative;
@@ -62,3 +65,11 @@ th{
     background-color: rgba(255, 187, 61, 0.2);
 }
 
+.signal-direction{
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 800;
+
+}

@@ -1,9 +1,57 @@
 <div id="map"></div>
+<div class="signal-direction"><a class="btn" href="#alertas">
+        <p class="text-secondary m-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+            </svg>
+        </p>
+        <span class="fs-5  text-secondary">Click para ver las alertas</span>
+    </a>
+</div>
+<div class="h-100 pt-5">
+    <section class="container mt-5">
+        <div class="scrollable shadow mb-5 bg-body  rounded">
+
+            <table id="alertas" class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Daños</th>
+                        <th scope="col">Nivel</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Respuesta</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each dataRows}}
+                    <tr>
+                        <td>{{nombre}}</td>
+                        <td>{{descripcion}}</td>
+                        <td>{{Daño.nombre}}</td>
+                        <td>{{nivelAlerta}}</td>
+                        <td>{{Ubicacion.departamento}}</td>
+                        <td>{{Ubicacion.municipio}}</td>
+                        <td>{{Medida.nombre}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+
+</div>
 
 <script src="/js/leaflet.js"></script>
 
 <script>
-    var southWest = L.latLng(11.651058, -89.928726),
+    var southWest = L.latLng(11.651058, -89.929926),
         northEast = L.latLng(14.708478, -87.62146),
         bounds = L.latLngBounds(southWest, northEast);
 
@@ -18,7 +66,5 @@
         minZoom: 9,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    console.log(map.getBounds().getSouthWest().toString());
-    console.log(map.getBounds().getNorthEast().toString());
 
 </script>
