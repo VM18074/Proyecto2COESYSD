@@ -3,10 +3,22 @@
 <script src="/js/leaflet.js"></script>
 
 <script>
+    var southWest = L.latLng(11.651058, -89.928726),
+        northEast = L.latLng(14.708478, -87.62146),
+        bounds = L.latLngBounds(southWest, northEast);
 
-    var map = L.map('map').setView([13.682016, -88.720093], 9.35);
+    var map = L.map('map', {
+        maxBounds: bounds
+
+    }).setView([13.682016, -88.720093], 9);
+
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
         maxZoom: 19,
+        minZoom: 9,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+    console.log(map.getBounds().getSouthWest().toString());
+    console.log(map.getBounds().getNorthEast().toString());
+
 </script>
