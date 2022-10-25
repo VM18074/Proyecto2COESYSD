@@ -49,6 +49,8 @@
 </div>
 
 <script src="/js/leaflet.js"></script>
+<script src="../dist/Control.MiniMap.min.js"></script>
+
 
 <script>
     var southWest = L.latLng(11.651058, -89.929926),
@@ -65,6 +67,13 @@
         maxZoom: 19,
         minZoom: 9,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var miniMap = new L.Control.MiniMap(map,
+    {
+        toggleDisplay: true,
+        minimized: false,
+        position: "bottomleft"
     }).addTo(map);
 
 </script>
