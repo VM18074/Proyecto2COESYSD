@@ -49,7 +49,7 @@
 </div>
 
 <script src="/js/leaflet.js"></script>
-<script src="Leaflet-MiniMap-master/dist/Control.MiniMap.min.js"></script>
+<script src="/js/Control.MiniMap.min.js"></script>
 
 
 <script>
@@ -69,7 +69,8 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    var miniMap = new L.Control.MiniMap(map,
+    //MiniMap
+    var miniMap = new L.Control.MiniMap('map',
     {
         toggleDisplay: true,
         minimized: false,
