@@ -13,7 +13,7 @@ const permisos = async(req,res,next) => {
         res.render('home/index')
     }
 }
-router.get('/users', permisos, userController.index)
+router.get('/users', permisos,userController.index)
 router.post('/users/add', permisos, userController.add)
 router.get('/users/delete/:id', permisos, userController.delete)
 router.get('/users/edit/:id', permisos, userController.edit)
