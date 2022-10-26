@@ -20,6 +20,6 @@ module.exports = {
             ]
         }
 
-        await queryInterface.bulkInsert('Ubicaciones', ubicacion, {})
+        await queryInterface.bulkInsert('Ubicacions', ubicacion, {})
     },
 }
