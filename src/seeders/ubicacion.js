@@ -10,14 +10,16 @@ module.exports = {
                 ...ubicacion,
                 {
                     nombre: faker.lorem.word(),
-                    descripcion: faker.lorem.paragraph().substring(0, 100),
-                    activo: true,
+                    departamento: faker.address.state(),
+                    municipio: faker.address.city(),
+                    coordenada: faker.address.latitude(),
+                    alertumId: i+1,
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
             ]
         }
 
-        await queryInterface.bulkInsert('Ubicacion', ubicacion, {})
+        await queryInterface.bulkInsert('Ubicaciones', ubicacion, {})
     },
 }
