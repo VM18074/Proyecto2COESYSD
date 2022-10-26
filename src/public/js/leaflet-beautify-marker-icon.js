@@ -1,13 +1,12 @@
-/*L.marker([13.682016, -88.720093], {
-    icon: L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/4230/4230290.png',
-        draggable: true,
-        iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32]
-    })
-}).addTo(map).bindPopup('El Salvador').openPopup();
+/*
+  Leaflet.BeautifyIcon, a plugin that adds colorful iconic markers for Leaflet by giving full control of style to end user, It has also ability to adjust font awesome
+  and glyphicon icons
+  (c) 2016-2017, Muhammad Arslan Sajid
+  http://leafletjs.com
 */
+
+/*global L of leaflet*/
+
 (function (window, document, undefined) {
 
     'use strict';
@@ -204,4 +203,4 @@
         return new L.BeautifyIcon.Icon(options);
     }
 
-}(window, document));        
+}(this, document));
