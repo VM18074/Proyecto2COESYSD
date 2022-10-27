@@ -349,4 +349,4 @@
 
 	return MiniMap;
 
-}, window));
+}, this));
