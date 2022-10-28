@@ -16,6 +16,9 @@
 </div>
 <div class="h-100 pt-5">
     <section class="container mt-5">
+        <header>
+            <h1 class="text-center mb-5">Alertas Activas</h1>
+        </header>
         <div class="scrollable shadow mb-5 bg-body  rounded">
 
             <table id="alertas" class="table">
@@ -38,8 +41,9 @@
                         <td>{{nombre}}</td>
                         <td>{{descripcion}}</td>
                         <td>{{Daño.nombre}}</td>
-                        <td>{{nivelAlerta}}</td>
-                        <td>{{Ubicacion.departamento}}</td>
+                        <td class="text-capitalize fw-bold nivel-alerta" data-nivel="{{nivelAlerta}}">{{nivelAlerta}}
+                        </td>
+                        <td class="departamento">{{Ubicacion.departamento}}</td>
                         <td>{{Ubicacion.municipio}}</td>
                         <td>{{Medida.nombre}}</td>
                     </tr>
@@ -50,15 +54,49 @@
         </div>
     </section>
 
+    <section class="container mt-5">
+        <header>
+            <h1 class="text-center mb-5">Gráficos </h1>
+        </header>
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-center mb-4">Cantidad de alertas</h2>
+                <canvas id="chartPieDeparments" width="100%" height="100%"></canvas>
+            </div>
+            <div class="col-6">
+                <h2 class="text-center mb-4">Alertas por Departamento</h2>
+                <canvas id="chartBarDeparments" width="100%" height="100%"></canvas>
+            </div>
+
+        </div>
+    </section>
 </div>
 
 <script src="/js/leaflet.js"></script>
 <script src="/js/Control.MiniMap.min.js"></script>
 <script src="/js/leaflet-beautify-marker-icon.js"></script>
+<script src="/js/chart.min.js"></script>
+
+{{!-- Configuraciones de estilos --}}
 
 
+<script>
+    const tableAlertas = document.getElementById('alertas')
+    const nivelAlertaRows = [...tableAlertas.querySelectorAll('.nivel-alerta')]
+    const coloresDeNiveles = {
+        amarilla: 'text-warning',
+        roja: 'text-danger',
+        verde: 'text-success'
+    }
+    nivelAlertaRows.forEach((alerta) => {
+        const nivelDeAlerta = alerta.dataset.nivel
+        alerta.classList.add(coloresDeNiveles[nivelDeAlerta])
+    })
+
+</script>
 
 
+{{!-- Configuraciones del mapa interactivo --}}
 <script>
     var southWest = L.latLng(11.651058, -89.929926),
         northEast = L.latLng(14.708478, -87.62146),
@@ -74,41 +112,117 @@
         maxZoom: 19,
         minZoom: 9,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);    
-    
+    }).addTo(map);
+
     //marcadore de alertas
     L.marker([13.682016, -88.720093]).addTo(map).bindPopup('El Salvador');
-    
+
     //marcadores de alertas con propiedades funcional -->
-     L.marker([13.89093747081252, -88.7734375], { icon: L.BeautifyIcon.icon(), draggable: true }).addTo(map).bindPopup("Prueba1");
-        var options = {
-            html: '<i class="material-icons">face</i>',
-            iconAnchor: [11, 10]
-        };
+    L.marker([13.89093747081252, -88.7734375], { icon: L.BeautifyIcon.icon(), draggable: true }).addTo(map).bindPopup("Prueba1");
+    var options = {
+        html: '<i class="material-icons">face</i>',
+        iconAnchor: [11, 10]
+    };
 
-        L.marker([13.89093747081252, -88.8934375], { icon: L.BeautifyIcon.icon(options), draggable: true }).addTo(map).bindPopup("Prueba2");
-        options = {
-            icon: 'plane'
-                , borderColor: '#8D208B'
-                , textColor: '#8D208B'
-                , backgroundColor: 'transparent'
-        };// <-- Termina aqui el marcador de alertas con propiedad funcional 
+    L.marker([13.89093747081252, -88.8934375], { icon: L.BeautifyIcon.icon(options), draggable: true }).addTo(map).bindPopup("Prueba2");
+    options = {
+        icon: 'plane'
+        , borderColor: '#8D208B'
+        , textColor: '#8D208B'
+        , backgroundColor: 'transparent'
+    };// <-- Termina aqui el marcador de alertas con propiedad funcional 
 
-        //NOTA LA VARIABLE OPTIONS DETERMINA COMO SE MOSTRARA
+    //NOTA LA VARIABLE OPTIONS DETERMINA COMO SE MOSTRARA
 
     //MiniMap
     var miniMap = new L.Control.MiniMap('map',
-    {
-        toggleDisplay: true,
-        minimized: false,
-        position: "bottomleft"
-    }).addTo(map);
+        {
+            toggleDisplay: true,
+            minimized: false,
+            position: "bottomleft"
+        }).addTo(map);
 
     //Marcadores
 
-
-    
 </script>
 
+{{!-- Graficos --}}
+<script>
+    const ctxPieDeparments = document.getElementById('chartPieDeparments')
+    const ctxBarDeparments = document.getElementById('chartBarDeparments')
+    const dataPieDeparments = [
+        tableAlertas.querySelectorAll('.text-danger').length,
+        tableAlertas.querySelectorAll('.text-success').length,
+        tableAlertas.querySelectorAll('.text-warning').length,
+    ]
 
- 
+
+    const dataBarDeparments = {
+        'Ahuachapán': 0,
+        'Cabañas': 0,
+        'Chalatenango': 0,
+        'Cuscatlán': 0,
+        'La Libertad': 0,
+        'La Paz': 0,
+        'La Unión': 0,
+        'Morazán': 0,
+        'San Miguel': 0,
+        'San Salvador': 0,
+        'San Vicente': 0,
+        'Santa Ana': 0,
+        'Sonsonate': 0,
+        'Usulután': 0,
+    }
+
+    const departamentosConAlertasActivas = [...tableAlertas.querySelectorAll('.departamento')]
+    departamentosConAlertasActivas.forEach((departamento) => {
+        dataBarDeparments[departamento.textContent] = dataBarDeparments[departamento.textContent] + 1
+    })
+
+    new Chart(ctxPieDeparments, {
+
+        type: 'pie',
+        data: {
+            labels: ['Alertas Rojas', 'Alertas Verdes', 'Alertas Amarillas'],
+            datasets: [{
+                label: 'Cantidad de alertas',
+                data: dataPieDeparments,
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(75, 192, 192)',
+                    'rgba(255, 206, 86)',
+                ],
+            }]
+        },
+    })
+
+
+    new Chart(ctxBarDeparments, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(dataBarDeparments),
+            datasets: [{
+                label: 'Departamentos',
+                data: Object.values(dataBarDeparments),
+                backgroundColor: [
+                    'rgb(41, 52, 98)',
+                    'rgb(28, 214, 206)',
+                    'rgb(254, 219, 57)',
+                    'rgb(214, 28, 78)',
+                    'rgb(49, 225, 247)',
+                    'rgb(216, 0, 166)',
+                    'rgb(255, 119, 119)',
+                    'rgb(4, 0, 154)',
+                    'rgb(240, 235, 204)',
+                    'rgb(227, 199, 112)',
+                    'rgb(177, 175, 255)',
+                    'rgb(200, 255, 212)',
+                    'rgb(159, 135, 114)',
+                    'rgb(204, 54, 54)',
+                ],
+            }]
+        },
+    })
+
+
+</script>
