@@ -138,12 +138,7 @@
     var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {minZoom: 0, maxZoom: 13});
     
     //MiniMap
-    var miniMap = new L.Control.MiniMap(carto_light,
-        {
-            toggleDisplay: true,
-            minimized: false,
-            position: 'bottomright'
-        }).addTo(map);
+    var miniMap = new L.Control.MiniMap(carto_light).addTo(map);
 
     //Marcadores
 
