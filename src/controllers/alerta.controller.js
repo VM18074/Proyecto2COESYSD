@@ -210,6 +210,10 @@ const alertaController = {
         }
     },
 
+    infor: async (req, res) => {
+       
+
+    },
     
 
 

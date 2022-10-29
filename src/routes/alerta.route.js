@@ -34,6 +34,8 @@ router.get('/alerta/edit/:id', permisosUser, alertaController.edit)
 router.post('/alerta/edit/:id', permisosUser, alertaController.update)
 router.get('/alerta/activar/:id', permisosAdmin, alertaController.aprobar)
 router.post('/alerta/activar/:id', permisosAdmin, alertaController.activarD)
+router.get('/alerta/infor/', permisosAdmin, alertaController.infor)
+
 
 
 
