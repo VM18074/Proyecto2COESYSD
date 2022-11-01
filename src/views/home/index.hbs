@@ -138,30 +138,30 @@
     var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {minZoom: 0, maxZoom: 13});
     
     //MiniMap
-    var miniMap = new L.Control.MiniMap(carto_light).addTo(map);
+    var miniMap = new L.Control.MiniMap(carto_light).addTo(map);</script>
 
+    <script>
     //Agregando recuadro para los pins de las alertas (Leyenda)
-    const legenda = L.control.Legend{
-        position : "bottomright",
-        collapsed: false,
-        symbolWidt: 24,
-        opacity: 1,
-        column: 1,
-        legends: [
-            label: "Daños",
-            type: "image",
-            radius: 6,
-            color: "blue",
-            fillColor: "#FF0000",
-            fillOpacity: 0.6,
-            weight: 2,
-            layers: [pinAzul],
-            url: "src/public/css/images/Warning.png"
-            inactive: false,
-        ]
-    }
-
-</script>
+        const legenda = L.control.Legend({
+            position : "bottomright",
+            collapsed: false,
+            symbolWidth: 24,
+            opacity: 1,
+            column: 1,
+            legends: [{
+                label: "Daños",
+                type: "image",
+                radius: 6,
+                color: "blue",
+                fillColor: "#FF0000",
+                fillOpacity: 0.6,
+                weight: 2,
+                layers: [pinAzul],
+                url: "src/public/css/images/Warning.png",
+                inactive: false
+            }]
+        }).addTo(map);
+    </script>
 
 {{!-- Graficos --}}
 <script>
