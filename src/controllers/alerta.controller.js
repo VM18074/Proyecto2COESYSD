@@ -1,9 +1,7 @@
 const { Alerta, Daño, Medida, Ubicacion } = require('../models')
 
-
-
 const alertaController = {
-    // retorna todos los Usuarios
+    // Retorna todos los Usuarios.
     index: async (req, res) => {
        const data = await Alerta.findAll({
         include: [{
@@ -43,8 +41,7 @@ const alertaController = {
             res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
      },
  
-
-    // permite agregar un nuevo usuario a la base de datos
+    // Permite agregar un nuevo usuario a la base de datos.
     add: async (req, res) => {
         try {
             const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenada, departamento, municipio } = req.body
@@ -87,7 +84,7 @@ const alertaController = {
             res.status(500).json(err)
         }
     },
-    //permite eliminar un Usuario de la base de datos
+    // Permite eliminar un Usuario de la base de datos.
     delete: async (req, res) => {
         try {
             let id = req.params.id
@@ -103,7 +100,7 @@ const alertaController = {
             res.redirect('/alerta/admin')
         }
     },
-    //permite editar un Usuario de la base de datos
+    // Permite editar un Usuario de la base de datos.
     edit: async (req, res) => {
         try {
             let id = req.params.id
@@ -163,7 +160,7 @@ const alertaController = {
         }
     },
 
-    //permite aprobar una alerta
+    // Permite aprobar una alerta.
     aprobar: async (req, res) => {
         try {
             let id = req.params.id
@@ -212,11 +209,8 @@ const alertaController = {
 
     infor: async (req, res) => {
        
-
     },
     
-
-
 }
 
 module.exports = alertaController

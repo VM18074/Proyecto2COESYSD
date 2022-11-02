@@ -1,7 +1,7 @@
 const { Alerta, Daño, Medida, Ubicacion } = require('../models')
 
 const homeController = {
-    // retorna todos los Usuarios
+    // Retorna todos los Usuarios.
     index: async (req, res) => {
         const data = await Alerta.findAll({
             where: {

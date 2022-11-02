@@ -1,5 +1,5 @@
 const { Usuario, Empleado } = require('../models')
-const bcryptjs = require('bcryptjs') //Encriptar password en bd
+const bcryptjs = require('bcryptjs') // Encriptar password en bd.
 const generatePassword = require('../utils/generatePassword')
 
 const sendEmail = require('../mailer/index')
@@ -8,7 +8,7 @@ const empleadoTemplate = require('../mailer/templates/empleadoSignUpMailer')
 const resetPasswordTemplate = require('../mailer/templates/resetPasswordMailer')
 
 const userController = {
-    // retorna todos los Usuarios
+    // Retorna todos los Usuarios.
     index: async (req, res) => {
         const data = await Usuario.findAll({
             include: Empleado,
@@ -20,7 +20,7 @@ const userController = {
         res.render('usuario/index', { dataRows: data, admin: req.session.admin, logueado: req.session.loggedin })
     },
 
-    // permite agregar un nuevo usuario a la base de datos
+    // Permite agregar un nuevo usuario a la base de datos.
     add: async (req, res) => {
         try {
             const { alias, email, nombre, apellido, dui, telefono, rol } = req.body
@@ -78,7 +78,7 @@ const userController = {
             res.status(500).json(err)
         }
     },
-    //permite eliminar un Usuario de la base de datos
+    // Permite eliminar un Usuario de la base de datos.
     delete: async (req, res) => {
         try {
             let id = req.params.id
@@ -94,7 +94,7 @@ const userController = {
             res.redirect('/users')
         }
     },
-    //permite editar un Usuario de la base de datos
+    // Permite editar un Usuario de la base de datos.
     edit: async (req, res) => {
         try {
             let id = req.params.id
@@ -112,7 +112,7 @@ const userController = {
             res.redirect('/users')
         }
     },
-    //permite actualizar un usuario de la base de datos
+    // Permite actualizar un usuario de la base de datos.
     update: async (req, res) => {
         try {
             let id = req.params.id
@@ -130,7 +130,7 @@ const userController = {
             admin.telefono = telefono
             await admin.save()
 
-            req.flash('success_msg', 'usuario actualizado correctamente')
+            req.flash('success_msg', 'Usuario actualizado correctamente')
             res.redirect('/users')
         } catch (err) {
             console.log(err)
@@ -171,7 +171,7 @@ const userController = {
 
             res.redirect(path)
         } catch (e) {
-            console.log('error cachado: ', e)
+            console.log('Error cachado: ', e)
             res.status(500).json(e)
         }
     },

@@ -1,8 +1,7 @@
 const {Institucion} = require('./../models/')
 
-
 const institucionController = {
-    // retorna todas las instituciones
+    // Retorna todas las instituciones.
     index: async (req, res) => {
         const data = await Institucion.findAll({
            
@@ -14,7 +13,7 @@ const institucionController = {
         res.render('institucion/index', { dataRows: data,admin: req.session.admin,logueado: req.session.loggedin  })
     },
 
-    // permite agregar una nueva institución a la base de datos
+    // Permite agregar una nueva institución a la base de datos.
     add: async (req, res) => {
         try {
             const { id, name, email, direccion } = req.body           
@@ -32,9 +31,6 @@ const institucionController = {
             } else {
                 const id = await Institucion.create({ name, email, direccion})
                 
-                   
-                
-                
                 req.flash('success_msg', 'Institución agregado correctamente!')               
                 res.redirect('/institucion')
             }
@@ -45,7 +41,7 @@ const institucionController = {
             res.status(500).json(err)
         }
     },
-    //permite eliminar una institución de la base de datos
+    // Permite eliminar una institución de la base de datos.
     delete: async (req, res) => {
         try {
             let id = req.params.id
@@ -61,7 +57,7 @@ const institucionController = {
             res.redirect('/institucion')
         }
     },
-    //Permite editar una institución de la base de datos
+    // Permite editar una institución de la base de datos.
     edit: async (req, res) => {
         try {
             let id = req.params.id
@@ -78,7 +74,7 @@ const institucionController = {
             res.redirect('/institucion')
         }
     },
-    //permite actualizar una institución a la base de datos
+    // Permite actualizar una institución a la base de datos.
     update: async (req, res) => {
         try {
             let id = req.params.id

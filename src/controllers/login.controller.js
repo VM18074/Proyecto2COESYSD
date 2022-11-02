@@ -9,12 +9,11 @@ const loginController= {
     res.render('home/index')
     },
 
-    
     logout:async  (req, res)=>{
         
         if (req.session.loggedin == true) {
             req.session.destroy();
-            console.log('sesion cerrada')
+            console.log('Sesion cerrada')
           }
           //req.session.loggedin == null;
           res.render('home/index');
@@ -22,7 +21,7 @@ const loginController= {
     },
 
 
-    // permite agregar un nuevo usuario a la base de datos
+    // Permite agregar un nuevo usuario a la base de datos.
     auth: async (req, res) => {
         try {
             const data = req.body
@@ -59,8 +58,7 @@ const loginController= {
                 req.flash('error_msg', 'No existe un Usuario con ese email.')
                 res.redirect('login')
                 return }
-                
-            
+                            
         } catch (err) {
         console.log(err)
 
@@ -70,5 +68,4 @@ const loginController= {
     },
 }
                                                                                                                         
-
 module.exports = loginController
