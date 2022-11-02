@@ -1,4 +1,4 @@
-//constantes a usar
+// Constantes a usar.
 
 const express = require('express')
 const { engine } = require('express-handlebars')
@@ -14,17 +14,17 @@ const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const flash = require('connect-flash')
 
-//Librerias para login
-const session = require('express-session') //sesiones
+// Librerias para login.
+const session = require('express-session') // Sesiones.
 //const { redirect } = require('express/lib/response');
 
-//requeri('../db');  para vincular si se quiere manejar config de db aparte
+//requeri('../db');  Para vincular si se quiere manejar config de db aparte.
 
-//puerto para el servidor
+// Puerto para el servidor.
 const app = express()
 app.set('port', 4000)
 
-//utlizar bodyparse para recibir metodos post y get
+// Utlizar bodyparse para recibir metodos post y get.
 app.use(
     bodyParser.urlencoded({
         extended: true,
@@ -41,14 +41,14 @@ app.use(
 )
 app.use(flash())
 
-// variables globales
+// Variables globales.
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     next()
 })
 
-//Definicion para ejecutar vistas
+// Definicion para ejecutar vistas.
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.engine(
@@ -60,25 +60,25 @@ app.engine(
 )
 app.set('view engine', 'hbs')
 
-//conexion bd
+// Conexion bd
 
-//conexion con sequelize segundo paso
+// Conexion con sequelize segundo paso.
 const sequelize = new Sequelize('edandb', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
 })
 
-//apetura de servidor
+// Apetura de servidor.
 
 app.listen(app.get('port'), () => {
     console.log(`servidor: http://localhost:${app.get('port')}`)
 })
-//Creacion de sesiones para login
+// Creacion de sesiones para login.
 
-//habilitar uso de rutas
+// Habilitar uso de rutas.
 app.use('/', require('./routes/user.route'))
 app.use('/', require('./routes/home.route'))
 app.use('/', require('./routes/inst.route'))
 app.use('/', require('./routes/alerta.route'))
 app.use('/', require('./routes/login.route'))
-//vinculación de modelos a DB
+// Vinculación de modelos a DB.
