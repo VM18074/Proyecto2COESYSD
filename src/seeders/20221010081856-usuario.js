@@ -1,15 +1,15 @@
 'use strict'
 const { faker } = require('@faker-js/faker')
-const bcryptjs = require('bcryptjs') //Encriptar password en bd
+const bcryptjs = require('bcryptjs') // Encriptar password en bd.
 const generatePassword = require('../utils/generatePassword')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
         /**
-         * Add seed commands here.
+         * Agregue comandos semilla aquí.
          *
-         * Example:
+         * Ejemplo:
          * await queryInterface.bulkInsert('People', [{
          *   name: 'John Doe',
          *   isBetaMember: false
@@ -71,9 +71,9 @@ module.exports = {
 
     async down(queryInterface, Sequelize) {
         /**
-         * Add commands to revert seed here.
+         * Agregue comandos para revertir la semilla aquí.
          *
-         * Example:
+         * Ejemplo:
          * await queryInterface.bulkDelete('People', null, {});
          */
     },

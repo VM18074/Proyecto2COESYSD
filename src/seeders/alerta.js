@@ -5,9 +5,9 @@ const { faker } = require('@faker-js/faker')
 module.exports = {
     async up(queryInterface, Sequelize) {
         /**
-         * Add seed commands here.
+         * Agregue comandos semilla aquí.
          *
-         * Example:
+         * Ejemplo:
          * await queryInterface.bulkInsert('People', [{
          *   name: 'John Doe',
          *   isBetaMember: false
@@ -21,7 +21,7 @@ module.exports = {
                 {
                     nombre: faker.lorem.word(),
                     descripcion: faker.lorem.paragraph().substring(0, 100),
-                    nivelAlerta: niveles[Math.floor(Math.random() * 3)], // numero random entre 0,1 y 2
+                    nivelAlerta: niveles[Math.floor(Math.random() * 3)], // Numero random entre 0,1 y 2.
                     activo: true,
                     createdAt: new Date(),
                     updatedAt: new Date(),
@@ -36,7 +36,7 @@ module.exports = {
                 {
                     nombre: faker.lorem.word(),
                     descripcion: faker.lorem.paragraph().substring(0, 100),
-                    nivelAlerta: niveles[Math.floor(Math.random() * 3)], // numero random entre 0,1 y 2
+                    nivelAlerta: niveles[Math.floor(Math.random() * 3)], // Numero random entre 0,1 y 2.
                     activo: false,
                     createdAt: new Date(),
                     updatedAt: new Date(),
@@ -49,9 +49,9 @@ module.exports = {
 
     async down(queryInterface, Sequelize) {
         /**
-         * Add commands to revert seed here.
+         * Agregue comandos para revertir la semilla aquí.
          *
-         * Example:
+         * Ejemplo:
          * await queryInterface.bulkDelete('People', null, {});
          */
     },

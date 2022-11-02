@@ -36,7 +36,4 @@ router.get('/alerta/activar/:id', permisosAdmin, alertaController.aprobar)
 router.post('/alerta/activar/:id', permisosAdmin, alertaController.activarD)
 router.get('/alerta/infor/', permisosAdmin, alertaController.infor)
 
-
-
-
 module.exports = router
