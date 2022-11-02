@@ -1,8 +1,8 @@
 /*
-  Leaflet.BeautifyIcon, a plugin that adds colorful iconic markers for Leaflet by giving full control of style to end user, It has also ability to adjust font awesome
-  and glyphicon icons
-  (c) 2016-2017, Muhammad Arslan Sajid
-  http://leafletjs.com
+  Leaflet.BeautifyIcon, un complemento que agrega coloridos marcadores icónicos para Leaflet al brindar control total del estilo al usuario final. También tiene la capacidad de ajustar la fuente de manera increíble
+  e íconos de glyphicon.
+  (c) 2016-2017, Muhammad Arslan Sajid.
+  http://folletojs.com
 */
 .beautify-marker {
     text-align: center;
@@ -27,12 +27,12 @@
         border-top-right-radius: 50% 100%;
         border-bottom-left-radius: 100% 50%;
         border-bottom-right-radius: 0%;
-        /* rotating 45deg clockwise to get the corner bottom center */
+        /* Girando 45 grados en el sentido de las agujas del reloj para obtener el centro inferior de la esquina. */
         transform: rotate(45deg); 
         
     }
 
     .beautify-marker.marker > * {
-        /* rotating 45deg counterclock to adjust marker content back to normal */
+        /* Girando el contador de 45 grados para ajustar el contenido del marcador de vuelta a la normalidad. */
         transform: rotate(-45deg);
     }

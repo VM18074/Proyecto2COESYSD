@@ -1,0 +1,138 @@
+.body {
+    font-family: 'ABeeZee', sans-serif;
+}
+.navbar {
+    background-color: #0CC5D1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    min-height: 40px;
+}
+.nav-link {
+    color: white;
+    font-family: 'Abel', sans-serif;
+    font-size: 15px;
+}
+.nav-link:hover {
+    color: #618184;
+}
+.nav-link:focus{
+    color: #618184;
+}
+.navbar-toggler{
+    font-size: 35px;
+}
+.navbar-toggler:focus {
+    outline: none;
+}
+.logo-brand {
+    width: 50px;
+}
+.navbar-brand {
+    width: 320px;
+    font-size: 15px;
+    white-space: pre-line;
+    hyphens: auto;
+    word-wrap: break-word;
+    word-break:break-all;
+    line-break: normal;
+    color: white;
+    font-family: 'Abel', sans-serif;
+}
+.navbar-brand:hover {
+    color: #618184;
+}
+#s1{
+    width: inherit;
+    padding: 40px 0;
+    background-color: #DDF8FA;
+    background-size: cover;
+}
+.conter-center {
+    width: inherit;
+    padding: 50px 0;
+    background-color: white;
+    background-size: cover;
+    text-align: center;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 36px;
+}
+.entradas {
+    text-align: left;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 15px;
+    color: #666666;
+}
+.form-control {
+    border-radius: 30px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-style: none;
+}
+.form-control:focus {
+    background-color: #DDF8FA;
+}
+.label {
+    color: #666666;
+}
+.form-select{
+    border-radius: 30px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-style: none;
+}
+.form-select:focus {
+    background-color: #DDF8FA;
+}
+#nbcantidad{
+    height: 60px;
+    width: 100%;
+    text-align: center;
+}
+.btn-primary{
+    color: black;
+    font-family: 'Abel', sans-serif;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #DDF8FA;
+    border-radius: 15px;
+    border-style: none;
+}
+p {
+    text-align: right;
+  }
+.imagen{
+    margin-left: auto;
+    margin-right: 150px;
+    width: 192px;
+    height: 45px;
+    margin-top: 15px;
+}
+.btn-secundary{
+    color: black;
+    font-family: 'Abel', sans-serif;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #ffffff;
+    border-radius: 15px;
+    border-style: none;
+    width: 192px;
+    height: 45px;
+    margin-top: 15px;
+}
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+ul.pagination li {display: inline;}
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+#camarita{
+    padding: 15px 20px;
+    block-size: 60px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-style: line;
+}
