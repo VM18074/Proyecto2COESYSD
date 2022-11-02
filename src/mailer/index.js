@@ -1,6 +1,6 @@
 const mailer = require('nodemailer')
-// cambie esta variable para poder enviar emails
-const canSendEmail = false // true para poder enviar emails
+// Cambie esta variable para poder enviar emails.
+const canSendEmail = false // true para poder enviar emails.
 
 function sendEmail(name, receiver, password, template) {
     let transporter = mailer.createTransport({
@@ -12,7 +12,7 @@ function sendEmail(name, receiver, password, template) {
     })
 
     if (!canSendEmail) {
-        console.log('no esta permitido enviar emails')
+        console.log('No esta permitido enviar emails')
     } else {
         transporter.sendMail(template(name, receiver, password), function (error, info) {
             if (error) {
