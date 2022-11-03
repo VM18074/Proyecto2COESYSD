@@ -1,7 +1,9 @@
 const { Alerta, Daño, Medida, Ubicacion } = require('../models')
+const PDF = require('pdfkit'); // Generar informes PDFkit.
+const fs = require('fs'); // Generar informes.
 
 const alertaController = {
-    // Retorna todos los Usuarios.
+    // Retorna todas las Alertas.
     index: async (req, res) => {
        const data = await Alerta.findAll({
         include: [{
@@ -41,7 +43,7 @@ const alertaController = {
             res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
      },
  
-    // Permite agregar un nuevo usuario a la base de datos.
+    // Permite agregar una nueva alerta a la base de datos.
     add: async (req, res) => {
         try {
             const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenada, departamento, municipio } = req.body
@@ -84,7 +86,7 @@ const alertaController = {
             res.status(500).json(err)
         }
     },
-    // Permite eliminar un Usuario de la base de datos.
+    // Permite eliminar una Alerta de la base de datos.
     delete: async (req, res) => {
         try {
             let id = req.params.id
@@ -100,7 +102,7 @@ const alertaController = {
             res.redirect('/alerta/admin')
         }
     },
-    // Permite editar un Usuario de la base de datos.
+    // Permite editar una Alerta de la base de datos.
     edit: async (req, res) => {
         try {
             let id = req.params.id
@@ -207,10 +209,44 @@ const alertaController = {
         }
     },
 
+    // Generar informes.
     infor: async (req, res) => {
-       
-    },
-    
+
+        // Crear un documento.
+        const doc = new PDF({bufferPage: true});
+
+        // Formato fecha. (opcional de momento)
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+        today = mm + '-' + dd + '-' + yyyy;
+
+        // Formato hora. (opcional de momento)
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var segundos = date.getSeconds();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; 
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + '-' + minutes + '-' + segundos + ' ' + ampm;
+
+        const filename = `Informe_${today}_${strTime}.pdf`;
+
+        const stream = res.writeHead(200, {
+            'Content-Type': 'application/pdf',
+            'Content-disposition': `attachment;filename=${filename}`
+        });
+
+        doc.on(Event = 'data', listener = (data) => {stream.write(data)});
+        doc.on(Event = 'end', listener = () => {stream.end()});
+
+        doc.text('Hola mundo con PDF kit', 30, 30);
+
+        doc.end();
+    } // Fin generar informes.  
 }
 
 module.exports = alertaController
