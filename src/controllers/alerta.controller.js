@@ -1,7 +1,9 @@
 const { Alerta, Daño, Medida, Ubicacion } = require('../models')
+//const {dateLit} = require ('../helpers/handlebars'); // Sustituir por cuando se encuentre solución
+const PDF = require('pdfkit-construct'); // Generar informes PDFkit. 
 
 const alertaController = {
-    // Retorna todos los Usuarios.
+    // Retorna todas las Alertas.
     index: async (req, res) => {
        const data = await Alerta.findAll({
         include: [{
@@ -41,7 +43,7 @@ const alertaController = {
             res.render('alerta/admin/index', {dataRows:data, admin: req.session.admin,logueado: req.session.loggedin })
      },
  
-    // Permite agregar un nuevo usuario a la base de datos.
+    // Permite agregar una nueva alerta a la base de datos.
     add: async (req, res) => {
         try {
             const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenada, departamento, municipio } = req.body
@@ -84,7 +86,7 @@ const alertaController = {
             res.status(500).json(err)
         }
     },
-    // Permite eliminar un Usuario de la base de datos.
+    // Permite eliminar una Alerta de la base de datos.
     delete: async (req, res) => {
         try {
             let id = req.params.id
@@ -100,7 +102,7 @@ const alertaController = {
             res.redirect('/alerta/admin')
         }
     },
-    // Permite editar un Usuario de la base de datos.
+    // Permite editar una Alerta de la base de datos.
     edit: async (req, res) => {
         try {
             let id = req.params.id
@@ -207,10 +209,189 @@ const alertaController = {
         }
     },
 
+    // Generar informes.
     infor: async (req, res) => {
-       
-    },
-    
+
+        let id = req.params.id
+            const alerta = await Alerta.findOne({
+                where: {
+                    id,
+                },
+                include: [{
+                    model: Daño,
+                    
+                }, {
+                    model: Medida,
+                  
+                },  
+                {
+                    model: Ubicacion,
+                  
+                }],
+                raw: true,
+                nest: true,
+            })
+
+        /*let alerta = await Alerta.findOne(req.params.id); // Base de datos (No tiene función).
+        alerta = alerta[0]; // Base de datos (No tiene función).
+
+        let cliente = await Alerta.findCliente(alerta[0].cliente_id); // Base de datos (No tiene función).
+        cliente = cliente[0]; // Base de datos (No tiene función).¨*/
+
+        // Crear un documento.
+        const doc = new PDF({bufferPage: true});
+
+        // Formato fecha. (opcional de momento)
+        var esteDia = new Date();
+        var dd = String(esteDia.getDate()).padStart(2, '0');
+        var mm = String(esteDia.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = esteDia.getFullYear();
+        esteDia = mm + '-' + dd + '-' + yyyy;
+
+        // Formato hora. (opcional de momento)
+        var hora = new Date();
+        var horas = hora.getHours();
+        var minutos = hora.getMinutes();
+        var segundos = hora.getSeconds();
+        var ampm = horas >= 12 ? 'pm' : 'am';
+        horas = horas % 12;
+        horas = horas ? horas : 12; 
+        minutos = minutos < 10 ? '0'+ minutos : minutos;
+        var strTiempo = horas + '-' + minutos + '-' + segundos + ' ' + ampm;
+
+        const filename = `Informe_${esteDia}_${strTiempo}.pdf`;
+        const fechaHoy = ` ${esteDia}_${strTiempo}`; // Instrucción temporal.
+
+        const stream = res.writeHead(200, {
+            'Content-Type': 'application/pdf',
+            'Content-disposition': `attachment;filename=${filename}`
+        });
+
+        doc.on(Event = 'data', listener = (data) => {stream.write(data)});
+        doc.on(Event = 'end', listener = () => {stream.end()});
+
+        // Establecer el encabezado para que se represente en cada página.
+        doc.setDocumentHeader(options = {
+
+            height: '16%'
+        
+        }, renderCallback = () => {
+
+            doc.fontSize(15).text('Informe', { // Sustituir por cuando se encuentre solución (`FACTURA ${dateLit(pedido.id)}`)
+                with: 420,
+                align: 'center'
+            });
+
+            doc.fontSize(12);
+            
+            doc.text('Información', { // Sustituir por cuando se encuentre solución `NIT: ${cliente.NIT}`
+                with: 420,
+                align: 'left'
+            });
+            doc.text('sobre el sistema', { // Sustituir por cuando se encuentre solución `Sr(a). ${cliente.nombre}`
+                with: 420,
+                align: 'left'
+            });
+            doc.text('de evaluacion de daños', { // Sustituir por cuando se encuentre solución `Fecha: ${pedido.fecha_pedido}`
+                with: 420,
+                align: 'left'
+            });
+        } );
+
+        //const platos = await Pedido.getPedidoPlatos(pedido.id); // Base de datos (No tiene función).
+
+        /*const registros = platos.map((plato) => { // Base de datos (No tiene función).
+
+            const registro = {
+
+                nombre: Alerta.nombre,                         // Tabla alerta columna nombre.
+                descripcion: Alerta.descripcion,               // Tabla alerta columna descripcion.
+                activo: Alerta.activo,                         // Tabla alerta columna activo.
+                dañoNombre: Daño.nombre,                       // Tabla daños columna nombre.
+                nivelAlerta: Alerta.nivelAlerta,               // Tabla alerta columna nilverAlerta.
+                ubicacionDepartamento: Ubicacion.departamento, // Tabla ubicacions columna departamento.
+                ubicacionMunicipio: Ubicacion.municipio,       // Tabla ubicacions columna municipio.
+                medidaNombre: Medida.nombre,                   // Tabla medidas columna nombre.               
+            }
+
+            return registro;
+
+        });¨*/
+
+        const registro = [{
+
+            nombre: alerta.nombre,                         // Tabla alerta columna nombre.
+            descripcion: alerta.descripcion,               // Tabla alerta columna descripcion.
+            activo: alerta.activo,                         // Tabla alerta columna activo.
+            dañoNombre: alerta.Daño.nombre,                       // Tabla daños columna nombre.
+            nivelAlerta: alerta.nivelAlerta,               // Tabla alerta columna nilverAlerta.
+            ubicacionDepartamento: alerta.Ubicacion.departamento, // Tabla ubicacions columna departamento.
+            ubicacionMunicipio: alerta.Ubicacion.municipio,       // Tabla ubicacions columna municipio.
+            medidaNombre: alerta.Medida.nombre,                   // Tabla medidas columna nombre.               
+        }]
+
+        const informesG = [
+            {
+                nombre: 'Et',
+                descripcion: 'charque',
+                activo: 1,
+                dañoNombre: 'Minus',
+                nivelAlerta: 'verde',
+                ubicacionDepartamento: ' Ahuachapán',
+                ubicacionMunicipio: 'Apaneca',
+                medidaNombre: 'Ut',
+            },
+            {
+                nombre: 'Sunt',
+                descripcion: 'sopa de mani',
+                activo: 0,
+                dañoNombre: 'Incidunt',
+                nivelAlerta: 'amarilla',
+                ubicacionDepartamento: 'Santa Ana',
+                ubicacionMunicipio: 'Candelaria de la Frontera',
+                medidaNombre: 'Sint',
+            }
+        ]
+
+        // Agregar una tabla (puede agregar varias tablas con diferentes columnas).
+        // Asegúrese de que cada columna tenga una clave. Las claves deben ser únicas.
+        doc.addTable(columns = [
+            
+            {key: 'nombre', label: 'Nombre', align: 'left'},
+            {key: 'descripcion', label: 'Descripcion', align: 'left'},
+            {key: 'activo', label: 'Activo', align: 'left'},
+            {key: 'dañoNombre', label: 'Daños', align: 'left'},
+            {key: 'nivelAlerta', label: 'Nivel', align: 'right'},
+            {key: 'ubicacionDepartamento', label: 'Departamento', align: 'left'},
+            {key: 'ubicacionMunicipio', label: 'Municipio', align: 'left'},
+            {key: 'medidaNombre', label: 'Respuesta', align: 'left'},
+        ], registro, options = { // Sustituir por "registro" cuando se encuentre solución.
+
+            border: null,
+            width: "fill_body",
+            striped: true,
+            stripedColors: ["#f6f6f6", "#d6c4dd"],
+            cellsPadding: 10,
+            marginLeft: 45,
+            marginRight: 45,
+            headAlign: 'left'
+
+        } );
+
+        doc.setDocumentFooter(options =  {
+            
+            height: '60%'
+
+        }, renderCallback = () => {
+
+            doc.fontSize(10).text(`Informe del ${fechaHoy}`, doc.footer.x + 50, doc.footer.y + 10); // Sustituir por cuando se encuentre solución `TOTAL: ${pedido.total} Dolares`
+        });
+
+        // Tablas de renderizado.
+        doc.render();
+
+        doc.end();
+    } // Fin generar informes.  
 }
 
 module.exports = alertaController
