@@ -212,11 +212,31 @@ const alertaController = {
     // Generar informes.
     infor: async (req, res) => {
 
-        /*let pedido = await Pedido.find(req.params.id); // Base de datos (No tiene función).
-        pedido = pedido[0]; // Base de datos (No tiene función).
+        let id = req.params.id
+            const alerta = await Alerta.findOne({
+                where: {
+                    id,
+                },
+                include: [{
+                    model: Daño,
+                    
+                }, {
+                    model: Medida,
+                  
+                },  
+                {
+                    model: Ubicacion,
+                  
+                }],
+                raw: true,
+                nest: true,
+            })
 
-        let cliente = await Pedido.findCliente(pedido[0].cliente_id); // Base de datos (No tiene función).
-        cliente = cliente[0]; // Base de datos (No tiene función).*/
+        /*let alerta = await Alerta.findOne(req.params.id); // Base de datos (No tiene función).
+        alerta = alerta[0]; // Base de datos (No tiene función).
+
+        let cliente = await Alerta.findCliente(alerta[0].cliente_id); // Base de datos (No tiene función).
+        cliente = cliente[0]; // Base de datos (No tiene función).¨*/
 
         // Crear un documento.
         const doc = new PDF({bufferPage: true});
@@ -278,9 +298,9 @@ const alertaController = {
             });
         } );
 
-        /*const platos = await Pedido.getPedidoPlatos(pedido.id); // Base de datos (No tiene función).
+        //const platos = await Pedido.getPedidoPlatos(pedido.id); // Base de datos (No tiene función).
 
-        const registros = platos.map((plato) => { // Base de datos (No tiene función).
+        /*const registros = platos.map((plato) => { // Base de datos (No tiene función).
 
             const registro = {
 
@@ -296,7 +316,19 @@ const alertaController = {
 
             return registro;
 
-        });*/
+        });¨*/
+
+        const registro = [{
+
+            nombre: alerta.nombre,                         // Tabla alerta columna nombre.
+            descripcion: alerta.descripcion,               // Tabla alerta columna descripcion.
+            activo: alerta.activo,                         // Tabla alerta columna activo.
+            dañoNombre: alerta.Daño.nombre,                       // Tabla daños columna nombre.
+            nivelAlerta: alerta.nivelAlerta,               // Tabla alerta columna nilverAlerta.
+            ubicacionDepartamento: alerta.Ubicacion.departamento, // Tabla ubicacions columna departamento.
+            ubicacionMunicipio: alerta.Ubicacion.municipio,       // Tabla ubicacions columna municipio.
+            medidaNombre: alerta.Medida.nombre,                   // Tabla medidas columna nombre.               
+        }]
 
         const informesG = [
             {
@@ -333,7 +365,7 @@ const alertaController = {
             {key: 'ubicacionDepartamento', label: 'Departamento', align: 'left'},
             {key: 'ubicacionMunicipio', label: 'Municipio', align: 'left'},
             {key: 'medidaNombre', label: 'Respuesta', align: 'left'},
-        ], informesG, options = { // Sustituir por "registro" cuando se encuentre solución.
+        ], registro, options = { // Sustituir por "registro" cuando se encuentre solución.
 
             border: null,
             width: "fill_body",
