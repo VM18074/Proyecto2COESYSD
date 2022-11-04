@@ -34,7 +34,7 @@
                         <th scope="col">Respuesta</th>
                         <th scope="col">Editar</th>
                     </tr>
-                    
+
                 </thead>
                 <tbody>
                     {{#each dataRows}}
@@ -45,19 +45,19 @@
                         <td class="text-capitalize fw-bold nivel-alerta" data-nivel="{{nivelAlerta}}">{{nivelAlerta}}
                         </td>
                         <td class="departamento">{{Ubicacion.departamento}}</td>
-                        <td>{{Ubicacion.municipio}}</td>
+                        <td class="municipio">{{Ubicacion.municipio}}</td>
                         <td>{{Medida.nombre}}</td>
                         <td><a class="btn btn-light" href="/#alertas/editar/{{id}}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-journal-x" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708z" />
-                                <path
-                                    d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
-                                <path
-                                    d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
-                            </svg>
-                        </a></td>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-journal-x" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708z" />
+                                    <path
+                                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                    <path
+                                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                </svg>
+                            </a></td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -78,6 +78,13 @@
             <div class="col-6">
                 <h2 class="text-center mb-4">Alertas por Departamento</h2>
                 <canvas id="chartBarDeparments" width="100%" height="100%"></canvas>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-center mb-4">Alertas por Municipio</h2>
+                <canvas id="chartLineMunicipios" width="100%" height="100%"></canvas>
             </div>
 
         </div>
@@ -147,20 +154,20 @@
     //NOTA LA VARIABLE OPTIONS DETERMINA COMO SE MOSTRARA
 
     // Agregando pluggin
-    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {minZoom: 0, maxZoom: 13});
-    
+    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 0, maxZoom: 13 });
+
     //MiniMap
     var miniMap = new L.Control.MiniMap(carto_light).addTo(map);</script>
 
-    <script>
-        
-        url: "src/public/css/images/Warning.png",
-    </script>
+<script>
 
-    <script>
+    url: "src/public/css/images/Warning.png",
+</script>
+
+<script>
     //Agregando recuadro para los pins de las alertas (Leyenda)
         const legenda = L.control.Legend({
-            position : "bottomright",
+            position: "bottomright",
             collapsed: false,
             symbolWidth: 24,
             opacity: 1,
@@ -178,12 +185,14 @@
                 inactive: false
             }]
         }).addTo(map);
-    </script>
+</script>
 
 {{!-- Graficos --}}
 <script>
     const ctxPieDeparments = document.getElementById('chartPieDeparments')
     const ctxBarDeparments = document.getElementById('chartBarDeparments')
+    const ctxLineMunicipios = document.getElementById('chartLineMunicipios')
+
     const dataPieDeparments = [
         tableAlertas.querySelectorAll('.text-danger').length,
         tableAlertas.querySelectorAll('.text-success').length,
@@ -207,10 +216,19 @@
         'Sonsonate': 0,
         'Usulután': 0,
     }
+    const dataLineMunicipios={}
 
     const departamentosConAlertasActivas = [...tableAlertas.querySelectorAll('.departamento')]
     departamentosConAlertasActivas.forEach((departamento) => {
         dataBarDeparments[departamento.textContent] = dataBarDeparments[departamento.textContent] + 1
+    })
+
+    const municipiosConAlertasActivas = [...tableAlertas.querySelectorAll('.municipio')]
+    municipiosConAlertasActivas.forEach((municipio) => {
+        dataLineMunicipios[municipio.textContent] = 0
+    })
+    municipiosConAlertasActivas.forEach((municipio) => {
+        dataLineMunicipios[municipio.textContent] = dataLineMunicipios[municipio.textContent] + 1
     })
 
     new Chart(ctxPieDeparments, {
@@ -258,5 +276,23 @@
         },
     })
 
+    new Chart(ctxLineMunicipios, {
+        type: 'line',
+        data: {
+            labels: Object.keys(dataLineMunicipios),
+            datasets: [{
+                label: 'Municipios',
+                data: Object.values(dataLineMunicipios),
+                backgroundColor: ['rgb(41, 52, 98)'],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0
+                }
+            }
+        }
+    })
 
 </script>
