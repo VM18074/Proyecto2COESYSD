@@ -35,8 +35,7 @@ const getOptions = (name, receiver, password) => {
                 </tr>
             </table>
         </div>
-
-        
+       
         `,
     }
 }
