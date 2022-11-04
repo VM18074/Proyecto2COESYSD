@@ -1,6 +1,6 @@
 const { Alerta, Daño, Medida, Ubicacion } = require('../models')
-const PDF = require('pdfkit'); // Generar informes PDFkit.
-const fs = require('fs'); // Generar informes.
+//const {dateLit} = require ('../helpers/handlebars'); // Sustituir por cuando se encuentre solución
+const PDF = require('pdfkit-construct'); // Generar informes PDFkit. 
 
 const alertaController = {
     // Retorna todas las Alertas.
@@ -212,28 +212,35 @@ const alertaController = {
     // Generar informes.
     infor: async (req, res) => {
 
+        /*let pedido = await Pedido.find(req.params.id); // Base de datos (No tiene función).
+        pedido = pedido[0]; // Base de datos (No tiene función).
+
+        let cliente = await Pedido.findCliente(pedido[0].cliente_id); // Base de datos (No tiene función).
+        cliente = cliente[0]; // Base de datos (No tiene función).*/
+
         // Crear un documento.
         const doc = new PDF({bufferPage: true});
 
         // Formato fecha. (opcional de momento)
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-        var yyyy = today.getFullYear();
-        today = mm + '-' + dd + '-' + yyyy;
+        var esteDia = new Date();
+        var dd = String(esteDia.getDate()).padStart(2, '0');
+        var mm = String(esteDia.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = esteDia.getFullYear();
+        esteDia = mm + '-' + dd + '-' + yyyy;
 
         // Formato hora. (opcional de momento)
-        var date = new Date();
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        var segundos = date.getSeconds();
-        var ampm = hours >= 12 ? 'pm' : 'am';
-        hours = hours % 12;
-        hours = hours ? hours : 12; 
-        minutes = minutes < 10 ? '0'+minutes : minutes;
-        var strTime = hours + '-' + minutes + '-' + segundos + ' ' + ampm;
+        var hora = new Date();
+        var horas = hora.getHours();
+        var minutos = hora.getMinutes();
+        var segundos = hora.getSeconds();
+        var ampm = horas >= 12 ? 'pm' : 'am';
+        horas = horas % 12;
+        horas = horas ? horas : 12; 
+        minutos = minutos < 10 ? '0'+ minutos : minutos;
+        var strTiempo = horas + '-' + minutos + '-' + segundos + ' ' + ampm;
 
-        const filename = `Informe_${today}_${strTime}.pdf`;
+        const filename = `Informe_${esteDia}_${strTiempo}.pdf`;
+        const fechaHoy = ` ${esteDia}_${strTiempo}`; // Instrucción temporal.
 
         const stream = res.writeHead(200, {
             'Content-Type': 'application/pdf',
@@ -243,7 +250,113 @@ const alertaController = {
         doc.on(Event = 'data', listener = (data) => {stream.write(data)});
         doc.on(Event = 'end', listener = () => {stream.end()});
 
-        doc.text('Hola mundo con PDF kit', 30, 30);
+        // Establecer el encabezado para que se represente en cada página.
+        doc.setDocumentHeader(options = {
+
+            height: '16%'
+        
+        }, renderCallback = () => {
+
+            doc.fontSize(15).text('Informe', { // Sustituir por cuando se encuentre solución (`FACTURA ${dateLit(pedido.id)}`)
+                with: 420,
+                align: 'center'
+            });
+
+            doc.fontSize(12);
+            
+            doc.text('Información', { // Sustituir por cuando se encuentre solución `NIT: ${cliente.NIT}`
+                with: 420,
+                align: 'left'
+            });
+            doc.text('sobre el sistema', { // Sustituir por cuando se encuentre solución `Sr(a). ${cliente.nombre}`
+                with: 420,
+                align: 'left'
+            });
+            doc.text('de evaluacion de daños', { // Sustituir por cuando se encuentre solución `Fecha: ${pedido.fecha_pedido}`
+                with: 420,
+                align: 'left'
+            });
+        } );
+
+        /*const platos = await Pedido.getPedidoPlatos(pedido.id); // Base de datos (No tiene función).
+
+        const registros = platos.map((plato) => { // Base de datos (No tiene función).
+
+            const registro = {
+
+                nombre: Alerta.nombre,                         // Tabla alerta columna nombre.
+                descripcion: Alerta.descripcion,               // Tabla alerta columna descripcion.
+                activo: Alerta.activo,                         // Tabla alerta columna activo.
+                dañoNombre: Daño.nombre,                       // Tabla daños columna nombre.
+                nivelAlerta: Alerta.nivelAlerta,               // Tabla alerta columna nilverAlerta.
+                ubicacionDepartamento: Ubicacion.departamento, // Tabla ubicacions columna departamento.
+                ubicacionMunicipio: Ubicacion.municipio,       // Tabla ubicacions columna municipio.
+                medidaNombre: Medida.nombre,                   // Tabla medidas columna nombre.               
+            }
+
+            return registro;
+
+        });*/
+
+        const informesG = [
+            {
+                nombre: 'Et',
+                descripcion: 'charque',
+                activo: 1,
+                dañoNombre: 'Minus',
+                nivelAlerta: 'verde',
+                ubicacionDepartamento: ' Ahuachapán',
+                ubicacionMunicipio: 'Apaneca',
+                medidaNombre: 'Ut',
+            },
+            {
+                nombre: 'Sunt',
+                descripcion: 'sopa de mani',
+                activo: 0,
+                dañoNombre: 'Incidunt',
+                nivelAlerta: 'amarilla',
+                ubicacionDepartamento: 'Santa Ana',
+                ubicacionMunicipio: 'Candelaria de la Frontera',
+                medidaNombre: 'Sint',
+            }
+        ]
+
+        // Agregar una tabla (puede agregar varias tablas con diferentes columnas).
+        // Asegúrese de que cada columna tenga una clave. Las claves deben ser únicas.
+        doc.addTable(columns = [
+            
+            {key: 'nombre', label: 'Nombre', align: 'left'},
+            {key: 'descripcion', label: 'Descripcion', align: 'left'},
+            {key: 'activo', label: 'Activo', align: 'left'},
+            {key: 'dañoNombre', label: 'Daños', align: 'left'},
+            {key: 'nivelAlerta', label: 'Nivel', align: 'right'},
+            {key: 'ubicacionDepartamento', label: 'Departamento', align: 'left'},
+            {key: 'ubicacionMunicipio', label: 'Municipio', align: 'left'},
+            {key: 'medidaNombre', label: 'Respuesta', align: 'left'},
+        ], informesG, options = { // Sustituir por "registro" cuando se encuentre solución.
+
+            border: null,
+            width: "fill_body",
+            striped: true,
+            stripedColors: ["#f6f6f6", "#d6c4dd"],
+            cellsPadding: 10,
+            marginLeft: 45,
+            marginRight: 45,
+            headAlign: 'left'
+
+        } );
+
+        doc.setDocumentFooter(options =  {
+            
+            height: '60%'
+
+        }, renderCallback = () => {
+
+            doc.fontSize(10).text(`Informe del ${fechaHoy}`, doc.footer.x + 50, doc.footer.y + 10); // Sustituir por cuando se encuentre solución `TOTAL: ${pedido.total} Dolares`
+        });
+
+        // Tablas de renderizado.
+        doc.render();
 
         doc.end();
     } // Fin generar informes.  
