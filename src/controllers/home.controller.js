@@ -22,7 +22,7 @@ const homeController = {
             nest: true,
         })
 
-        res.render('home/index', { dataRows: data })
+        res.render('home/index', { dataRows: data,admin: req.session.admin,logueado: req.session.loggedin })
     },
 }
 
