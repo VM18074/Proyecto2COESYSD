@@ -158,7 +158,7 @@
 <script>
     
     // Agregando pluggin
-    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 0, maxZoom: 13 });
+    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 6, maxZoom: 25});
     
     //MiniMap    
     var minimap = new L.Control.MiniMap(carto_light,
@@ -167,7 +167,7 @@
         minimized: false,
         position: "bottomleft"
     }).addTo(map);
-        
+
 </script>
 
 <script>
