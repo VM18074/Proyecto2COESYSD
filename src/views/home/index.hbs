@@ -91,10 +91,14 @@
     </section>
 </div>
 
+{{!-- REFERENCIAS JAVASCRIPTS --}}
+
 <script src="/js/leaflet.js"></script>
 <script src="/js/Control.MiniMap.min.js"></script>
 <script src="/js/leaflet-beautify-marker-icon.js"></script>
 <script src="/js/chart.min.js"></script>
+<script src="/js/leaflet.legend.js"></script>
+
 
 {{!-- Configuraciones de estilos --}}
 
@@ -180,15 +184,10 @@
             column: 1,
             legends: [{
                 label: "Daños",
-                type: "image",
-                radius: 6,
-                color: "blue",
-                fillColor: "#FF0000",
-                fillOpacity: 0.6,
-                weight: 2,
+                type: "image",                               
                 layers: [pinAzul],
-                url: "src/public/css/images/Warning.png",
-                inactive: false
+                url: "/images/marker-icon.png",                
+                inactive: true
             }]
         }).addTo(map);
 </script>
