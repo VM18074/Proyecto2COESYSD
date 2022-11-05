@@ -137,26 +137,16 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    //marcadore de alertas
-    var pinAzul = L.marker([13.682016, -88.720093]).addTo(map).bindPopup('El Salvador');
 
-    //marcadores de alertas con propiedades funcional -->
-    L.marker([13.89093747081252, -88.7734375], { icon: L.BeautifyIcon.icon(), draggable: true }).addTo(map).bindPopup("Prueba1");
-    var options = {
-        html: '<i class="material-icons">face</i>',
-        iconAnchor: [11, 10]
-    };
+    //MARCADORES DE LAS ALERTAS
+    const pinAzul = L.marker([13.682016, -88.720093]).addTo(map);
+    newMarkerGroup = new L.LayerGroup();
+    map.on('click', addMarker);
 
-    L.marker([13.89093747081252, -88.8934375], { icon: L.BeautifyIcon.icon(options), draggable: true }).addTo(map).bindPopup("Prueba2");
-    options = {
-        icon: 'plane'
-        , borderColor: '#8D208B'
-        , textColor: '#8D208B'
-        , backgroundColor: 'transparent'
-    };// <-- Termina aqui el marcador de alertas con propiedad funcional 
-
-    //NOTA LA VARIABLE OPTIONS DETERMINA COMO SE MOSTRARA
-
+    function addMarker(e){
+    // Add marker to map at click location; add popup window
+    var newMarker = new L.marker(e.latlng).addTo(map).bindPopup('El Salvador');
+    }
 </script>
 
 <script>
@@ -179,8 +169,13 @@
 
 <script>
     //Agregando recuadro para los pins de las alertas (Leyenda)
+
+    const items = {    
+    "Pin Azul": pinAzul,
+};
         const legenda = L.control.Legend({
             position: "bottomright",
+            title: "Medidas",
             collapsed: false,
             symbolWidth: 24,
             opacity: 1,
@@ -189,7 +184,6 @@
                 label: "Daños",
                 type: "image",                               
                 layers: [pinAzul],
-                url: "images/marker-icon.png",                
                 inactive: false
             }]
         }).addTo(map);
