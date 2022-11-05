@@ -153,15 +153,21 @@
 
     //NOTA LA VARIABLE OPTIONS DETERMINA COMO SE MOSTRARA
 
-    // Agregando pluggin
-    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 0, maxZoom: 13 });
-
-    //MiniMap
-    var miniMap = new L.Control.MiniMap(carto_light).addTo(map);</script>
+</script>
 
 <script>
-
-    url: "src/public/css/images/Warning.png",
+    
+    // Agregando pluggin
+    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 0, maxZoom: 13 });
+    
+    //MiniMap    
+    var minimap = new L.Control.MiniMap(carto_light,
+    {
+        toggleDisplay: true,
+        minimized: false,
+        position: "bottomleft"
+    }).addTo(map);
+        
 </script>
 
 <script>
