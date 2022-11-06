@@ -74,13 +74,13 @@
             <div class="col-6">
                 <h2 class="text-center mb-4">Cantidad de alertas</h2>
                 <canvas id="chartPieDeparments" width="100%" height="100%"></canvas>
-                <button class="btn btn--primary download--pdf--chart" data-target="chartPieDeparments">Descargar
+                <button class="btn btn-primary download--pdf--chart" data-target="chartPieDeparments">Descargar
                     PDF</button>
             </div>
             <div class="col-6">
                 <h2 class="text-center mb-4">Alertas por Departamento</h2>
                 <canvas id="chartBarDeparments" width="100%" height="100%"></canvas>
-                <button class="btn btn--primary download--pdf--chart" data-target="chartBarDeparments">Descargar
+                <button class="btn btn-primary download--pdf--chart" data-target="chartBarDeparments">Descargar
                     PDF</button>
             </div>
 
@@ -89,7 +89,7 @@
             <div class="col-6">
                 <h2 class="text-center mb-4">Alertas por Municipio</h2>
                 <canvas id="chartLineMunicipios" width="100%" height="100%"></canvas>
-                <button class="btn btn--primary download--pdf--chart" data-target="chartLineMunicipios">Descargar
+                <button class="btn btn-primary download--pdf--chart" data-target="chartLineMunicipios">Descargar
                     PDF</button>
 
             </div>
@@ -102,6 +102,7 @@
 <script src="/js/Control.MiniMap.min.js"></script>
 <script src="/js/leaflet-beautify-marker-icon.js"></script>
 <script src="/js/chart.min.js"></script>
+<script src="/js/jspdf.min.js"></script>
 
 {{!-- Configuraciones de estilos --}}
 
@@ -300,6 +301,14 @@
                 }
             }
         }
+    })
+
+    const buttonsForDownloadChartAsPDF = [...document.querySelectorAll('.download--pdf--chart')]
+    buttonsForDownloadChartAsPDF.forEach((button) => {
+        button.addEventListener('click', () => {
+            const target = button.dataset.target
+            const chartCanvas = document.getElementById(target)
+        })
     })
 
 </script>
