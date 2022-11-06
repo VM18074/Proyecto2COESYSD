@@ -74,10 +74,14 @@
             <div class="col-6">
                 <h2 class="text-center mb-4">Cantidad de alertas</h2>
                 <canvas id="chartPieDeparments" width="100%" height="100%"></canvas>
+                <button class="btn btn--primary download--pdf--chart" data-target="chartPieDeparments">Descargar
+                    PDF</button>
             </div>
             <div class="col-6">
                 <h2 class="text-center mb-4">Alertas por Departamento</h2>
                 <canvas id="chartBarDeparments" width="100%" height="100%"></canvas>
+                <button class="btn btn--primary download--pdf--chart" data-target="chartBarDeparments">Descargar
+                    PDF</button>
             </div>
 
         </div>
@@ -85,6 +89,9 @@
             <div class="col-6">
                 <h2 class="text-center mb-4">Alertas por Municipio</h2>
                 <canvas id="chartLineMunicipios" width="100%" height="100%"></canvas>
+                <button class="btn btn--primary download--pdf--chart" data-target="chartLineMunicipios">Descargar
+                    PDF</button>
+
             </div>
 
         </div>
@@ -216,7 +223,7 @@
         'Sonsonate': 0,
         'Usulután': 0,
     }
-    const dataLineMunicipios={}
+    const dataLineMunicipios = {}
 
     const departamentosConAlertasActivas = [...tableAlertas.querySelectorAll('.departamento')]
     departamentosConAlertasActivas.forEach((departamento) => {
