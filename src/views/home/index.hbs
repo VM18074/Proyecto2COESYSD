@@ -145,7 +145,24 @@
 
     function addMarker(e){
     // Add marker to map at click location; add popup window
-    var newMarker = new L.marker(e.latlng).addTo(map).bindPopup('El Salvador');
+    var newMarker = new L.marker(e.latlng).addTo(map).bindPopup(let btnDelete = document.createElement('button');
+    btnDelete.className = 'ti-trash';
+    btnDelete.onclick = async () => {
+      await api.deleteZone(zone)
+      layer.remove()
+      }
+
+
+    let btnEdit = document.createElement('button');
+    btnEdit.className = 'ti-pencil';
+    btnEdit.onclick = function () {
+      layer.editing.enable();
+    }
+
+
+
+    layer(btnDelete, btnEdit) .openPopup());
+    
     }
 </script>
 
