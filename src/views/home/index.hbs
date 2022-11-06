@@ -98,12 +98,14 @@
     </section>
 </div>
 
+{{!-- REFERENCIAS JAVASCRIPTS --}}
+
 <script src="/js/leaflet.js"></script>
 <script src="/js/Control.MiniMap.min.js"></script>
 <script src="/js/leaflet-beautify-marker-icon.js"></script>
 <script src="/js/chart.min.js"></script>
+<script src="/js/leaflet.legend.js"></script>
 <script src="/js/jspdf.min.js"></script>
-
 {{!-- Configuraciones de estilos --}}
 
 
@@ -141,58 +143,80 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    //marcadore de alertas
-    var pinAzul = L.marker([13.682016, -88.720093]).addTo(map).bindPopup('El Salvador');
 
-    //marcadores de alertas con propiedades funcional -->
-    L.marker([13.89093747081252, -88.7734375], { icon: L.BeautifyIcon.icon(), draggable: true }).addTo(map).bindPopup("Prueba1");
-    var options = {
-        html: '<i class="material-icons">face</i>',
-        iconAnchor: [11, 10]
-    };
+    //MARCADORES DE LAS ALERTAS
+    const pinAzul = L.marker([13.682016, -88.720093]).addTo(map);
+    newMarkerGroup = new L.LayerGroup();
+    map.on('click', addMarker);
 
-    L.marker([13.89093747081252, -88.8934375], { icon: L.BeautifyIcon.icon(options), draggable: true }).addTo(map).bindPopup("Prueba2");
-    options = {
-        icon: 'plane'
-        , borderColor: '#8D208B'
-        , textColor: '#8D208B'
-        , backgroundColor: 'transparent'
-    };// <-- Termina aqui el marcador de alertas con propiedad funcional 
+    let btnDelete = document.createElement('button');
+    btnDelete.className = 'ti-trash';
 
-    //NOTA LA VARIABLE OPTIONS DETERMINA COMO SE MOSTRARA
+    /*btnDelete.onclick = async () => {
+      await api.deleteZone(zone)
+      layer.remove()
+      }*/
 
-    // Agregando pluggin
-    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 0, maxZoom: 13 });
 
-    //MiniMap
-    var miniMap = new L.Control.MiniMap(carto_light).addTo(map);</script>
+    let btnEdit = document.createElement('button');
+    btnEdit.className = 'ti-pencil';
+    /*  btnEdit.onclick = function () {
+        layer.editing.enable();
+      }*/
+
+    let btnDiv = document.createElement('div')
+    btnDiv.append(btnDelete)
+    btnDiv.append('     ')
+    btnDiv.append(btnEdit)
+    btnDiv.append('     ')
+    btnDiv.append('El Salvador')
+
+    function addMarker(e) {
+
+
+        // Add marker to map at click location; add popup window
+        var newMarker = new L.marker(e.latlng).addTo(map).bindPopup(btnDiv);
+    }
+</script>
 
 <script>
 
-    url: "src/public/css/images/Warning.png",
+    // Agregando pluggin
+    var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 6, maxZoom: 25 });
+
+    //MiniMap    
+    var minimap = new L.Control.MiniMap(carto_light,
+        {
+            toggleDisplay: true,
+            minimized: false,
+            position: "bottomleft"
+        }).addTo(map);
+
+    // Agregar escala
+    new L.control.scale({ imperial: false }).addTo(map);
+
 </script>
 
 <script>
     //Agregando recuadro para los pins de las alertas (Leyenda)
-        const legenda = L.control.Legend({
-            position: "bottomright",
-            collapsed: false,
-            symbolWidth: 24,
-            opacity: 1,
-            column: 1,
-            legends: [{
-                label: "Daños",
-                type: "image",
-                radius: 6,
-                color: "blue",
-                fillColor: "#FF0000",
-                fillOpacity: 0.6,
-                weight: 2,
-                layers: [pinAzul],
-                url: "src/public/css/images/Warning.png",
-                inactive: false
-            }]
-        }).addTo(map);
+
+    const items = {
+        "Pin Azul": pinAzul,
+    };
+    const legenda = L.control.Legend({
+        position: "bottomright",
+        title: "Medidas",
+        collapsed: false,
+        symbolWidth: 24,
+        opacity: 1,
+        column: 1,
+        legends: [{
+            label: "Daños",
+            type: "image",
+            layers: [pinAzul],
+            inactive: false
+        }]
+    }).addTo(map);
 </script>
 
 {{!-- Graficos --}}
