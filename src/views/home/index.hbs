@@ -120,7 +120,7 @@
 
 
 {{!-- Configuraciones del mapa interactivo --}}
-<script>
+<script>    
     var southWest = L.latLng(11.651058, -89.929926),
         northEast = L.latLng(14.708478, -87.62146),
         bounds = L.latLngBounds(southWest, northEast);
@@ -143,7 +143,33 @@
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
 
+    
+
     function addMarker(e){
+/*
+
+    let btnDelete = document.createElement('button');
+    btnEdit.className = 'ti-trash';
+    btnDelete.onclick = async () => {
+      await api.deleteZone(zone)
+      layer.remove()
+      }
+
+
+    let btnEdit = document.createElement('button');
+    btnEdit.className = 'ti-pencil';
+    btnEdit.onclick = function () {
+      layer.editing.enable();
+    }
+
+    let btnDiv = document.createElement('div')
+btnDiv.append(btnDelete)
+btnDiv.append('  ')
+btnDiv.append(btnEdit)
+btnDiv.append('  ')
+btnDiv.append('El Salvador')
+*/
+
     // Add marker to map at click location; add popup window
     var newMarker = new L.marker(e.latlng).addTo(map).bindPopup('El Salvador');
     }
