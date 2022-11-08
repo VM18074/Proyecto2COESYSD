@@ -1,5 +1,4 @@
 const { Alerta, Daño, Medida, Ubicacion } = require('../models')
-//const {dateLit} = require ('../helpers/handlebars'); // Sustituir por cuando se encuentre solución
 const PDF = require('pdfkit-construct'); // Generar informes PDFkit. 
 
 const alertaController = {
@@ -232,23 +231,17 @@ const alertaController = {
                 nest: true,
             })
 
-        /*let alerta = await Alerta.findOne(req.params.id); // Base de datos (No tiene función).
-        alerta = alerta[0]; // Base de datos (No tiene función).
-
-        let cliente = await Alerta.findCliente(alerta[0].cliente_id); // Base de datos (No tiene función).
-        cliente = cliente[0]; // Base de datos (No tiene función).¨*/
-
         // Crear un documento.
-        const doc = new PDF({bufferPage: true});
+        const doc = new PDF({bufferPages: true, layout: 'landscape'});
 
-        // Formato fecha. (opcional de momento)
+        // Formato fecha.
         var esteDia = new Date();
         var dd = String(esteDia.getDate()).padStart(2, '0');
         var mm = String(esteDia.getMonth() + 1).padStart(2, '0'); 
         var yyyy = esteDia.getFullYear();
         esteDia = mm + '-' + dd + '-' + yyyy;
 
-        // Formato hora. (opcional de momento)
+        // Formato hora.
         var hora = new Date();
         var horas = hora.getHours();
         var minutos = hora.getMinutes();
@@ -260,7 +253,7 @@ const alertaController = {
         var strTiempo = horas + '-' + minutos + '-' + segundos + ' ' + ampm;
 
         const filename = `Informe_${esteDia}_${strTiempo}.pdf`;
-        const fechaHoy = ` ${esteDia}_${strTiempo}`; // Instrucción temporal.
+        const fechaHoy = `${esteDia}_${strTiempo}`;
 
         const stream = res.writeHead(200, {
             'Content-Type': 'application/pdf',
@@ -273,85 +266,34 @@ const alertaController = {
         // Establecer el encabezado para que se represente en cada página.
         doc.setDocumentHeader(options = {
 
-            height: '16%'
+            height: '18%'
         
         }, renderCallback = () => {
 
-            doc.fontSize(15).text('Informe', { // Sustituir por cuando se encuentre solución (`FACTURA ${dateLit(pedido.id)}`)
+            doc.fontSize(15).text('Informe', {
                 with: 420,
                 align: 'center'
             });
 
-            doc.fontSize(12);
-            
-            doc.text('Información', { // Sustituir por cuando se encuentre solución `NIT: ${cliente.NIT}`
+            doc.fontSize(15).text(' ', {});
+  
+            doc.fontSize(12).text('Información sobre el sistema de evaluacion de daños.', {
                 with: 420,
                 align: 'left'
             });
-            doc.text('sobre el sistema', { // Sustituir por cuando se encuentre solución `Sr(a). ${cliente.nombre}`
-                with: 420,
-                align: 'left'
-            });
-            doc.text('de evaluacion de daños', { // Sustituir por cuando se encuentre solución `Fecha: ${pedido.fecha_pedido}`
-                with: 420,
-                align: 'left'
-            });
-        } );
-
-        //const platos = await Pedido.getPedidoPlatos(pedido.id); // Base de datos (No tiene función).
-
-        /*const registros = platos.map((plato) => { // Base de datos (No tiene función).
-
-            const registro = {
-
-                nombre: Alerta.nombre,                         // Tabla alerta columna nombre.
-                descripcion: Alerta.descripcion,               // Tabla alerta columna descripcion.
-                activo: Alerta.activo,                         // Tabla alerta columna activo.
-                dañoNombre: Daño.nombre,                       // Tabla daños columna nombre.
-                nivelAlerta: Alerta.nivelAlerta,               // Tabla alerta columna nilverAlerta.
-                ubicacionDepartamento: Ubicacion.departamento, // Tabla ubicacions columna departamento.
-                ubicacionMunicipio: Ubicacion.municipio,       // Tabla ubicacions columna municipio.
-                medidaNombre: Medida.nombre,                   // Tabla medidas columna nombre.               
-            }
-
-            return registro;
-
-        });¨*/
+        });
 
         const registro = [{
 
-            nombre: alerta.nombre,                         // Tabla alerta columna nombre.
-            descripcion: alerta.descripcion,               // Tabla alerta columna descripcion.
-            activo: alerta.activo,                         // Tabla alerta columna activo.
+            nombre: alerta.nombre,                                // Tabla alerta columna nombre.
+            descripcion: alerta.descripcion,                      // Tabla alerta columna descripcion.
+            activo: alerta.activo,                                // Tabla alerta columna activo.
             dañoNombre: alerta.Daño.nombre,                       // Tabla daños columna nombre.
-            nivelAlerta: alerta.nivelAlerta,               // Tabla alerta columna nilverAlerta.
+            nivelAlerta: alerta.nivelAlerta,                      // Tabla alerta columna nilverAlerta.
             ubicacionDepartamento: alerta.Ubicacion.departamento, // Tabla ubicacions columna departamento.
             ubicacionMunicipio: alerta.Ubicacion.municipio,       // Tabla ubicacions columna municipio.
             medidaNombre: alerta.Medida.nombre,                   // Tabla medidas columna nombre.               
         }]
-
-        const informesG = [
-            {
-                nombre: 'Et',
-                descripcion: 'charque',
-                activo: 1,
-                dañoNombre: 'Minus',
-                nivelAlerta: 'verde',
-                ubicacionDepartamento: ' Ahuachapán',
-                ubicacionMunicipio: 'Apaneca',
-                medidaNombre: 'Ut',
-            },
-            {
-                nombre: 'Sunt',
-                descripcion: 'sopa de mani',
-                activo: 0,
-                dañoNombre: 'Incidunt',
-                nivelAlerta: 'amarilla',
-                ubicacionDepartamento: 'Santa Ana',
-                ubicacionMunicipio: 'Candelaria de la Frontera',
-                medidaNombre: 'Sint',
-            }
-        ]
 
         // Agregar una tabla (puede agregar varias tablas con diferentes columnas).
         // Asegúrese de que cada columna tenga una clave. Las claves deben ser únicas.
@@ -365,7 +307,7 @@ const alertaController = {
             {key: 'ubicacionDepartamento', label: 'Departamento', align: 'left'},
             {key: 'ubicacionMunicipio', label: 'Municipio', align: 'left'},
             {key: 'medidaNombre', label: 'Respuesta', align: 'left'},
-        ], registro, options = { // Sustituir por "registro" cuando se encuentre solución.
+        ], registro, options = { 
 
             border: null,
             width: "fill_body",
@@ -375,7 +317,6 @@ const alertaController = {
             marginLeft: 45,
             marginRight: 45,
             headAlign: 'left'
-
         } );
 
         doc.setDocumentFooter(options =  {
@@ -384,7 +325,7 @@ const alertaController = {
 
         }, renderCallback = () => {
 
-            doc.fontSize(10).text(`Informe del ${fechaHoy}`, doc.footer.x + 50, doc.footer.y + 10); // Sustituir por cuando se encuentre solución `TOTAL: ${pedido.total} Dolares`
+            doc.fontSize(10).text(`Informe del ${fechaHoy}`, doc.footer.x + 50, doc.footer.y + 10);
         });
 
         // Tablas de renderizado.
