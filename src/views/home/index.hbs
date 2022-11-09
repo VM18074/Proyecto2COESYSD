@@ -76,12 +76,16 @@
                 <canvas id="chartPieDeparments" width="100%" height="100%"></canvas>
                 <button class="btn btn-primary download--pdf--chart" data-target="chartPieDeparments">Descargar
                     PDF</button>
+                <button class="btn btn-primary download--excel--chart" data-target="chartPieDeparments">Descargar
+                    XLS</button>
             </div>
             <div class="col-6">
                 <h2 class="text-center mb-4">Alertas por Departamento</h2>
                 <canvas id="chartBarDeparments" width="100%" height="100%"></canvas>
                 <button class="btn btn-primary download--pdf--chart" data-target="chartBarDeparments">Descargar
                     PDF</button>
+                <button class="btn btn-primary download--excel--chart" data-target="chartBarDeparments">Descargar
+                    XLS</button>
             </div>
 
         </div>
@@ -91,7 +95,8 @@
                 <canvas id="chartLineMunicipios" width="100%" height="100%"></canvas>
                 <button class="btn btn-primary download--pdf--chart" data-target="chartLineMunicipios">Descargar
                     PDF</button>
-
+                <button class="btn btn-primary download--excel--chart" data-target="chartLineMunicipios">Descargar
+                    XLS</button>
             </div>
 
         </div>
@@ -106,6 +111,10 @@
 <script src="/js/chart.min.js"></script>
 <script src="/js/leaflet.legend.js"></script>
 <script src="/js/jspdf.min.js"></script>
+<script src="/js/FileSaver.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"
+    integrity="sha512-UnrKxsCMN9hFk7M56t4I4ckB4N/2HHi0w/7+B/1JsXIX3DmyBcsGpT3/BsuZMZf+6mAr0vP81syWtfynHJ69JA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{!-- Configuraciones de estilos --}}
 
 
@@ -321,7 +330,10 @@
         options: {
             scales: {
                 y: {
-                    min: 0
+                    min: 0,
+                    max: 10,
+                    suggestedMax: 100,
+                    stepSize: 1,
                 }
             }
         },
@@ -341,4 +353,30 @@
         })
     })
 
+    const buttonsForDownloadChartAsXLS = [...document.querySelectorAll('.download--excel--chart')]
+    buttonsForDownloadChartAsXLS.forEach((button) => {
+        button.addEventListener('click', () => {
+            const target = button.dataset.target
+            const chartCanvas = document.getElementById(target)
+            const canvasImage = chartCanvas.toDataURL('image/png', 1.0)
+
+
+            console.log(canvasImage)
+
+            let workbook = new ExcelJS.Workbook()
+            const sheet = workbook.addWorksheet('Grafico')
+            var imageID = workbook.addImage({
+                base64: canvasImage,
+                extension: 'png',
+                
+            })
+            console.log("imageID", imageID)
+            sheet.addImage(imageID, 'B2:M28')
+
+            workbook.xlsx.writeBuffer().then((data) => {
+                const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8' });
+                saveAs(blob, 'chart.xlsx');
+            });
+        })
+    })
 </script>
