@@ -158,34 +158,13 @@
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
 
-    let btnDelete = document.createElement('button');
-    btnDelete.className = 'ti-trash';
-
-    /*btnDelete.onclick = async () => {
-      await api.deleteZone(zone)
-      layer.remove()
-      }*/
-
-
-    let btnEdit = document.createElement('button');
-    btnEdit.className = 'ti-pencil';
-    /*  btnEdit.onclick = function () {
-        layer.editing.enable();
-      }*/
-
-    let btnDiv = document.createElement('div')
-    btnDiv.append(btnDelete)
-    btnDiv.append('     ')
-    btnDiv.append(btnEdit)
-    btnDiv.append('     ')
-    btnDiv.append('El Salvador')
 
     //Funcion agregar marcador/ muestra información de la ubicación (Longitud y Latitud) 'click'/ Agregando botones de Editar y Eliminar
     function addMarker(e) {
 
 
         // Add marker to map at click location; add popup window
-        var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + btnDiv + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Editar</button> </p>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
+        var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Editar</button> </p>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
         
         map.on('click', addMarker);
         }
