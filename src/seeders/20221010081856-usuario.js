@@ -15,38 +15,47 @@ module.exports = {
          *   isBetaMember: false
          * }], {});
          */
-        let users = []
-        let admins = []
+        let usuarioP1 = []
+        let usuarioA1 = []
+        let usuarioP2 = []
+        let usuarioA2 = []
         let usuarioA = []
         let usuarioP = []
-        for (let i = 0; i < 15; i++) {
-            admins = [
-                ...admins,
-                {
-                    nombre: faker.internet.userName(),
-                    email: faker.internet.email().toLowerCase(),
-                    password: await bcryptjs.hash(faker.internet.password(), 12),
-                    RolNombre: 'administrador',
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                },
-            ]
-        }
-        for (let i = 15; i < 30; i++) {
-            users = [
-                ...users,
-                {
-                    nombre: faker.internet.userName(),
-                    email: faker.internet.email().toLowerCase(),
-                    password: await bcryptjs.hash(faker.internet.password(), 12),
-                    RolNombre: null,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                },
-            ]
-        }
 
-         usuarioA = [... usuarioA,{
+
+        usuarioP1 = [...usuarioP1, {
+            nombre: 'Jefferson Arevalo',
+            email: 'as21004@ues.edu.sv',
+            password: await bcryptjs.hash('as21004', 12),
+            RolNombre: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        }]
+        usuarioA1 = [...usuarioA1, {
+            nombre: 'Willian Chávez',
+            email: 'cs21004@ues.edu.sv',
+            password: await bcryptjs.hash('cs21004', 12),
+            RolNombre: 'administrador',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        }]
+        usuarioP2 = [...usuarioP2, {
+            nombre: 'Jhostin Montalvo',
+            email: 'mp21079@ues.edu.sv',
+            password: await bcryptjs.hash('mp21079', 12),
+            RolNombre: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        }]
+        usuarioA2 = [...usuarioA2, {
+            nombre: 'Silvia Pérez',
+            email: 'pb21015@ues.edu.sv',
+            password: await bcryptjs.hash('pb21015', 12),
+            RolNombre: 'administrador',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        }]
+        usuarioA = [...usuarioA, {
             nombre: 'Administrador',
             email: 'admin@gmail.com',
             password: await bcryptjs.hash('admin', 12),
@@ -55,7 +64,7 @@ module.exports = {
             updatedAt: new Date(),
         }]
 
-        usuarioP = [... usuarioP,{
+        usuarioP = [...usuarioP, {
             nombre: 'Personal',
             email: 'personal@gmail.com',
             password: await bcryptjs.hash('personal', 12),
@@ -63,10 +72,14 @@ module.exports = {
             createdAt: new Date(),
             updatedAt: new Date(),
         }]
-        await queryInterface.bulkInsert('Usuarios', admins, {})
-        await queryInterface.bulkInsert('Usuarios', users, {})
+
+        await queryInterface.bulkInsert('Usuarios', usuarioP1, {})
+        await queryInterface.bulkInsert('Usuarios', usuarioA1, {})
+        await queryInterface.bulkInsert('Usuarios', usuarioP2, {})
+        await queryInterface.bulkInsert('Usuarios', usuarioA2, {})
         await queryInterface.bulkInsert('Usuarios', usuarioA, {})
         await queryInterface.bulkInsert('Usuarios', usuarioP, {})
+
     },
 
     async down(queryInterface, Sequelize) {
