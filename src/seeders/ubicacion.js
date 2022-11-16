@@ -5,6 +5,7 @@ const { faker } = require('@faker-js/faker')
 module.exports = {
     async up(queryInterface, Sequelize) {
         let ubicacion = []
+        let y=-88.720093;
         const departamentos = [
             'Ahuachapán',
             'Cabañas',
@@ -28,12 +29,14 @@ module.exports = {
                     nombre: faker.lorem.word(),
                     departamento: departamentos[Math.floor(Math.random() * 14)],
                     municipio: faker.address.city(),
-                    coordenada: faker.address.latitude(),
+                    coordenadax: 13.682016,
+                    coordenaday: y,
                     alertumId: i + 1,
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
             ]
+            y=y-0.10;
         }
 
         await queryInterface.bulkInsert('Ubicacions', ubicacion, {})

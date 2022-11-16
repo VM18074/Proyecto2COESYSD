@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Ubicacion.init({
     nombre: DataTypes.STRING,
-    coordenada: DataTypes.STRING,
+    coordenadax: DataTypes.FLOAT,
+    coordenaday: DataTypes.FLOAT,
     departamento: DataTypes.STRING,
     municipio: DataTypes.STRING,
   }, {

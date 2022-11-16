@@ -52,7 +52,7 @@ const alertaController = {
     // Permite agregar una nueva alerta a la base de datos.
     add: async (req, res) => {
         try {
-            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenada, departamento, municipio } = req.body
+            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenadax, coordenaday, departamento, municipio } = req.body
             var esActivo;
                 if(activo==null){
                     esActivo=0;
@@ -76,7 +76,8 @@ const alertaController = {
                 })
                 await Ubicacion.create({
                     alertumId: alerta.id,
-                    coordenada: coordenada,
+                    coordenadax: coordenadax,
+                    coordenaday: coordenaday,
                     departamento: departamento,
                     municipio: municipio,
                 })
@@ -139,7 +140,7 @@ const alertaController = {
     update: async (req, res) => {
         try {
             let id = req.params.id
-            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenada, departamento, municipio } = req.body
+            const { nombre, descripcion, activo, nombreD, descripcionD, nombreM, descripcionM, coordenadax, coordenaday, departamento, municipio } = req.body
             const alerta = await Alerta.findOne({ where: { id: id } })
             alerta.nombre = nombre
             alerta.descripcion = descripcion
@@ -154,7 +155,8 @@ const alertaController = {
             await medida.save()
 
             const ubicacion = await Ubicacion.findOne({ where: { alertumId: id } })
-            ubicacion.coordenada = coordenada
+            ubicacion.coordenadax = coordenadax
+            ubicacion.coordenaday = coordenaday
             ubicacion.departamento = departamento
             ubicacion.municipio = municipio
             await ubicacion.save()
