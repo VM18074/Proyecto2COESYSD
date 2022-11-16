@@ -62,7 +62,7 @@
                                         d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                 </svg>
                             </a></td> 
-                        <td class="coordenadas" hidden >{{Ubicacion.coordenadax}}, {{Ubicacion.coordenaday}}</td>   
+                        <td class="coordenadas" hidden data-x="{{Ubicacion.coordenadax}}", data-y="{{Ubicacion.coordenaday}}">{{Ubicacion.coordenadax}}, {{Ubicacion.coordenaday}}</td>   
                         <!--<td class="coordenaday" hidden="true">{{Ubicacion.coordenaday}}</td>   -->                          
                     </tr>
                     {{/each}}
@@ -172,7 +172,7 @@
     const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
     //for (a=0; a<5;a++){
     coordenadas.forEach((coordenada) => {
-    pines[i] = L.marker([13, y]).addTo(map);
+    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map);
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
     i=i+1;
