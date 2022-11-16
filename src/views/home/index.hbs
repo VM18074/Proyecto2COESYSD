@@ -186,11 +186,12 @@
 
 
         // Add marker to map at click location; add popup window
-        var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarAlerta">Editar</button> </p>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
+        var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '</p> <a class="btn btn-light" href="/users/edit/{{id}}">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
         
         map.on('click', addMarker);
         }
 </script>
+
 
 <script>
 
@@ -207,6 +208,10 @@
 
     // Agregar escala
     new L.control.scale({ imperial: false }).addTo(map);
+
+
+    //Boton de agregar
+
     
 </script>
 
