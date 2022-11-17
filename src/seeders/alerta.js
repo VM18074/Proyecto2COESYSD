@@ -15,34 +15,137 @@ module.exports = {
          */
         let alerta = []
         const niveles = ['verde', 'amarilla', 'roja']
-        for (let i = 0; i < 15; i++) {
-            alerta = [
-                ...alerta,
-                {
-                    nombre: faker.lorem.word(),
-                    descripcion: faker.lorem.paragraph().substring(0, 100),
-                    nivelAlerta: niveles[Math.floor(Math.random() * 3)], // Numero random entre 0,1 y 2.
-                    activo: true,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                },
-            ]
-        }
+        alerta = [
+            ...alerta,
+            {
+                id: 11,
+                nombre:'Julia',
+                descripcion: 'Tormentra Tropical',
+                nivelAlerta: niveles[1], // Numero random entre 0,1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+    
+        alerta = [
+            ...alerta,
+            {
+                id: 12,
+                nombre:'Julia',
+                descripcion: 'Tormentra Tropical',
+                nivelAlerta: niveles[1], // Numero random entre 0,1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
 
-        let alertano = []
-        for (let i = 15; i < 30; i++) {
-            alertano = [
-                ...alertano,
-                {
-                    nombre: faker.lorem.word(),
-                    descripcion: faker.lorem.paragraph().substring(0, 100),
-                    nivelAlerta: niveles[Math.floor(Math.random() * 3)], // Numero random entre 0,1 y 2.
-                    activo: false,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                },
-            ]
-        }
+        alerta = [
+            ...alerta,
+            {
+                id: 13,
+                nombre:'Sismo',
+                descripcion: 'Temblor en zona de occidene',
+                nivelAlerta: niveles[0], // Numero random entre 0,1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 14,
+                nombre:'Lisa',
+                descripcion: 'Huracan',
+                nivelAlerta: niveles[2], // Numero random entre 0,1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 15,
+                nombre:'Lisa',
+                descripcion: 'Huracan',
+                nivelAlerta: niveles[2], // Numero random entre 0,1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+    let alertano = []
+   
+        alertano = [
+            ...alertano,
+            {
+                id: 16,
+                nombre: 'Bonie',
+                descripcion:'Hurcan',
+                nivelAlerta: niveles[2], // Numero random entre 0,1 y 2.
+                activo: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alertano = [
+            ...alertano,
+            {
+                id: 17,
+                nombre: 'Bonie',
+                descripcion:'Hurcan',
+                nivelAlerta: niveles[2], // Numero random entre 0,1 y 2.
+                activo: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alertano = [
+            ...alertano,
+            {
+                id: 18,
+                nombre: 'Amanda',
+                descripcion:'Tormenta Tropical',
+                nivelAlerta: niveles[1], // Numero random entre 0,1 y 2.
+                activo: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alertano = [
+            ...alertano,
+            {
+                id: 19,
+                nombre: 'Amanda',
+                descripcion:'Tormenta Tropical',
+                nivelAlerta: niveles[1], // Numero random entre 0,1 y 2.
+                activo: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alertano = [
+            ...alertano,
+            {
+                id: 20,
+                nombre: 'Karl',
+                descripcion:'Hurcan',
+                nivelAlerta: niveles[2],
+                activo: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
         await queryInterface.bulkInsert('Alerta', alerta, {})
         await queryInterface.bulkInsert('Alerta', alertano, {})
     },
