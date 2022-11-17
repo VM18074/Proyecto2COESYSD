@@ -9,6 +9,17 @@ module.exports = {
         dano = [
             ...dano,
             {
+                nombre: 'Leves molestias a la salud de los pobladores por gases emanados',
+                descripcion: 'Impactos por actividad volcánica',
+                alertumId: 1,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
                 nombre: 'Desborde de Rio',
                 descripcion: 'Desborde de Rio Titihuapa',
                 alertumId: 11,

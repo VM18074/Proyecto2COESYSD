@@ -25,6 +25,20 @@ module.exports = {
         ubicacion = [
             ...ubicacion,
             {
+                nombre: 'Actividad del volcán Chaparrastique',
+                departamento: 'San Miguel',
+                municipio: 'San Jorge',
+                coordenadax: 13.431817822983321,
+                coordenaday: -88.27171325683595,
+                alertumId: 1,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Vicente',
                 municipio: 'San Ildefonso',
