@@ -42,37 +42,9 @@ module.exports = {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Vicente',
                 municipio: 'San Ildefonso',
-                coordenadax: 13.682016,
-                coordenaday: -18.839374,
+                coordenadax: 13.7,
+                coordenaday: -88.5667,
                 alertumId: 11,
-                createdAt: new Date(),
-                updatedAt: new Date(),
-            },
-        ]
-
-        ubicacion = [
-            ...ubicacion,
-            {
-                nombre: 'Tormenta Tropical',
-                departamento: 'San Vicente',
-                municipio: 'Apastepeque',
-                coordenadax: 23.728283,
-                coordenaday: -13.727382,
-                alertumId: 12,
-                createdAt: new Date(),
-                updatedAt: new Date(),
-            },
-        ]
-
-        ubicacion = [
-            ...ubicacion,
-            {
-                nombre: 'Sismo',
-                departamento: 'San Miguel',
-                municipio: 'El Carmen',
-                coordenadax: 17.764738,
-                coordenaday: -12.654637,
-                alertumId: 13,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -83,9 +55,38 @@ module.exports = {
             {
                 nombre: 'Huracan',
                 departamento: 'San Salvador',
-                municipio: 'Santa Lucia',
-                coordenadax: 13.682016,
-                coordenaday: -18.839374,
+                municipio: 'Ilopango',
+                coordenadax: 13.7,
+                coordenaday: -89.1167,
+                alertumId: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ] 
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Tormenta Tropical',
+                departamento: 'San Vicente',
+                municipio: 'Apastepeque',
+                coordenadax: 13.6667,
+                coordenaday: -88.7667,
+                alertumId: 13,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+       
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Huracan',
+                departamento: 'San Salvador',
+                municipio: 'Ilopango',
+                coordenadax: 13.7,
+                coordenaday: -89.1167,
                 alertumId: 14,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -98,8 +99,8 @@ module.exports = {
                 nombre: 'Huracan',
                 departamento: 'Cabañas',
                 municipio: 'Sensuntepeque',
-                coordenadax: 12.374838,
-                coordenaday: -17.736473,
+                coordenadax: 13.8667,
+                coordenaday: -88.6167,
                 alertumId: 15,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -112,8 +113,8 @@ module.exports = {
                 nombre: 'Huracan',
                 departamento: 'La Libertad',
                 municipio: 'Puerto de la Libertad',
-                coordenadax: 13.682016,
-                coordenaday: -18.839374,
+                coordenadax: 13.4883,
+                coordenaday: -89.3206,
                 alertumId: 16,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -124,10 +125,10 @@ module.exports = {
             ...ubicacion,
             {
                 nombre: 'Huracan',
-                departamento: 'San Salvador',
+                departamento: 'La Libertad',
                 municipio: 'Comasagua',
-                coordenadax: 18.736438,
-                coordenaday: -20.933782,
+                coordenadax: 13.6333,
+                coordenaday: -89.3833,
                 alertumId: 17,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -140,8 +141,8 @@ module.exports = {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Salvador',
                 municipio: 'Soyapango',
-                coordenadax: 11.263782,
-                coordenaday: -15.747839,
+                coordenadax: 13.7105,
+                coordenaday: -89.1405,
                 alertumId: 18,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -151,30 +152,32 @@ module.exports = {
         ubicacion = [
             ...ubicacion,
             {
-                nombre: 'Tormenta Tropical',
-                departamento: 'San Salvador',
-                municipio: 'Santa Lucia',
-                coordenadax: 13.645383,
-                coordenaday: -18.758483,
+                nombre: 'Sismo',
+                departamento: 'La Unión',
+                municipio: 'El Carmen',
+                coordenadax: 13.35,
+                coordenaday: -88.0000,
                 alertumId: 19,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
         ]
 
+
         ubicacion = [
             ...ubicacion,
             {
                 nombre: 'Huracan',
-                departamento: 'Sonsonate',
-                municipio: 'Rio San Pedro',
-                coordenadax: 13.682016,
-                coordenaday: -18.839374,
+                departamento: 'Ahuachapán',
+                municipio: 'San Pedro Puxtla',
+                coordenadax: 13.7667,
+                coordenaday: -89.8,
                 alertumId: 20,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
-        ]
+        ] 
+
 
         await queryInterface.bulkInsert('Ubicacions', ubicacion, {})
     },
