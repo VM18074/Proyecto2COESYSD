@@ -20,6 +20,17 @@ module.exports = {
         dano = [
             ...dano,
             {
+                nombre: 'Caída de árboles, ramas y vallas publicitarias a causa de las fuertes ráfagas de viento',
+                descripcion: 'Daños causados por la tormenta tropical Bonnie',
+                alertumId: 2,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]        
+
+        dano = [
+            ...dano,
+            {
                 nombre: 'Desborde de Rio',
                 descripcion: 'Desborde de Rio Titihuapa',
                 alertumId: 11,

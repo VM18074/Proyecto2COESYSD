@@ -39,6 +39,20 @@ module.exports = {
         ubicacion = [
             ...ubicacion,
             {
+                nombre: 'Tormenta Tropical BONNIE',
+                departamento: 'Ahuachapán',
+                municipio: 'San Francisco Menéndez',
+                coordenadax: 13.84306,
+                coordenaday: -90.01583,
+                alertumId: 2,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Vicente',
                 municipio: 'San Ildefonso',

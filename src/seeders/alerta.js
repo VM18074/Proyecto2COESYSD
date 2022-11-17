@@ -20,8 +20,21 @@ module.exports = {
             {
                 id: 1,
                 nombre:'Actividad del volcán Chaparrastique',
-                descripcion: 'Leves explosiones, emanaciones de gases y vapor de agua en los alrededores del volcán',
+                descripcion: 'Se han registrado leves explosiones, emanaciones de gases y vapor de agua en los alrededores del volcán',
                 nivelAlerta: niveles[1], // Numero random entre 0,1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 2,
+                nombre:'Tormenta Tropical BONNIE',
+                descripcion: 'Las condiciones climáticas son de alto riesgo, con altas condiciones de oleaje fuerte en el país',
+                nivelAlerta: niveles[2], // Numero random entre 0, 1 y 2.
                 activo: true,
                 createdAt: new Date(),
                 updatedAt: new Date(),

@@ -8,13 +8,24 @@ module.exports = {
         medida = [
             ...medida,
             {
-                nombre:'Gobierno de El Salvador equipa albergues preventivos ante emergencia en volcán Chaparrastique, San Miguel',
+                nombre:'Gobierno de El Salvador equipa albergues preventivos ante emergencia en volcán Chaparrastique',
                 descripcion:'Ministerio de Gobernación y Desarrollo Territorial ha preequipado de manera preventiva tres albergues ante la emergencia en el volcán Chaparrastique',
                 alertumId: 1,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
         ]
+
+        medida = [
+            ...medida,
+            {
+                nombre:'Se ha estado realizando actividades para poder habilitar las carreteras y garantizar la conectividad vial',
+                descripcion:'La Comisión Nacional de Protección Civil proporciona sus Servicios de Emergencias e Infraestructura',
+                alertumId: 2,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]        
 
         medida = [
             ...medida,
