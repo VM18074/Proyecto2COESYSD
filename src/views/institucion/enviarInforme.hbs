@@ -1,0 +1,51 @@
+<div class="container-sm justify-content-center mt-5 align-items-center d-flex">
+
+    <div class="row">
+
+        <form class="container-fluid mw-75 shadow p-3 mb-5 bg-body rounded col-sm-12 col-md-10" method="post"
+            action="/institucion/enviarInforme/{{user.id}}">
+            <h2 class="">Enviar a institución<h2>
+            <div class="row">
+                <div class="mb-3 col-12">
+                    <label for="nombre" class="col-form-label">Nombres:</label>
+                    <input type="text" readonly="readonly" required class="form-control" id="name" name="name" value="{{user.name}}">
+                </div>
+              
+              <div class="mb-3 col-12">
+                    <label for="direccion" class="col-form-label">Email:</label>
+                    <input type="direcc" readonly="readonly" value="{{user.email}}"
+                        class="form-control"  id="email" name="email">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="/institucion" class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                        <path fill-rule="evenodd"
+                            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                    </svg>
+                    Volver
+                </a>
+                <button type="submit" class="btn btn-primary">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                                <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                            </svg>
+                            Adjuntar
+                        </button>
+                <button type="submit" class="btn btn-primary">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                            </svg>
+                            Enviar 
+                        </button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
