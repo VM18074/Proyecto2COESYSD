@@ -64,7 +64,7 @@ module.exports = {
             ...medida,
             {
                 nombre:'Recomendaciones de la Dirección Nacional de Protección Civil: Abstenerse de realizar quemas agrícolas y en predios baldíos, siempre y cuando se presenten vientos fuertes',
-                descripcion:'Atender recomendaciones brindadas por la Dirección Nacional de Protección Civil',
+                descripcion:'Atender recomendaciones brindadas por el Director General de Protección Civil, Prevención y Mitigación de Desastres',
                 alertumId: 6,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -85,9 +85,31 @@ module.exports = {
         medida = [
             ...medida,
             {
-                nombre:'La Administración Nacional de Acueductos y Alcantarillados (ANDA) realizo obras de reparación de una tubería de aguas negras en el sector, mientras que el Ministerio de Obras Públicas (MOP) los acompañó con las tareas de pavimentación y construcción de aceras, pero eso es algo aparte.',
-                descripcion:'Obras realizadas por ANDA Y MOP',
+                nombre:'ANDA realizo obras de reparación de una tubería de aguas negras en el sector, mientras que el Ministerio de Obras Públicas (MOP) los acompañó con las tareas de pavimentación y construcción de aceras.',
+                descripcion:'Obras realizadas por la Administración Nacional de Acueductos y Alcantarillados (ANDA) Y MOP',
                 alertumId: 8,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        medida = [
+            ...medida,
+            {
+                nombre:'Las autoridades han habilitado un carril reversible, tomando para este uso uno de los carriles que normalmente conducen hacia Santa Tecla.',
+                descripcion:'FOVIAL Y MOP proporcionan soluciones para el paso vehicular y peatonal de la población',
+                alertumId: 9,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        medida = [
+            ...medida,
+            {
+                nombre:'Las Comisiones Técnicas Sectoriales elaboraran un informe de evaluación de su accionar en el marco de esta emergencia',
+                descripcion:'Las Comisiones Técnicas Sectoriales elaboraran un informe de evaluación',
+                alertumId: 10,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },

@@ -97,6 +97,28 @@ module.exports = {
         dano = [
             ...dano,
             {
+                nombre: 'Undimiento de calles y desprendimiento de rocas',
+                descripcion: 'Impedimento del paso vehicual y peatonal en tramo de la carretera los chorros',
+                alertumId: 9,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Posible ráfagas de viento fuertes, caída de árboles y pequeños deslizamientos superficiales',
+                descripcion: 'Posible ráfagas de viento fuertes con velocidad de más 100 km/h',
+                alertumId: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
                 nombre: 'Desborde de Rio',
                 descripcion: 'Desborde de Rio Titihuapa',
                 alertumId: 11,

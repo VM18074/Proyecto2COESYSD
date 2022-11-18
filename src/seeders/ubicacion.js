@@ -137,6 +137,34 @@ module.exports = {
         ubicacion = [
             ...ubicacion,
             {
+                nombre: 'Cierre en carretera los Chorros por derrumbes',
+                departamento: 'La Libertad',
+                municipio: 'Santa Tecla',
+                coordenadax: 13.699983,
+                coordenaday: -89.330776,
+                alertumId: 9,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Ondas Tropicales',
+                departamento: 'Morazán',
+                municipio: 'San Francisco Gotera',
+                coordenadax: 13.695403155562307,
+                coordenaday:  -88.10339927673341,
+                alertumId: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Vicente',
                 municipio: 'San Ildefonso',
