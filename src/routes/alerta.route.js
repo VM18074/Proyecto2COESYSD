@@ -34,7 +34,7 @@ router.get('/alerta/edit/:id', permisosUser, alertaController.edit)
 router.post('/alerta/edit/:id', permisosUser, alertaController.update)
 router.get('/alerta/activar/:id', permisosAdmin, alertaController.aprobar)
 router.post('/alerta/activar/:id', permisosAdmin, alertaController.activarD)
-router.get('/alerta/informePDF/:id', permisosAdmin, alertaController.informePDF) // Generar Informes.
-router.get('/alerta/informeDOCX/:id', permisosAdmin, alertaController.informeDOCX)
+router.get('/alerta/informePDF/:id', permisosAdmin, alertaController.informePDF) // Generar Informe PDF.
+router.get('/alerta/informeDOCX/:id', permisosAdmin, alertaController.informeDOCX) // Generar Informe Word.
 
 module.exports = router

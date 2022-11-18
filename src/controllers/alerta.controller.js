@@ -2,9 +2,7 @@ const { Alerta, Daño, Medida, Ubicacion } = require('../models')
 const PDF = require('pdfkit-construct'); // Generar informes PDFkit. 
 const docx = require('docx'); // Generar informes docx.
 const fs = require('fs'); // Generar informe.
-const { HeadingLevel, AlignmentType, PageOrientation } = require('docx');
-const { WidthType } = require('docx');
-const {ShadingType  } = require('docx');
+const { HeadingLevel, AlignmentType, WidthType, ShadingType } = require('docx');
 const { Document, Packer, Paragraph, Header, Footer, Table, TableCell, TableRow } = docx
 
 

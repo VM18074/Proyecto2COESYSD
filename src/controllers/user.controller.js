@@ -50,7 +50,7 @@ const userController = {
 
                 const usuario = await Usuario.create({
                     nombre: alias,
-                    RolName: rol,
+                    RolNombre: rol ? rol : null,
                     email,
                     password: passwordBD,
                 })
@@ -63,6 +63,7 @@ const userController = {
                 })
 
                 console.log(passwordSave)
+                console.log(rol)
                 req.flash('success_msg', 'Usuario agregado correctamente')
                 if (rol === 'administrador') {
                     sendEmail(nombre, email, passwordSave, adminTemplate)
@@ -129,6 +130,8 @@ const userController = {
             admin.dui = dui
             admin.telefono = telefono
             await admin.save()
+
+            console.log(rol)
 
             req.flash('success_msg', 'Usuario actualizado correctamente')
             res.redirect('/users')

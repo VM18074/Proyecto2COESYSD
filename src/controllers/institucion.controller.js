@@ -94,6 +94,24 @@ const institucionController = {
             res.redirect('/institucion')
         }
     },
+
+    // Permite enviar informe.
+    enviarInforme: async (req, res) => {
+        try {
+            let id = req.params.id
+            const user = await Institucion.findOne({
+                where: {
+                    id: id,
+                },
+                raw: true,
+            })
+            
+            res.render('institucion/enviarInforme', { user})
+        } catch (err) {
+            console.log(err)
+            res.redirect('/institucion')
+        }   
+    }, // Fin permite enviar informe.
 }
 
 module.exports = institucionController

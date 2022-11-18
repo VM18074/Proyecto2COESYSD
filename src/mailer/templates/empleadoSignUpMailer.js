@@ -1,6 +1,6 @@
 const getOptions = (name, receiver, password) => {
     return {
-        from: 'ProyectoCOESYSD <proyectoCOESYSD@hotmail.com>',
+        from: 'ProyectoCOESYSD <coesysd@hotmail.com>',
         to: receiver,
         subject: 'Cuenta de Personal',
         html: `
