@@ -96,6 +96,32 @@ module.exports = {
         alerta = [
             ...alerta,
             {
+                id: 7,
+                nombre:'Circulación ciclónica y paso de ondas tropicales',
+                descripcion: 'Condiciones atmosféricas por lluvias de diferentes intensidades',
+                nivelAlerta: niveles[1], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 8,
+                nombre:'Colapso de bóveda',
+                descripcion: 'Hundimiento senda 2',
+                nivelAlerta: niveles[2], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
                 id: 11,
                 nombre:'Julia',
                 descripcion: 'Tormentra Tropical',

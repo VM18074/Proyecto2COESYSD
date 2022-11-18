@@ -74,6 +74,28 @@ module.exports = {
         medida = [
             ...medida,
             {
+                nombre:'La Dirección General de Protección Civil advierte a la navegación marítima y aérea; pesca artesanal y deportiva evaluar las condiciones atmosféricas y oceanográficas antes de realizar sus actividades',
+                descripcion:'Atender recomendaciones brindadas por la Dirección General de Protección Civil',
+                alertumId: 7,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        medida = [
+            ...medida,
+            {
+                nombre:'La Administración Nacional de Acueductos y Alcantarillados (ANDA) realizo obras de reparación de una tubería de aguas negras en el sector, mientras que el Ministerio de Obras Públicas (MOP) los acompañó con las tareas de pavimentación y construcción de aceras, pero eso es algo aparte.',
+                descripcion:'Obras realizadas por ANDA Y MOP',
+                alertumId: 8,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        medida = [
+            ...medida,
+            {
                 nombre:'Envio de cuerpo de Protccion Civil',
                 descripcion:'Envio de 15 personas del cuerpo de Protccion Civil',
                 alertumId: 11,

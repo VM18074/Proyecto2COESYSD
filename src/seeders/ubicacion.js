@@ -109,6 +109,34 @@ module.exports = {
         ubicacion = [
             ...ubicacion,
             {
+                nombre: 'Circulación ciclónica y paso de ondas tropicales',
+                departamento: 'Santa Ana',
+                municipio: 'Texistepeque',
+                coordenadax: 14.123251866857332,
+                coordenaday: -89.49771881103517,
+                alertumId: 7,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Circulación ciclónica y paso de ondas tropicales',
+                departamento: 'San Salvador',
+                municipio: 'San Salvador',
+                coordenadax: 13.692576,
+                coordenaday: -89.222032,
+                alertumId: 8,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Vicente',
                 municipio: 'San Ildefonso',
