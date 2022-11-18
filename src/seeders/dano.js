@@ -20,8 +20,19 @@ module.exports = {
         dano = [
             ...dano,
             {
-                nombre: 'Amenaza de riesgo a derrumbes o movimientos de ladera debido a la saturación de humedad en los suelos',
-                descripcion: 'Posibles amenazas',
+                nombre: 'Caída de árboles, ramas y vallas publicitarias a causa de las fuertes ráfagas de viento',
+                descripcion: 'Daños causados por la tormenta tropical Bonnie',
+                alertumId: 2,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]        
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Posibles riesgos de derrumbes o movimientos de ladera debido a la saturación de humedad en los suelos',
+                descripcion: 'Posibles daños debido a la saturación de humedad en los suelos',
                 alertumId: 3,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -31,7 +42,7 @@ module.exports = {
         dano = [
             ...dano,
             {
-                nombre: 'ALTA probabilidad de ocurrencia de deslizamientos y caídas de rocas, generando daños en infraestructura de caminos y viviendas en el occidente del país.',
+                nombre: 'ALTA probabilidad de ocurrencia de deslizamientos y caídas de rocas, generando daños en infraestructura de caminos y viviendas en la zona norte del país.',
                 descripcion: 'Posibles daños en infraestructura',
                 alertumId: 4,
                 createdAt: new Date(),
@@ -42,13 +53,24 @@ module.exports = {
         dano = [
             ...dano,
             {
-                nombre: 'Caída de árboles, ramas y vallas publicitarias a causa de las fuertes ráfagas de viento',
-                descripcion: 'Daños causados por la tormenta tropical Bonnie',
-                alertumId: 2,
+                nombre: 'Posible riesgo al transitar sobre la vía pública cuando se presenten lluvias',
+                descripcion: 'Posibles daños que se produzcan durante una tormenta',
+                alertumId: 5,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
         ]        
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Se interrumpen los ciclos naturales de los bosques y desaparecen las especies nativas, mientras que proliferan las plantas invasoras',
+                descripcion: 'Aumento en los niveles de dióxido de carbono en la atmósfera, contribuyendo al efecto invernadero y al cambio climático',
+                alertumId: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
 
         dano = [
             ...dano,

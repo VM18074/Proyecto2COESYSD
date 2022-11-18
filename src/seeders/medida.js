@@ -52,6 +52,28 @@ module.exports = {
         medida = [
             ...medida,
             {
+                nombre:'Indicaciones y recomendaciones de las autoridades del Sistema Nacional de Protección Civil, incluyendo los llamados de evacuación preventiva.',
+                descripcion:'Atender instrucciones brindadas por el Sistema Nacional de Protección Civil',
+                alertumId: 5,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        medida = [
+            ...medida,
+            {
+                nombre:'Recomendaciones de la Dirección Nacional de Protección Civil: Abstenerse de realizar quemas agrícolas y en predios baldíos, siempre y cuando se presenten vientos fuertes',
+                descripcion:'Atender recomendaciones brindadas por la Dirección Nacional de Protección Civil',
+                alertumId: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        medida = [
+            ...medida,
+            {
                 nombre:'Envio de cuerpo de Protccion Civil',
                 descripcion:'Envio de 15 personas del cuerpo de Protccion Civil',
                 alertumId: 11,

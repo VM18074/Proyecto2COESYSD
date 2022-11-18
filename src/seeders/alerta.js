@@ -70,6 +70,32 @@ module.exports = {
         alerta = [
             ...alerta,
             {
+                id: 5,
+                nombre:'Alta susceptibilidad y saturación de humedad en los suelos',
+                descripcion: 'Medidas preventivas contra las quebradas, canales o cualquier corriente de agua',
+                nivelAlerta: niveles[0], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 6,
+                nombre:'Amenaza ante incendios forestales y en maleza seca',
+                descripcion: 'Destrucción hacia el ecosistema y medio ambiente teniendo una perdida de su flora y fauna',
+                nivelAlerta: niveles[1], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
                 id: 11,
                 nombre:'Julia',
                 descripcion: 'Tormentra Tropical',

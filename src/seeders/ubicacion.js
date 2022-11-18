@@ -81,6 +81,34 @@ module.exports = {
         ubicacion = [
             ...ubicacion,
             {
+                nombre: 'Alta susceptibilidad y saturación de humedad en los suelos',
+                departamento: 'Chalatenango',
+                municipio: 'La Palma',
+                coordenadax: 14.31682066429945,
+                coordenaday: -89.17066097259523,
+                alertumId: 5,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Alta susceptibilidad y saturación de humedad en los suelos',
+                departamento: 'Cuscatlán',
+                municipio: 'Suchitoto',
+                coordenadax: 13.936346267766117,
+                coordenaday: -89.02663707733156,
+                alertumId: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Vicente',
                 municipio: 'San Ildefonso',
