@@ -1,6 +1,5 @@
 'use strict'
 const { faker } = require('@faker-js/faker')
-
 /** @type {import('sequelize-cli').Migration}*/
 module.exports = {
     async up(queryInterface, Sequelize) {
@@ -35,7 +34,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         ubicacion = [
             ...ubicacion,
             {
@@ -45,6 +43,113 @@ module.exports = {
                 coordenadax: 13.84306,
                 coordenaday: -90.01583,
                 alertumId: 2,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Remanentes del huracán IOTA',
+                departamento: 'La Libertad',
+                municipio: 'Ciudad Arce',
+                coordenadax: 13.821964277009211,
+                coordenaday: -89.43145751953126,
+                alertumId: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Desbordamiento de ríos',
+                departamento: 'San Vicente',
+                municipio: 'Tecoluca',
+                coordenadax: 13.536407118538918,
+                coordenaday: -88.78137588500977,
+                alertumId: 4,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Alta susceptibilidad y saturación de humedad en los suelos',
+                departamento: 'Chalatenango',
+                municipio: 'La Palma',
+                coordenadax: 14.31682066429945,
+                coordenaday: -89.17066097259523,
+                alertumId: 5,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Alta susceptibilidad y saturación de humedad en los suelos',
+                departamento: 'Cuscatlán',
+                municipio: 'Suchitoto',
+                coordenadax: 13.936346267766117,
+                coordenaday: -89.02663707733156,
+                alertumId: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Circulación ciclónica y paso de ondas tropicales',
+                departamento: 'Santa Ana',
+                municipio: 'Texistepeque',
+                coordenadax: 14.123251866857332,
+                coordenaday: -89.49771881103517,
+                alertumId: 7,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Circulación ciclónica y paso de ondas tropicales',
+                departamento: 'San Salvador',
+                municipio: 'San Salvador',
+                coordenadax: 13.692576,
+                coordenaday: -89.222032,
+                alertumId: 8,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Cierre en carretera los Chorros por derrumbes',
+                departamento: 'La Libertad',
+                municipio: 'Santa Tecla',
+                coordenadax: 13.699983,
+                coordenaday: -89.330776,
+                alertumId: 9,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Ondas Tropicales',
+                departamento: 'Morazán',
+                municipio: 'San Francisco Gotera',
+                coordenadax: 13.695403155562307,
+                coordenaday:  -88.10339927673341,
+                alertumId: 10,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -63,7 +168,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         ubicacion = [
             ...ubicacion,
             {
@@ -77,7 +181,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ] 
-
         ubicacion = [
             ...ubicacion,
             {
@@ -91,7 +194,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
        
         ubicacion = [
             ...ubicacion,
@@ -106,7 +208,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ] 
-
         ubicacion = [
             ...ubicacion,
             {
@@ -120,7 +221,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         ubicacion = [
             ...ubicacion,
             {
@@ -134,7 +234,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         ubicacion = [
             ...ubicacion,
             {
@@ -148,7 +247,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         ubicacion = [
             ...ubicacion,
             {
@@ -162,7 +260,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         ubicacion = [
             ...ubicacion,
             {
@@ -176,8 +273,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
-
         ubicacion = [
             ...ubicacion,
             {
@@ -191,8 +286,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ] 
-
-
         await queryInterface.bulkInsert('Ubicacions', ubicacion, {})
     },
 }

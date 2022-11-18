@@ -1,12 +1,10 @@
 const { Usuario, Empleado } = require('../models')
 const bcryptjs = require('bcryptjs') // Encriptar password en bd.
 const generatePassword = require('../utils/generatePassword')
-
 const sendEmail = require('../mailer/index')
 const adminTemplate = require('../mailer/templates/adminSignUpMailer')
 const empleadoTemplate = require('../mailer/templates/empleadoSignUpMailer')
 const resetPasswordTemplate = require('../mailer/templates/resetPasswordMailer')
-
 const userController = {
     // Retorna todos los Usuarios.
     index: async (req, res) => {
@@ -19,18 +17,15 @@ const userController = {
         req.session.admin = true
         res.render('usuario/index', { dataRows: data, admin: req.session.admin, logueado: req.session.loggedin })
     },
-
     // Permite agregar un nuevo usuario a la base de datos.
     add: async (req, res) => {
         try {
             const { alias, email, nombre, apellido, dui, telefono, rol } = req.body
-
             const oldUser = await Usuario.findOne({
                 where: {
                     email,
                 },
             })
-
             const oldEmp = await Empleado.findOne({
                 where: {
                     dui,
@@ -51,6 +46,7 @@ const userController = {
                 const usuario = await Usuario.create({
                     nombre: alias,
                     RolName: rol,
+                    RolNombre: rol ? rol : null,
                     email,
                     password: passwordBD,
                 })
@@ -63,6 +59,8 @@ const userController = {
                 })
 
                 console.log(passwordSave)
+                //console.log(rol)
+                console.log(rol)
                 req.flash('success_msg', 'Usuario agregado correctamente')
                 if (rol === 'administrador') {
                     sendEmail(nombre, email, passwordSave, adminTemplate)
@@ -73,7 +71,6 @@ const userController = {
             }
         } catch (err) {
             console.log(err)
-
             req.flash('error_msg', 'Ha ocurrido un error')
             res.status(500).json(err)
         }
@@ -84,12 +81,10 @@ const userController = {
             let id = req.params.id
             const user = await Usuario.findOne({ where: { id: id } })
             await user.destroy()
-
             req.flash('success_msg', 'Usuario eliminado correctamente')
             res.redirect('/users')
         } catch (err) {
             console.log(err)
-
             req.flash('error_msg', 'Lo siento, ha ocurrido un error al momento de eliminar el Usuario')
             res.redirect('/users')
         }
@@ -130,26 +125,24 @@ const userController = {
             admin.telefono = telefono
             await admin.save()
 
+            console.log(rol)
+
             req.flash('success_msg', 'Usuario actualizado correctamente')
             res.redirect('/users')
         } catch (err) {
             console.log(err)
-
             req.flash('error_msg', 'No es posible actualizar el Usuario')
             res.redirect('/users')
         }
     },
-
     resetPasswordView: (req, res) => {
         res.render('usuario/resetPassword')
     },
-
     resetPassword: async (req, res) => {
         try {
             let path = '/'
             const { email } = req.body
             let password = generatePassword()
-
             const user = await Usuario.findOne({
                 where: {
                     email,
@@ -158,17 +151,14 @@ const userController = {
             if (user) {
                 if (user.email === email) {
                     user.password = password
-
                     await user.save()
                     sendEmail('', email, password, resetPasswordTemplate)
                 }
-
                 req.flash('success_msg', 'Contraseña restablecida con éxito')
             } else {
                 req.flash('error_msg', 'No existe un usuario con ese email')
                 path = '/user/resetpassword'
             }
-
             res.redirect(path)
         } catch (e) {
             console.log('Error cachado: ', e)
@@ -176,5 +166,4 @@ const userController = {
         }
     },
 }
-
 module.exports = userController

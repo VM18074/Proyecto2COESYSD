@@ -1,6 +1,5 @@
 'use strict'
 const { faker } = require('@faker-js/faker')
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
@@ -16,7 +15,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -27,6 +25,88 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]        
+        dano = [
+            ...dano,
+            {
+                nombre: 'Posibles riesgos de derrumbes o movimientos de ladera debido a la saturación de humedad en los suelos',
+                descripcion: 'Posibles daños debido a la saturación de humedad en los suelos',
+                alertumId: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        dano = [
+            ...dano,
+            {
+                nombre: 'ALTA probabilidad de ocurrencia de deslizamientos y caídas de rocas, generando daños en infraestructura de caminos y viviendas en la zona norte del país.',
+                descripcion: 'Posibles daños en infraestructura',
+                alertumId: 4,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        dano = [
+            ...dano,
+            {
+                nombre: 'Posible riesgo al transitar sobre la vía pública cuando se presenten lluvias',
+                descripcion: 'Posibles daños que se produzcan durante una tormenta',
+                alertumId: 5,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]        
+        dano = [
+            ...dano,
+            {
+                nombre: 'Se interrumpen los ciclos naturales de los bosques y desaparecen las especies nativas, mientras que proliferan las plantas invasoras',
+                descripcion: 'Aumento en los niveles de dióxido de carbono en la atmósfera, contribuyendo al efecto invernadero y al cambio climático',
+                alertumId: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        dano = [
+            ...dano,
+            {
+                nombre: 'Altas probabilidades de inundaciones urbanas, crecidas repentinas, deslizamientos y de ráfagas de viento',
+                descripcion: 'Pronóstico de amenazas por las tormentas eléctricas',
+                alertumId: 7,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        dano = [
+            ...dano,
+            {
+                nombre: 'Daños severos en la bóveda de aguas lluvia en margen derecha y afectación de Calle residencial Brisas de San Francisco',
+                descripcion: 'Colapso en un tramo de la bóveda ubicada en la residencial Brisas de San Francisco',
+                alertumId: 8,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Undimiento de calles y desprendimiento de rocas',
+                descripcion: 'Impedimento del paso vehicual y peatonal en tramo de la carretera los chorros',
+                alertumId: 9,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Posible ráfagas de viento fuertes, caída de árboles y pequeños deslizamientos superficiales',
+                descripcion: 'Posible ráfagas de viento fuertes con velocidad de más 100 km/h',
+                alertumId: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
 
         dano = [
             ...dano,
@@ -38,7 +118,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -49,7 +128,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -60,7 +138,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -81,7 +158,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -92,7 +168,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -103,7 +178,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -114,7 +188,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -125,7 +198,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         dano = [
             ...dano,
             {
@@ -136,7 +208,6 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
         await queryInterface.bulkInsert('daños', dano, {})
     },
 }

@@ -12,29 +12,75 @@ module.exports = {
          *   isBetaMember: false
          * }], {});
          */
-        let inst = []
-        for (let i = 1; i <= 30; i++) {
-            inst = [
-                ...inst,
-                {
-                    name: faker.company.name(),
-                    direccion: faker.address.cityName(),
-                    email: faker.internet.email().toLowerCase(),
+         let inst = []
+        
+         inst = [
+             ...inst,
+             {
+                 name: 'Cruz Roja',
+                 direccion:'PR44+R6F, San Salvador' ,
+                 email:'http://www.cruzrojasal.org.sv/',
+                 createdAt: new Date(),
+                 updatedAt: new Date(),
+             },
+         ]
+     
+         inst = [
+             ...inst,
+             {
+                 name: 'Cuerpo de Bomberos',
+                 direccion:'Bo Sta Anita Cl Francisco Menéndez No 552 San Salvador - San Salvador.',
+                 email: 'http://www.bomberos.gob.sv/',
 
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                },
-            ]
-        }
-        await queryInterface.bulkInsert('Institucion', inst, {})
-    },
+                 createdAt: new Date(),
+                 updatedAt: new Date(),
+             },
+         ]
 
-    async down(queryInterface, Sequelize) {
-        /**
-         * Agregue comandos para revertir la semilla aquí.
-         *
-         * Ejemplo:
-         * await queryInterface.bulkDelete('People', null, {});
-         */
-    },
+         inst = [
+             ...inst,
+             {
+                 name:'Proteccion Civil de El Salvador',
+                 direccion: 'Novena Calle Poniente y Quince Avenida Norte, Centro de Gobierno, San Salvador.',
+                 email: 'http://proteccioncivil.gob.sv/',
+
+                 createdAt: new Date(),
+                 updatedAt: new Date(),
+             },
+         ]
+
+         inst = [
+             ...inst,
+             {
+                 name:'Cruz Verde' ,
+                 direccion:'PQFJ+7PG, Calle Constitucion, Mejicanos' ,
+                 email: 'http://www.cruzverdesv.org/',
+
+                 createdAt: new Date(),
+                 updatedAt: new Date(),
+             },
+         ]
+
+         inst = [
+             ...inst,
+             {
+                 name:'Proteccion Civil de El Salvador' ,
+                 direccion:'Novena Calle Poniente y Quince Avenida Norte, Centro de Gobierno, San Salvador.' ,
+                 email: 'http://proteccioncivil.gob.sv/',
+
+                 createdAt: new Date(),
+                 updatedAt: new Date(),
+             },
+         ]
+     await queryInterface.bulkInsert('Institucion', inst, {})
+ },
+
+ async down(queryInterface, Sequelize) {
+     /**
+      * Agregue comandos para revertir la semilla aquí.
+      *
+      * Ejemplo:
+      * await queryInterface.bulkDelete('People', null, {});
+      */
+ },
 }
