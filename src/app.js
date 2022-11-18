@@ -78,7 +78,6 @@ app.listen(app.get('port'), () => {
 // Habilitar uso de rutas.
 app.use('/', require('./routes/user.route'))
 app.use('/', require('./routes/home.route'))
-app.use('/', require('./routes/inst.route'))
 app.use('/', require('./routes/alerta.route'))
 app.use('/', require('./routes/login.route'))
 // Vinculación de modelos a DB.

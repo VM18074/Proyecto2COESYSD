@@ -19,7 +19,6 @@ router.post('/institucion/add', permisos, institucionController.add)
 router.get('/institucion/delete/:id',permisos , institucionController.delete)
 router.get('/institucion/edit/:id',permisos , institucionController.edit) 
 router.post('/institucion/edit/:id',permisos , institucionController.update)
-router.get('/institucion/enviarInforme/:id', permisos, institucionController.enviarInforme) // Enviar inforeme.
 
 
 
