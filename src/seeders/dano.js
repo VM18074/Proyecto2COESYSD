@@ -75,6 +75,50 @@ module.exports = {
         dano = [
             ...dano,
             {
+                nombre: 'Altas probabilidades de inundaciones urbanas, crecidas repentinas, deslizamientos y de ráfagas de viento',
+                descripcion: 'Pronóstico de amenazas por las tormentas eléctricas',
+                alertumId: 7,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Daños severos en la bóveda de aguas lluvia en margen derecha y afectación de Calle residencial Brisas de San Francisco',
+                descripcion: 'Colapso en un tramo de la bóveda ubicada en la residencial Brisas de San Francisco',
+                alertumId: 8,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Undimiento de calles y desprendimiento de rocas',
+                descripcion: 'Impedimento del paso vehicual y peatonal en tramo de la carretera los chorros',
+                alertumId: 9,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'Posible ráfagas de viento fuertes, caída de árboles y pequeños deslizamientos superficiales',
+                descripcion: 'Posible ráfagas de viento fuertes con velocidad de más 100 km/h',
+                alertumId: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
                 nombre: 'Desborde de Rio',
                 descripcion: 'Desborde de Rio Titihuapa',
                 alertumId: 11,

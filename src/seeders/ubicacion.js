@@ -109,6 +109,62 @@ module.exports = {
         ubicacion = [
             ...ubicacion,
             {
+                nombre: 'Circulación ciclónica y paso de ondas tropicales',
+                departamento: 'Santa Ana',
+                municipio: 'Texistepeque',
+                coordenadax: 14.123251866857332,
+                coordenaday: -89.49771881103517,
+                alertumId: 7,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Circulación ciclónica y paso de ondas tropicales',
+                departamento: 'San Salvador',
+                municipio: 'San Salvador',
+                coordenadax: 13.692576,
+                coordenaday: -89.222032,
+                alertumId: 8,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Cierre en carretera los Chorros por derrumbes',
+                departamento: 'La Libertad',
+                municipio: 'Santa Tecla',
+                coordenadax: 13.699983,
+                coordenaday: -89.330776,
+                alertumId: 9,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Ondas Tropicales',
+                departamento: 'Morazán',
+                municipio: 'San Francisco Gotera',
+                coordenadax: 13.695403155562307,
+                coordenaday:  -88.10339927673341,
+                alertumId: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
                 nombre: 'Tormenta Tropical',
                 departamento: 'San Vicente',
                 municipio: 'San Ildefonso',

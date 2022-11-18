@@ -96,6 +96,58 @@ module.exports = {
         alerta = [
             ...alerta,
             {
+                id: 7,
+                nombre:'Circulación ciclónica y paso de ondas tropicales',
+                descripcion: 'Condiciones atmosféricas por lluvias de diferentes intensidades',
+                nivelAlerta: niveles[1], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 8,
+                nombre:'Colapso de bóveda',
+                descripcion: 'Hundimiento senda 2',
+                nivelAlerta: niveles[2], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 9,
+                nombre:'Cierre en carretera los Chorros por derrumbe',
+                descripcion: 'Caída de un árbol sobre la vía en el sentido que conduce hacia Santa Tecla',
+                nivelAlerta: niveles[1], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 10,
+                nombre:'Ondas Tropicales',
+                descripcion: 'Alerta verde para el resto de país por incidencia de ondas tropicales',
+                nivelAlerta: niveles[0], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
                 id: 11,
                 nombre:'Julia',
                 descripcion: 'Tormentra Tropical',
