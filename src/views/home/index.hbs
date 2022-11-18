@@ -17,8 +17,7 @@
 <div class="h-100 pt-5">
     <section class="container mt-5">
         <header>
-            <h1 class="text-center mb-5">Alertas Activas</h1><br>
-            
+            <h1 class="text-center mb-5">Alertas Activas</h1>
         </header>
         <div class="scrollable shadow mb-5 bg-body  rounded">
 
@@ -31,12 +30,9 @@
                         <th scope="col">Daños</th>
                         <th scope="col">Nivel</th>
                         <th scope="col">Departamento</th>
-                        <th scope="col">Municipio</th>  
+                        <th scope="col">Municipio</th>
                         <th scope="col">Respuesta</th>
-                        <th scope="col">Editar</th> 
-                        <th scope="col" hidden>Coordenadas</th> 
-                        <!--<th scope="col" hidden ="true">Coordenada y</th>    -->
-                                    
+                        <th scope="col">Editar</th>
                     </tr>
 
                 </thead>
@@ -49,7 +45,7 @@
                         <td class="text-capitalize fw-bold nivel-alerta" data-nivel="{{nivelAlerta}}">{{nivelAlerta}}
                         </td>
                         <td class="departamento">{{Ubicacion.departamento}}</td>
-                        <td class="municipio">{{Ubicacion.municipio}}</td>        
+                        <td class="municipio">{{Ubicacion.municipio}}</td>
                         <td>{{Medida.nombre}}</td>
                         <td><a class="btn btn-light" href="/#alertas/editar/{{id}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -61,14 +57,9 @@
                                     <path
                                         d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                 </svg>
-                            </a></td> 
-                        <td class="coordenadas" hidden data-x="{{Ubicacion.coordenadax}}", data-y="{{Ubicacion.coordenaday}}">{{Ubicacion.coordenadax}}, {{Ubicacion.coordenaday}}</td>   
-                        <!--<td class="coordenaday" hidden="true">{{Ubicacion.coordenaday}}</td>   -->                          
+                            </a></td>
                     </tr>
                     {{/each}}
-                   
-                    
-           
                 </tbody>
             </table>
 
@@ -149,8 +140,6 @@
         northEast = L.latLng(14.708478, -87.62146),
         bounds = L.latLngBounds(southWest, northEast);
 
-    
-
     var map = L.map('map', {
         maxBounds: bounds
 
@@ -163,35 +152,24 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    const pines = []
-    y=-88;
-    i=0;
-    //MARCADORES DE LAS ALERTAS
 
-    const tableAlerta = document.getElementById('alertas')
-    const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
-    //for (a=0; a<5;a++){
-    coordenadas.forEach((coordenada) => {
-    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map);
+    //MARCADORES DE LAS ALERTAS
+    const pinAzul = L.marker([13.682016, -88.720093]).addTo(map);
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
-    i=i+1;
-    y=y-0.10;
-    })
-    //}
+
+    
 
 
     //Funcion agregar marcador/ muestra información de la ubicación (Longitud y Latitud) 'click'/ Agregando botones de Editar y Eliminar
     function addMarker(e) {
-
-
+        
         // Add marker to map at click location; add popup window
-        var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '</p> <a class="btn btn-light" href="/users/edit/{{id}}">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
+        var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Editar</button> </p>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
         
         map.on('click', addMarker);
         }
 </script>
-
 
 <script>
 
@@ -208,10 +186,6 @@
 
     // Agregar escala
     new L.control.scale({ imperial: false }).addTo(map);
-
-
-    //Boton de agregar
-
     
 </script>
 
@@ -224,15 +198,13 @@
     const legenda = L.control.Legend({
         position: "bottomright",
         title: "Medidas",
-        collapsed: false,
+        collapsed: true,
         symbolWidth: 24,
         opacity: 1,
-        column: 1,
+        column: 7,
         legends: [{
-            label: "Daños",
-            type: "image",
-            layers: [pinAzul],
-            inactive: false
+            label: "Alerta:",           
+            
         }]
     }).addTo(map);
 </script>

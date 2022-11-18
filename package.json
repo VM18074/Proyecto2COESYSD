@@ -37,10 +37,10 @@
     "nodemon": "^2.0.20",
     "pdfkit": "^0.13.0",
     "pdfkit-construct": "^1.2.3",
-    "sequelize": "^6.25.1"
+    "sequelize": "^6.25.6"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
-    "sequelize-cli": "^6.5.1"
+    "sequelize-cli": "^6.5.2"
   }
 }
