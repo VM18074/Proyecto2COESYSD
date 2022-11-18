@@ -63,6 +63,7 @@ const userController = {
                 })
 
                 console.log(passwordSave)
+                //console.log(rol)
                 req.flash('success_msg', 'Usuario agregado correctamente')
                 if (rol === 'administrador') {
                     sendEmail(nombre, email, passwordSave, adminTemplate)
