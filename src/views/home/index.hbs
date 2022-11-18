@@ -112,6 +112,9 @@
     </section>
 </div>
 
+<button type="button" onclick="testF()">Click</button>
+
+
 {{!-- REFERENCIAS JAVASCRIPTS --}}
 
 <script src="/js/leaflet.js"></script>
@@ -210,10 +213,21 @@
     new L.control.scale({ imperial: false }).addTo(map);
 
 
-    //Boton de agregar
-
     
 </script>
+
+
+<script>
+    //Boton de agregar
+        
+        function testF(){
+            alert('Hello world!');
+            console.log('clicked!!').addTo(map); //Id like this to show on the node.js console
+        }
+        
+
+</script>
+
 
 <script>
     //Agregando recuadro para los pins de las alertas (Leyenda)
