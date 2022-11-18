@@ -27,13 +27,39 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
-
+        
         alerta = [
             ...alerta,
             {
                 id: 2,
                 nombre:'Tormenta Tropical BONNIE',
                 descripcion: 'Las condiciones climáticas son de alto riesgo, con altas condiciones de oleaje fuerte en el país',
+                nivelAlerta: niveles[2], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 3,
+                nombre:'Remanentes del huracán IOTA',
+                descripcion: 'Indica que el sistema de baja presión ha dejado de influenciar las condiciones atmosféricas del país.',
+                nivelAlerta: niveles[0], // Numero random entre 0, 1 y 2.
+                activo: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        alerta = [
+            ...alerta,
+            {
+                id: 4,
+                nombre:'Desbordamiento de ríos',
+                descripcion: 'Afectaciones graves por deslizamientos, acumulación de humedad en los suelos e inundaciones',
                 nivelAlerta: niveles[2], // Numero random entre 0, 1 y 2.
                 activo: true,
                 createdAt: new Date(),

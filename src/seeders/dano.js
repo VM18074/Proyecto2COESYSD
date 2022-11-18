@@ -20,6 +20,28 @@ module.exports = {
         dano = [
             ...dano,
             {
+                nombre: 'Amenaza de riesgo a derrumbes o movimientos de ladera debido a la saturación de humedad en los suelos',
+                descripcion: 'Posibles amenazas',
+                alertumId: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
+                nombre: 'ALTA probabilidad de ocurrencia de deslizamientos y caídas de rocas, generando daños en infraestructura de caminos y viviendas en el occidente del país.',
+                descripcion: 'Posibles daños en infraestructura',
+                alertumId: 4,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        dano = [
+            ...dano,
+            {
                 nombre: 'Caída de árboles, ramas y vallas publicitarias a causa de las fuertes ráfagas de viento',
                 descripcion: 'Daños causados por la tormenta tropical Bonnie',
                 alertumId: 2,

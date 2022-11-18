@@ -49,6 +49,34 @@ module.exports = {
                 updatedAt: new Date(),
             },
         ]
+        
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Remanentes del huracán IOTA',
+                departamento: 'La Libertad',
+                municipio: 'Ciudad Arce',
+                coordenadax: 13.821964277009211,
+                coordenaday: -89.43145751953126,
+                alertumId: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        ubicacion = [
+            ...ubicacion,
+            {
+                nombre: 'Desbordamiento de ríos',
+                departamento: 'San Vicente',
+                municipio: 'Tecoluca',
+                coordenadax: 13.536407118538918,
+                coordenaday: -88.78137588500977,
+                alertumId: 4,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
 
         ubicacion = [
             ...ubicacion,

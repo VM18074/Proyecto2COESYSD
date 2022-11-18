@@ -30,6 +30,28 @@ module.exports = {
         medida = [
             ...medida,
             {
+                nombre:'Las Comisiones Municipales de Protección Civil elaboraran un Informe Final de las acciones de respuesta desarrolladas en el marco de la Alerta Verde',
+                descripcion:'Dicho informe especifica los puntos de riesgo que son recurrentes y aquellos nuevos',
+                alertumId: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+        
+        medida = [
+            ...medida,
+            {
+                nombre:'Comisiones Departamentales y Municipales de Protección Civil de San Vicente disponen de los recursos necesarios para la evacuación y habilitación de albergues.',
+                descripcion:'Recursos establecidos para la población expuesta a derrumbes y/o inundaciones y las acciones de búsqueda y rescate',
+                alertumId: 4,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+        ]
+
+        medida = [
+            ...medida,
+            {
                 nombre:'Envio de cuerpo de Protccion Civil',
                 descripcion:'Envio de 15 personas del cuerpo de Protccion Civil',
                 alertumId: 11,
