@@ -43,7 +43,7 @@
                 <tbody>
                     {{#each dataRows}}
                     <tr>
-                        <td>{{nombre}}</td>
+                        <td >{{nombre}}</td>
                         <td>{{descripcion}}</td>
                         <td>{{Daño.nombre}}</td>
                         <td class="text-capitalize fw-bold nivel-alerta" data-nivel="{{nivelAlerta}}">{{nivelAlerta}}
@@ -62,7 +62,7 @@
                                         d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                 </svg>
                             </a></td> -->
-                        <td class="coordenadas" hidden data-x="{{Ubicacion.coordenadax}}", data-y="{{Ubicacion.coordenaday}}", data-id="{{id}}"> {{id}}--{{Ubicacion.coordenadax}}, {{Ubicacion.coordenaday}}</td>   
+                        <td class="coordenadas" hidden data-x="{{Ubicacion.coordenadax}}", data-y="{{Ubicacion.coordenaday}}", data-id="{{id}}", data-nombre="{{nombre}}", data-dano="{{Daño.nombre}}", data-medida="{{Medida.nombre}}"> {{id}}--{{Ubicacion.coordenadax}}, {{Ubicacion.coordenaday}}</td>   
                         <!--<td class="coordenaday" hidden="true">{{Ubicacion.coordenaday}}</td>   -->                          
                     </tr>
                     {{/each}}
@@ -177,9 +177,13 @@
     const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
     //for (a=0; a<5;a++){
     coordenadas.forEach((coordenada) => {
-    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ coordenada.dataset.x.toString() +'<br>'+'Longitud: '+coordenada.dataset.y.toString() + '</p> <a class="btn btn-light" href="../alerta/edit/'+coordenada.dataset.id+'">Editar</a>' + '<a class="btn btn-light" href="../alerta/activar/'+coordenada.dataset.id+'">Eliminar</a>'+ '</p>').openPopup();
+    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup(coordenada.dataset.nombre+"<BR><BR>Los daños presentados son: "+coordenada.dataset.dano+"<BR><BR>Las medidas para mitigar daños son: "+coordenada.dataset.medida+"<BR><BR> Alerta ubicada en: <br>" + 'Latitud: '+ coordenada.dataset.x.toString() +'<br>'+'Longitud: '+coordenada.dataset.y.toString() + '</p> <a class="btn btn-light" href="../alerta/edit/'+coordenada.dataset.id+'">Editar</a>' + '<a class="btn btn-light" href="../alerta/activar/'+coordenada.dataset.id+'">Eliminar</a>'+ '</p>').openPopup();
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
+    const items = {
+        "Pines": pines[i],
+    };
+    
     i=i+1;
    // y=y-0.10;
     })
@@ -244,28 +248,35 @@
         
 
 </script>
-
+<!--
 <script>
     //Agregando recuadro para los pins de las alertas (Leyenda)
 
-    const items = {
-        "Pines": pines[i],
-    };
+    i=0;
+    const nombresA = [...tableAlerta.querySelectorAll('.nombresA')];
+        const leyendas=[];
+        nombresA.forEach((nombreA) => {
+            leyendas[i]={
+            label: nombreA.dataset.nombre,
+            type: "polygon",
+            sides:3,
+            color: "FF0000",
+            fillColor: "blue",
+            weight: 2,
+            layers: [pines[i]],
+            inactive: false}            
+            i=i+1;
+            })
     const legenda = L.control.Legend({
         position: "bottomright",
-        title: "Medidas",
+        title: "Alertas activas",
         collapsed: false,
         symbolWidth: 24,
         opacity: 1,
-        column: 1,
-        legends: [{
-            label: "Daños",
-            type: "image",
-            layers: [pines[i]],
-            inactive: false
-        }]
+        column: 1,       
+        legends: [leyendas[1]],
     }).addTo(map);
-</script>
+</script>-->
 
 
 {{!-- Graficos --}}
