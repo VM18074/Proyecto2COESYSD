@@ -1,4 +1,25 @@
-#menu{display: none;}
+:root{
+    --bgColor: #00415A;
+    --primaryColor: #73838a;
+    --colorHover: #787f81;
+    --sizeButton: 20px;
+    --sizeIcons: 60px;
+    --widthContent: 200px;
+    --heightContent: 130px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Calibri';
+    font-size: 16px;
+    background: var(--bgColor);
+    position: relative;
+}
+
 
 .menu-content{
     width: var(--widthContent);
@@ -13,7 +34,7 @@
     width: var(--sizeButton);
     height: var(--sizeButton);
     background: var(--primaryColor);
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -42,10 +63,5 @@
 }
 
 .menu-active .menu-item:nth-child(2){
-    transform: translateX(-70px);
-}
-
-.menu-active .menu-item:nth-child(3){
     transform: translateY(-70px);
 }
-
