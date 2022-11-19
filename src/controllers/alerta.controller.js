@@ -1,7 +1,6 @@
 const { Alerta, Daño, Medida, Ubicacion } = require('../models')
 const PDF = require('pdfkit-construct'); // Generar informes PDFkit. 
 const docx = require('docx'); // Generar informes docx.
-const fs = require('fs'); // Generar informe.
 const { HeadingLevel, AlignmentType, WidthType, ShadingType } = require('docx');
 const { Document, Packer, Paragraph, Header, Footer, Table, TableCell, TableRow } = docx
 
@@ -215,7 +214,7 @@ const alertaController = {
         }
     },
 
-    // Generar informes.
+    // Generar informe PDF.
     informePDF: async (req, res) => {
 
         let id = req.params.id
@@ -339,8 +338,9 @@ const alertaController = {
         doc.render();
 
         doc.end();
-    }, // Fin generar informes.  
+    }, // Fin generar informe PDF.  
 
+    // Generar informe Word.
     informeDOCX: async (req, res) => {
 
         let id = req.params.id
@@ -532,7 +532,7 @@ const alertaController = {
                                 children: [new Paragraph(alerta.descripcion)],           // Tabla alerta columna descripcion.
                             }),
                             new TableCell({
-                                children: [new Paragraph("1")],                // Tabla alerta columna activo.
+                                children: [new Paragraph("1")],                          // Tabla alerta columna activo.
                             }),
                             new TableCell({
                                 children: [new Paragraph(alerta.Daño.nombre)],            // Tabla daños columna nombre.
