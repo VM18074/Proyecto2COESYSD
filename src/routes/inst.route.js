@@ -20,6 +20,9 @@ router.get('/institucion/delete/:id',permisos , institucionController.delete)
 router.get('/institucion/edit/:id',permisos , institucionController.edit) 
 router.post('/institucion/edit/:id',permisos , institucionController.update)
 
+//erro
+router.get('/institucion/enviarInforme/:id',permisos, institucionController.enviarInforme) // Enviar inforeme.
+//fin error
 
 
 module.exports = router

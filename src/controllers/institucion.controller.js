@@ -94,7 +94,7 @@ const institucionController = {
             res.redirect('/institucion')
         }
     },
-}
+
 
     // Permite enviar informe.
     enviarInforme: async (req, res) => {
@@ -113,5 +113,5 @@ const institucionController = {
             res.redirect('/institucion')
         }   
     }, // Fin permite enviar informe.
-
+}
 module.exports = institucionController
