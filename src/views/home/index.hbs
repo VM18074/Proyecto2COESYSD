@@ -112,6 +112,9 @@
     </section>
 </div>
 
+<button type="button" onclick="testF()">Click</button>
+
+
 {{!-- REFERENCIAS JAVASCRIPTS --}}
 
 <script src="/js/leaflet.js"></script>
@@ -124,6 +127,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"
     integrity="sha512-UnrKxsCMN9hFk7M56t4I4ckB4N/2HHi0w/7+B/1JsXIX3DmyBcsGpT3/BsuZMZf+6mAr0vP81syWtfynHJ69JA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/boton.flotante.js"></script>
 {{!-- Configuraciones de estilos --}}
 
 
@@ -166,13 +170,14 @@
     const pines = []
     y=-88;
     i=0;
+    
     //MARCADORES DE LAS ALERTAS
 
     const tableAlerta = document.getElementById('alertas')
     const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
     //for (a=0; a<5;a++){
     coordenadas.forEach((coordenada) => {
-    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map);
+    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ coordenada.dataset.x.toString() +'<br>'+'Longitud: '+coordenada.dataset.y.toString() + '</p> <a class="btn btn-light" href="/users/edit/{{id}}">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
     i=i+1;
@@ -186,9 +191,9 @@
 
 
         // Add marker to map at click location; add popup window
-        var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '</p> <a class="btn btn-light" href="/users/edit/{{id}}">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
+        //var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '</p> <a class="btn btn-light" href="/users/edit/{{id}}">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
         
-        map.on('click', addMarker);
+       // map.on('click', addMarker);
         }
 </script>
 
@@ -208,11 +213,36 @@
 
     // Agregar escala
     new L.control.scale({ imperial: false }).addTo(map);
-
-
-    //Boton de agregar
-
     
+</script>
+    
+    <meta charset="UTF-8">
+
+<body>
+    <!-- Menú flotante -->
+    <div class="menu-content">
+        <span class="menu-item" id="menu">
+            <img src="../images/button-mas.jpg">
+        </span>
+        <a href="#" target="_blank" class="menu-item">
+            <img src="./images/facebook.svg" alt="Facebook">        
+        <a href="#" target="_blank" class="menu-item">
+            <img src="../images/Warning.png">
+        </a>        
+    </div>
+       
+
+</body>
+
+<script>
+    //Boton de agregar
+        
+        function testF(){
+            alert('Hello world!');
+            console.log('clicked!!').addTo(map); //Id like this to show on the node.js console
+        }
+        
+
 </script>
 
 <script>
