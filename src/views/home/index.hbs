@@ -249,7 +249,7 @@
     //Agregando recuadro para los pins de las alertas (Leyenda)
 
     const items = {
-        "Pin Azul": pinAzul,
+        "Pines": pines[i],
     };
     const legenda = L.control.Legend({
         position: "bottomright",
@@ -261,7 +261,7 @@
         legends: [{
             label: "Daños",
             type: "image",
-            layers: [pinAzul],
+            layers: [pines[i]],
             inactive: false
         }]
     }).addTo(map);
