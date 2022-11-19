@@ -1,14 +1,20 @@
  <!-- Menú flotante -->
+ {{>modalAlerta}}
+ {{#if logueado}}
+ {{#if admin}}
+ {{else}}
     <div class="menu-content">
         <span class="menu-item" id="menu">
             <img src="/css/images/button-mas.jpg" alt="Más">
         </span>
         
-        <a href="#" target="_blank" class="menu-item">
-            <img src="/css/images/AddBoton2.png" alt="Agregar">
+        <a data-bs-toggle="modal"  data-bs-target="#modalAlerta" target="_blank" class="menu-item">
+            <img src="/css/images/Editar icono.png" alt="Agregar">
         </a>
         
     </div>
+    {{/if}}
+{{/if}} 
     
 <div id="map">
 
@@ -162,7 +168,7 @@
 {{!-- Configuraciones del mapa interactivo --}}
 <script>
     var southWest = L.latLng(11.651058, -89.929926),
-        northEast = L.latLng(14.708478, -87.62146),
+        northEast = L.latLng(15.708478, -87.62146),
         bounds = L.latLngBounds(southWest, northEast);
 
     
@@ -175,7 +181,7 @@
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
         maxZoom: 19,
-        minZoom: 9,
+        minZoom: 5,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
