@@ -152,7 +152,7 @@ const userController = {
                 if (user.email === email) {
                     user.password = password
                     await user.save()
-                    sendEmail('', email, password, resetPasswordTemplate)
+                    sendEmail('', email, password, '',resetPasswordTemplate)
                 }
                 req.flash('success_msg', 'Contraseña restablecida con éxito')
             } else {

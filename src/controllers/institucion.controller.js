@@ -1,4 +1,17 @@
 const {Institucion} = require('./../models/')
+const nodemailer = require('nodemailer')
+const sendEmail = require('../mailer/index')
+const enviarInformeMailer = require('../mailer/templates/resetPasswordMailer')
+
+const canSendEmail = true // true para poder enviar emails.
+
+const transporters = nodemailer.createTransport({
+    service: 'hotmail',
+    auth: {
+        user: 'coesysd@hotmail.com',
+        pass: 'Universidaddeelsalvador@1',
+    }
+});
 
 const institucionController = {
     // Retorna todas las instituciones.
@@ -113,5 +126,55 @@ const institucionController = {
             res.redirect('/institucion')
         }   
     }, // Fin permite enviar informe.
+
+    sendEmails: async (req, res) => {
+
+        const {emailobject} = req.body;
+        console.log(emailobject)
+
+        try {
+            const {emailobject} = req.body; 
+            const files = req.files;
+            if(emailobject) {
+                const emails = JSON.parse(emailobject);
+                const mailoptions = {
+                    from: 'ProyectoCOESYSD <coesysd@hotmail.com>', 
+                    to: emails.email,
+                    subject: emails.names,
+                    html: `
+                    <div
+                        style="
+                            display: flex;
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            justify-content: center;
+                            align-items: center;
+                        "
+                    >
+                        <table style="width:100%" role="presentation">
+                            <tr>
+                                <td>
+                                    <p>Feliz dia te desea el equipo del proyecto de COESYSD</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                   
+                    `,
+                    attachments: files
+                }
+                transporters.sendMail(mailoptions, function(err, info) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log('Email Sent: ' + info.response)
+                    }
+                })
+            }
+            res.status(200).send('Email Sent Successfully');         
+        } catch (err) {
+            res.status(400).send(err);
+        }
+
+    },
 }
 module.exports = institucionController

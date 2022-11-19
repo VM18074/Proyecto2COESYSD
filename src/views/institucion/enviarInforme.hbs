@@ -16,12 +16,21 @@
                     <input type="email" readonly="readonly" required class="form-control" id="email" name="email" value="{{user.email}}">
                 </div>
 
-                <div class="mb-3 col-12">
+                <!--<div class="mb-3 col-12">
                     <label for="archivo" class="col-form-label">Abjunto</label>
                     <div class="input-group mb-3">
                         <input type="file" class="form-control" id="inputGroupFile02">
                     </div>          
-                </div>
+                </div>-->
+                
+                <form action="#" class="dropzone mt-2" id="email_attachments"> 
+                    <div class="mb-3 col-12">
+                        <label for="archivo" class="col-form-label">Abjunto</label>    
+                        <div class="fallback">
+                            <input type="file" class="form-control" name="file" multiple>
+                        </div>    
+                    </div>
+                </form>
             </div>
 
             <div class="modal-footer">
@@ -32,12 +41,48 @@
                     </svg>
                     Volver
                 </a>
-                <button type="submit" class="btn btn-primary ms-2">
+                <button type="submit" class="btn btn-primary ms-2" onclick="Send_Email()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
                         <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
                     </svg>
                     Enviar
                 </button>
+                <script>
+                    const Send_Email = () => {
+                        
+                        let formData = new FormData();
+                        const to = $('#email').val();
+                        const name = $('#name').val();
+                        const attachmentlist = $('#email_attachments').get(0).dropzone;
+                        const file = attachmentlist.files;
+                        
+                        for (let i = 0; index < files.length; i++) {
+
+                            formData.append('files', files[i])
+                        }
+                            
+                        const emailobject = {
+                            email: to,
+                            names: name,
+                        }
+                        
+                        formData.append('emailobject', JSON.stringify(emailobject));
+                        $.ajax({
+                            url: '/institucion/enviarInforme/:id',
+                            type: 'POST',
+                            datatype: 'json',
+                            processData: false,
+                            contentType: false,
+                            data: formData,
+                            success: (response) => {
+                                console.log("Se envio la ruta post");
+                            },
+                            error: (error) => {
+                                console.log(error.message);
+                            }
+                        })
+                    }
+                </script>
             </div>            
         </form>
     </div>
