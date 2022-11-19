@@ -33,7 +33,7 @@
                         <th scope="col">Departamento</th>
                         <th scope="col">Municipio</th>  
                         <th scope="col">Respuesta</th>
-                        <th scope="col">Editar</th> 
+                        <!--<th scope="col">Editar</th> -->
                         <th scope="col" hidden>Coordenadas</th> 
                         <!--<th scope="col" hidden ="true">Coordenada y</th>    -->
                                     
@@ -51,7 +51,7 @@
                         <td class="departamento">{{Ubicacion.departamento}}</td>
                         <td class="municipio">{{Ubicacion.municipio}}</td>        
                         <td>{{Medida.nombre}}</td>
-                        <td><a class="btn btn-light" href="/#alertas/editar/{{id}}">
+                        <!--<td><a class="btn btn-light" href="../alerta/edit/{{id}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-journal-x" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -61,8 +61,8 @@
                                     <path
                                         d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                 </svg>
-                            </a></td> 
-                        <td class="coordenadas" hidden data-x="{{Ubicacion.coordenadax}}", data-y="{{Ubicacion.coordenaday}}">{{Ubicacion.coordenadax}}, {{Ubicacion.coordenaday}}</td>   
+                            </a></td> -->
+                        <td class="coordenadas" hidden data-x="{{Ubicacion.coordenadax}}", data-y="{{Ubicacion.coordenaday}}", data-id="{{id}}"> {{id}}--{{Ubicacion.coordenadax}}, {{Ubicacion.coordenaday}}</td>   
                         <!--<td class="coordenaday" hidden="true">{{Ubicacion.coordenaday}}</td>   -->                          
                     </tr>
                     {{/each}}
@@ -168,7 +168,7 @@
     }).addTo(map);
 
     const pines = []
-    y=-88;
+    //y=-88;
     i=0;
     
     //MARCADORES DE LAS ALERTAS
@@ -177,11 +177,11 @@
     const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
     //for (a=0; a<5;a++){
     coordenadas.forEach((coordenada) => {
-    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ coordenada.dataset.x.toString() +'<br>'+'Longitud: '+coordenada.dataset.y.toString() + '</p> <a class="btn btn-light" href="/users/edit/{{id}}">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();
+    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ coordenada.dataset.x.toString() +'<br>'+'Longitud: '+coordenada.dataset.y.toString() + '</p> <a class="btn btn-light" href="../alerta/edit/'+coordenada.dataset.id+'">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
     i=i+1;
-    y=y-0.10;
+   // y=y-0.10;
     })
     //}
 
@@ -189,7 +189,7 @@
     //Funcion agregar marcador/ muestra información de la ubicación (Longitud y Latitud) 'click'/ Agregando botones de Editar y Eliminar
     function addMarker(e) {
 
-
+        
         // Add marker to map at click location; add popup window
         //var newMarker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ e.latlng.lat.toString() +'<br>'+'Longitud: '+e.latlng.lng.toString() + '</p> <a class="btn btn-light" href="/users/edit/{{id}}">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();        
         
