@@ -177,7 +177,7 @@
     const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
     //for (a=0; a<5;a++){
     coordenadas.forEach((coordenada) => {
-    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ coordenada.dataset.x.toString() +'<br>'+'Longitud: '+coordenada.dataset.y.toString() + '</p> <a class="btn btn-light" href="../alerta/edit/'+coordenada.dataset.id+'">Editar</a>' + '<button type="button" id="sendData" class="btn btn-success btn-sm btn-block dataModal sendData" data-toggle="modal" data-target="#dataModal" >Eliminar</button> </p>').openPopup();
+    pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("Ha establecido la ubicación en: <br>" + 'Latitud: '+ coordenada.dataset.x.toString() +'<br>'+'Longitud: '+coordenada.dataset.y.toString() + '</p> <a class="btn btn-light" href="../alerta/edit/'+coordenada.dataset.id+'">Editar</a>' + '<a class="btn btn-light" href="../alerta/activar/'+coordenada.dataset.id+'">Eliminar</a>'+ '</p>').openPopup();
     newMarkerGroup = new L.LayerGroup();
     map.on('click', addMarker);
     i=i+1;
