@@ -1,6 +1,4 @@
-
-/*
-const Send_Email = () => {
+/*const Send_Email = () => {
 
     let formData = new FormData();
 

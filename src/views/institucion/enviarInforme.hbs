@@ -22,15 +22,15 @@
                         <input type="file" class="form-control" id="inputGroupFile02">
                     </div>          
                 </div>-->
-       
+
+                <div class="mb-3 col-12">
+                    <label for="archivo" class="col-form-label">Adjunto</label>     
+                </div>    
                 
-                <form action="#" class="dropzone mt-2" id="email_attachments"> 
-                    <div class="mb-3 col-12">
-                        <label for="archivo" class="col-form-label">Adjunto</label>    
-                        <div class="fallback">
-                            <input type="file" class="form-control" name="file" multiple>
-                        </div>    
-                    </div>
+                <form action="#" class="dropzone mt-2" id="email_attachments">   
+                    <div class="fallback">
+                        <input type="file" name="file" multiple>
+                    </div>    
                 </form>
             </div>
 
@@ -52,15 +52,16 @@
                     const Send_Email = () => {
                         
                         let formData = new FormData();
+
                         const to = document.getElementById('email')
-                       // const to = $('#email').val();
-                       document.write(to.dataset.n)
-                        const name = document.getElementById('name')
-                        
                         //const to = $('#email').val();
-                       // const name = $('#name').val();
-                        const attachmentlist = $('#email_attachments').get(0).dropzone;
-                        
+                        const name = document.getElementById('name')
+                        //const name = $('#name').val();
+
+                        document.write(to.dataset.e)
+                        document.write(name.dataset.n)
+
+                        const attachmentlist = $('#email_attachments').get(0).dropzone;                        
                         const file = attachmentlist.files;
                         
                         for (let i = 0; i< files.length; i++) {
@@ -72,9 +73,7 @@
                             email: to.dataset.e,
                             names: name.dataset.n
                         }
-                        
-                        
-                        
+                                               
                         formData.append('emailobject', JSON.stringify(emailobject));
                         $.ajax({
                             url: '/institucion/enviarInforme/:id',

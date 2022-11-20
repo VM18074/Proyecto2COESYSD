@@ -3,8 +3,6 @@ const nodemailer = require('nodemailer')
 const sendEmail = require('../mailer/index')
 const enviarInformeMailer = require('../mailer/templates/resetPasswordMailer')
 
-const canSendEmail = true // true para poder enviar emails.
-
 const transporters = nodemailer.createTransport({
     service: 'hotmail',
     auth: {
@@ -108,7 +106,6 @@ const institucionController = {
         }
     },
 
-
     // Permite enviar informe.
     enviarInforme: async (req, res) => {
         try {
@@ -127,19 +124,18 @@ const institucionController = {
         }   
     }, // Fin permite enviar informe.
 
+    // Enviar informe.
     sendEmails: async (req, res) => {
-
-        const {emailobject} = req.body;
-        console.log(emailobject)
-
+        
         try {
             let path = '/institucion'
+
             const {emailobject} = req.body; 
             const files = req.files;
             if(emailobject) {
                 const emails = JSON.parse(emailobject);
                 const mailoptions = {
-                    from: 'ProyectoCOESYSD <coesysd@hotmail.com>', 
+                    from: 'coesysd@hotmail.com', 
                     to: emails.email,
                     subject: emails.names,
                     html: `
@@ -177,6 +173,6 @@ const institucionController = {
             res.status(400).send(err);
         }
 
-    },
+    }, // Fin enviar informe.
 }
 module.exports = institucionController

@@ -1,8 +1,8 @@
-const getOptions = (name, receiver, password, file) => {
+const getOptions = (name, receiver, password) => {
     return {
         from: 'ProyectoCOESYSD <coesysd@hotmail.com>',
         to: receiver,
-        subject: 'Nueva contraseña de cuenta',
+        subject: 'Informe sobre el sistema de evaluación de daños',
         html: `
         <div
             style="
@@ -16,15 +16,15 @@ const getOptions = (name, receiver, password, file) => {
                 <tr>
                     <th>
                         <h1 style="margin: 0; padding: 3rem 1rem; color: white; background-color: rgb(39, 142, 13)">
-                            Contraseña para cuenta creada con éxito
+                            Informe sobre daños enviado con éxito
                         </h1>
                     </th>
                 </tr>
                 <tr>
                     <td style="font-size: 1.2em">
-                        <p>Hola, tu nueva contraseña se creo con éxito</p>
-                        <p>Tus credenciales son las siguientes:</p>
-                        <p>Nombre: <strong>${file}</strong></p>
+                        <p>Hola, tu informe sobre daños se envio con éxito</p>
+                        <p>Tu informe es el siguiente:</p>
+                        <p>Informe: <strong>${name}</strong></p>
                     </td>
                 </tr>
                 <tr>
