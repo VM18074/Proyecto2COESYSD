@@ -7,10 +7,10 @@ const permisos = async(req,res,next) => {
         if(req.session.admin == true){
             next()
         }else{
-            res.render('home/index', {logueado: req.session.loggedin, admin: req.session.admin})
+            res.redirect('/')
         }
     }else{
-        res.render('home/index')
+        res.redirect('/')
     }
 }
 router.get('/users', permisos,userController.index)

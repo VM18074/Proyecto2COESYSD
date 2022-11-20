@@ -60,7 +60,7 @@ const userController = {
 
                 console.log(passwordSave)
                 //console.log(rol)
-                console.log(rol)
+           
                 req.flash('success_msg', 'Usuario agregado correctamente')
                 if (rol === 'administrador') {
                     sendEmail(nombre, email, passwordSave, adminTemplate)
@@ -143,6 +143,7 @@ const userController = {
             let path = '/'
             const { email } = req.body
             let password = generatePassword()
+            let passwordBD = await bcryptjs.hash(password, 12)
             const user = await Usuario.findOne({
                 where: {
                     email,
@@ -150,9 +151,9 @@ const userController = {
             })
             if (user) {
                 if (user.email === email) {
-                    user.password = password
+                    user.password = passwordBD
                     await user.save()
-                    sendEmail('', email, password, '',resetPasswordTemplate)
+                    sendEmail('',email, password,resetPasswordTemplate)
                 }
                 req.flash('success_msg', 'Contraseña restablecida con éxito')
             } else {

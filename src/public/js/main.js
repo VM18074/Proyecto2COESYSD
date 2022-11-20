@@ -1,5 +1,5 @@
-/*const { response } = require("express");
 
+/*
 const Send_Email = () => {
 
     let formData = new FormData();
@@ -9,7 +9,7 @@ const Send_Email = () => {
     const attachmentlist = $('#email_attachments').get(0).dropzone;
     const file = attachmentlist.files;
 
-    for (let i = 0; index < files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
         formData.append('files', files[i])
     }
 

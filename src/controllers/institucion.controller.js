@@ -10,8 +10,8 @@ const transporters = nodemailer.createTransport({
     auth: {
         user: 'coesysd@hotmail.com',
         pass: 'Universidaddeelsalvador@1',
-    }
-});
+    },
+})
 
 const institucionController = {
     // Retorna todas las instituciones.
@@ -120,7 +120,7 @@ const institucionController = {
                 raw: true,
             })
 
-            res.render('institucion/enviarInforme', { user})
+            res.render('institucion/enviarInforme', { user, admin: req.session.admin,logueado: req.session.loggedin })
         } catch (err) {
             console.log(err)
             res.redirect('/institucion')
@@ -133,6 +133,7 @@ const institucionController = {
         console.log(emailobject)
 
         try {
+            let path = '/institucion'
             const {emailobject} = req.body; 
             const files = req.files;
             if(emailobject) {
@@ -170,7 +171,8 @@ const institucionController = {
                     }
                 })
             }
-            res.status(200).send('Email Sent Successfully');         
+            req.flash('success_msg', 'Envio de informe con éxito')
+            res.redirect(path)      
         } catch (err) {
             res.status(400).send(err);
         }
