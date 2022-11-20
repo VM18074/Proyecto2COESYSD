@@ -9,7 +9,7 @@ const transporters = nodemailer.createTransport({
         user: 'coesysd@hotmail.com',
         pass: 'Universidaddeelsalvador@1',
     },
-})
+});
 
 const institucionController = {
     // Retorna todas las instituciones.
@@ -125,7 +125,7 @@ const institucionController = {
     }, // Fin permite enviar informe.
 
     // Enviar informe.
-    sendEmails: async (req, res) => {
+    sendEmails: async (req, res, next) => {
         
         try {
             let path = '/institucion'
@@ -137,7 +137,8 @@ const institucionController = {
                 const mailoptions = {
                     from: 'coesysd@hotmail.com', 
                     to: emails.email,
-                    subject: emails.names,
+                    subject: "Solicitud  de ayuda ante emergencia a "+emails.names,
+                    attachments: files,
                     html: `
                     <div
                         style="
@@ -150,25 +151,28 @@ const institucionController = {
                         <table style="width:100%" role="presentation">
                             <tr>
                                 <td>
-                                    <p>Feliz dia te desea el equipo del proyecto de COESYSD</p>
+                                    <p>Esperamos su pronta respuesta, atentamente el equipo de proyecto de COESYSD</p>
                                 </td>
                             </tr>
                         </table>
                     </div>
                    
-                    `,
-                    attachments: files
+                    `
+                    
                 }
                 transporters.sendMail(mailoptions, function(err, info) {
                     if (err) {
                         console.log(err)
                     } else {
                         console.log('Email Sent: ' + info.response)
+                        req.flash('success_msg', 'Envio de informe con éxito')
+                        res.redirect(path)   
                     }
                 })
+                req.flash('success_msg', 'Envio de informe con éxito')
+            res.redirect(path)  
             }
-            req.flash('success_msg', 'Envio de informe con éxito')
-            res.redirect(path)      
+            
         } catch (err) {
             res.status(400).send(err);
         }

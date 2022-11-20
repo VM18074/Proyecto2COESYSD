@@ -2,18 +2,18 @@
 
     <div class="row">
 
-        <div class="container-fluid mw-75 shadow p-3 mb-5 bg-body rounded col-sm-12 col-md-10" method="post"
-            action="#">
+        <div class="container-fluid mw-75 shadow p-3 mb-5 bg-body rounded col-sm-12 col-md-10" 
+            >
             <h2 class="">Enviar a institución<h2>
             <div class="row">
                 <div class="mb-3 col-12">
                     <label for="nombre" class="col-form-label">Nombre:</label>
-                    <input type="text" readonly="readonly" required class="form-control" id="name" name="name" value="{{user.name}}" data-n="{{user.name}}">
+                    <input type="text" readonly="readonly" required class="form-control" id="name" name="name" value="{{user.name}}" data-n="{{user.name}}" >
                 </div>
                 
                 <div class="mb-3 col-12">
                     <label for="email" class="col-form-label">Email:</label>
-                    <input type="email" readonly="readonly" required class="form-control" id="email" name="email" value="{{user.email}}" data-e="{{user.email}}">
+                    <input type="email" readonly="readonly" required class="form-control" id="email" name="email" value="{{user.email}}" data-e="{{user.email}}" >
                 </div>
 
                 <!--<div class="mb-3 col-12">
@@ -48,33 +48,42 @@
                     </svg>
                     Enviar
                 </button>
+                
                 <script>
                     const Send_Email = () => {
                         
                         let formData = new FormData();
+                          
+                        //const to = document.getElementById('email') 
+                        const to = $('#email').val();
+                       
+                        
+                        //const name = document.getElementById('name')
+                        const name = $('#name').val();                       
+                        
 
-                        const to = document.getElementById('email')
-                        //const to = $('#email').val();
-                        const name = document.getElementById('name')
-                        //const name = $('#name').val();
+                        const attachmentlist = $('#email_attachments').get(0).dropzone; 
+                         
+                       
 
-                        document.write(to.dataset.e)
-                        document.write(name.dataset.n)
-
-                        const attachmentlist = $('#email_attachments').get(0).dropzone;                        
-                        const file = attachmentlist.files;
+                        const files = attachmentlist.files;
+                       
+                        
                         
                         for (let i = 0; i< files.length; i++) {
 
-                            formData.append('files', files[i])
+                            formData.append('files', files[i]);
                         }
+                        
                             
                         const emailobject = {
-                            email: to.dataset.e,
-                            names: name.dataset.n
+                            email: to,
+                            names: name
                         }
+                        
                                                
                         formData.append('emailobject', JSON.stringify(emailobject));
+                        //document.write("TODO OK"); 
                         $.ajax({
                             url: '/institucion/enviarInforme/:id',
                             type: 'POST',
