@@ -83,7 +83,7 @@ const institucionController = {
                 raw: true,
             })
             
-            res.render('institucion/edit', { user})
+            res.render('institucion/edit', { user,admin: req.session.admin,logueado: req.session.loggedin})
         } catch (err) {
             console.log(err)
             res.redirect('/institucion')
