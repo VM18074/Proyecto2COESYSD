@@ -24,6 +24,7 @@ module.exports = {
 
 
         usuarioP1 = [...usuarioP1, {
+            id:1,
             nombre: 'Jefferson Arevalo',
             email: 'as21004@ues.edu.sv',
             password: await bcryptjs.hash('as21004', 12),
@@ -32,6 +33,7 @@ module.exports = {
             updatedAt: new Date(),
         }]
         usuarioA1 = [...usuarioA1, {
+            id:2,
             nombre: 'Willian Chávez',
             email: 'cs21004@ues.edu.sv',
             password: await bcryptjs.hash('cs21004', 12),
@@ -40,6 +42,7 @@ module.exports = {
             updatedAt: new Date(),
         }]
         usuarioP2 = [...usuarioP2, {
+            id:3,
             nombre: 'Jhostin Montalvo',
             email: 'mp21079@ues.edu.sv',
             password: await bcryptjs.hash('mp21079', 12),
@@ -48,6 +51,7 @@ module.exports = {
             updatedAt: new Date(),
         }]
         usuarioA2 = [...usuarioA2, {
+            id:4,
             nombre: 'Silvia Pérez',
             email: 'pb21015@ues.edu.sv',
             password: await bcryptjs.hash('pb21015', 12),
@@ -56,6 +60,7 @@ module.exports = {
             updatedAt: new Date(),
         }]
         usuarioA = [...usuarioA, {
+            id:5,
             nombre: 'Administrador',
             email: 'admin@gmail.com',
             password: await bcryptjs.hash('admin', 12),
@@ -65,6 +70,7 @@ module.exports = {
         }]
 
         usuarioP = [...usuarioP, {
+            id:6,
             nombre: 'Personal',
             email: 'personal@gmail.com',
             password: await bcryptjs.hash('personal', 12),
