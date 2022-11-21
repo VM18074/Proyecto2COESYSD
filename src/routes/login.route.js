@@ -6,7 +6,7 @@ const permisos = async(req,res,next) => {
     if(req.session.loggedin != true){
         next()
     }else{
-        res.render('/')
+        res.redirect('/')
     }
 }
 

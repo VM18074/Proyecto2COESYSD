@@ -6,7 +6,7 @@ const loginController = {
         if (req.session.loggedin != true) {
             res.render('login/index')
         }
-            const data = await Alerta.findAll({
+           /* const data = await Alerta.findAll({
                 where: {
                     activo: true,
                 },
@@ -24,7 +24,7 @@ const loginController = {
                 raw: true,
                 nest: true,
             })
-            res.render('home/index', { dataRows: data })
+            res.render('home/index', { dataRows: data })*/
     },
 
     logout: async (req, res) => {

@@ -17,6 +17,7 @@ const flash = require('connect-flash')
 
 // Librerias para login.
 const session = require('express-session') // Sesiones.
+var SequelizeStore = require("connect-session-sequelize")(session.Store); //agregamos esta linea
 //const { redirect } = require('express/lib/response');
 
 //requeri('../db');  Para vincular si se quiere manejar config de db aparte.
@@ -33,13 +34,31 @@ app.use(
 )
 app.use(bodyParser.json())
 
+// Conexion bd
+
+// Conexion con sequelize segundo paso.
+const sequelize = new Sequelize('edandb', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql',
+    //storage: "./session.mysql",
+});
+
+var myStore = new SequelizeStore({
+    db: sequelize,
+  });
 app.use(
     session({
+        /*cookie:{
+            secure: true,
+            maxAge:60000
+        },*/
+        //store: myStore, //agregamos esta linea
         secret: 'secrect',
-        resave: true,
+        resave: false,
         saveUninitialized: true,
     })
 )
+//myStore.sync();
 app.use(flash())
 
 // Variables globales.
@@ -61,13 +80,7 @@ app.engine(
 )
 app.set('view engine', 'hbs')
 
-// Conexion bd
 
-// Conexion con sequelize segundo paso.
-const sequelize = new Sequelize('edandb', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql',
-})
 
 // Apetura de servidor.
 
