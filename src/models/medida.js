@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Medida.init({
     nombre: DataTypes.STRING,
-    descripcion: DataTypes.STRING
+    //descripcion: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Medida',

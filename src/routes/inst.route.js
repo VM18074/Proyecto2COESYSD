@@ -22,6 +22,6 @@ router.get('/institucion/edit/:id',permisos , institucionController.edit)
 router.post('/institucion/edit/:id',permisos , institucionController.update)
 
 router.get('/institucion/enviarInforme/:id',permisos, institucionController.enviarInforme) // Enviar informe.
-router.post('/institucion/enviarInforme/:id', upload.array('files'), permisos,institucionController.sendEmails) // Enviar informe. 
+router.post('/institucion/enviarInforme/:id', permisos, upload.array('files'),institucionController.sendEmails) // Enviar informe. 
 
 module.exports = router

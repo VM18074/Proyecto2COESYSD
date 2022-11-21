@@ -21,7 +21,11 @@ const institucionController = {
         })
         req.session.loggedin=true;
         req.session.admin=true;
-        res.render('institucion/index', { dataRows: data,admin: req.session.admin,logueado: req.session.loggedin  })
+       
+            res.render('institucion/index', { dataRows: data,admin: req.session.admin,logueado: req.session.loggedin  })
+                  
+        
+        
     },
 
     // Permite agregar una nueva institución a la base de datos.
@@ -94,7 +98,7 @@ const institucionController = {
             inst.name = name
             inst.direccion = direccion
             await inst.save()
-            console.log(inst);
+            //console.log(inst);
 
             req.flash('success_msg', 'Institucion actualizado correctamente')
             res.redirect('/institucion')
@@ -125,10 +129,11 @@ const institucionController = {
     }, // Fin permite enviar informe.
 
     // Enviar informe.
-    sendEmails: async (req, res, next) => {
+    sendEmails: async (req, res) => {
+        let path = '/institucion'
         
         try {
-            let path = '/institucion'
+            
 
             const {emailobject} = req.body; 
             const files = req.files;
@@ -165,18 +170,19 @@ const institucionController = {
                         console.log(err)
                     } else {
                         console.log('Email Sent: ' + info.response)
-                        req.flash('success_msg', 'Envio de informe con éxito')
-                        res.redirect(path)   
+                        
                     }
-                })
+                }) }
+                
+                 
                 req.flash('success_msg', 'Envio de informe con éxito')
-            res.redirect(path)  
-            }
+                   
             
         } catch (err) {
             res.status(400).send(err);
+            req.flash('success_msg', 'No se pudo enviar el informe')
         }
-
+        res.redirect(path) 
     }, // Fin enviar informe.
 }
 module.exports = institucionController

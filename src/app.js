@@ -1,3 +1,4 @@
+var puerto=process.env.PORT || 4000;
 // Constantes a usar.
 'use strict'
 const express = require('express')
@@ -22,7 +23,7 @@ const session = require('express-session') // Sesiones.
 
 // Puerto para el servidor.
 const app = express()
-app.set('port', 4000)
+app.set('port', puerto)
 
 // Utlizar bodyparse para recibir metodos post y get.
 app.use(

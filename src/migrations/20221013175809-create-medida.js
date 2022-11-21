@@ -12,9 +12,9 @@ module.exports = {
       nombre: {
         type: Sequelize.STRING
       },
-      descripcion: {
+      /*descripcion: {
         type: Sequelize.STRING
-      },
+      },*/
       alertumId: {
         type: Sequelize.DataTypes.INTEGER,
         references: {

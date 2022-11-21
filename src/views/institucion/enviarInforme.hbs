@@ -93,6 +93,8 @@
                             data: formData,
                             success: (response) => {
                                 console.log("Se envio la ruta post");
+                                location.href ="/institucion";
+                                window.alert("Mensaje enviado")
                             },
                             error: (error) => {
                                 console.log(error.message);
