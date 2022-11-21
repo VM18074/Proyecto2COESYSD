@@ -1,1 +1,1 @@
-web:node app.jsa
+web:node app.js
