@@ -101,7 +101,7 @@ const userController = {
                 raw: true,
                 nest: true,
             })
-            res.render('usuario/edit', { user })
+            res.render('usuario/edit', { user, admin: req.session.admin, logueado: req.session.loggedin })
         } catch (err) {
             console.log(err)
             res.redirect('/users')
