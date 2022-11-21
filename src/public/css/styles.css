@@ -2,6 +2,7 @@ html{
      scroll-behavior: smooth;
 }
 body{
+    font-family: 'ABeeZee', sans-serif; /*Estilo agregado*/
     height: 100vh;
     position: relative;
 }
@@ -11,9 +12,143 @@ body{
     color: white;
 }
 .navbar{
+    background-color: #0cc5d1;                   /*Estilo agregado*/
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /*Estilo agregado*/
+    min-height: 40px;                              /*Estilo agregado*/
     height: 4.3rem;
 }
 
+.nav-link { /*Estilo agregado todo*/
+    color: white;
+    font-family: 'Abel', sans-serif;
+    font-size: 15px;
+}
+
+.nav-link:hover { /*Estilo agregado todo*/
+    color: #618184;
+}
+
+.nav-link:focus{ /*Estilo agregado todo*/
+    color: #618184;
+}
+
+.navbar-toggler{ /*Estilo agregado todo*/
+    font-size: 35px;
+}
+
+.navbar-toggler:focus { /*Estilo agregado todo*/
+    outline: none;
+}
+
+.navbar-brand { /*Estilo agregado todo*/
+    width: 320px;
+    font-size: 15px;
+    white-space: pre-line;
+    hyphens: auto;
+    word-wrap: break-word;
+    word-break:break-all;
+    line-break: normal;
+    color: white;
+    font-family: 'Abel', sans-serif;
+}
+
+.navbar-brand:hover { /*Estilo agregado todo*/
+    color: #618184;
+}
+
+.logo-brand { /*Estilo agregado todo*/
+    width: 50px;
+}
+
+#s1{ /*Estilo agregado todo*/
+    width: inherit;
+    padding: 40px 0;
+    background-color: #DDF8FA;
+    background-size: cover;
+}
+
+.conter-center { /*Estilo agregado todo*/
+    width: inherit;
+    padding: 50px 0;
+    background-color: white;
+    background-size: cover;
+    text-align: center;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 36px;
+}
+
+.entradas { /*Estilo agregado todo*/
+    text-align: left;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 15px;
+    color: #666666;
+}
+
+.form-control { /*Estilo agregado todo*/
+    border-radius: 30px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-style: none;
+}
+
+.form-control:focus { /*Estilo agregado todo*/
+    background-color: #DDF8FA;
+}
+
+.form-select{ /*Estilo agregado todo*/
+    border-radius: 30px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-style: none;
+}
+
+.form-select:focus { /*Estilo agregado todo*/
+    background-color: #DDF8FA;
+}
+
+.label { /*Estilo agregado todo*/
+    color: #666666;
+}
+
+#nbcantidad{ /*Estilo agregado todo*/
+    height: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-primary{ /*Estilo agregado todo*/
+    color: black;
+    font-family: 'Abel', sans-serif;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #DDF8FA;
+    border-radius: 15px;
+    border-style: none;
+}
+
+.btn-secundary{ /*Estilo agregado todo*/
+    color: black;
+    font-family: 'Abel', sans-serif;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #ffffff;
+    border-radius: 15px;
+    border-style: none;
+    width: 192px;
+    height: 45px;
+    margin-top: 15px;
+}
+
+p { /*Estilo agregado todo*/
+    text-align: right;
+  }
+
+  .imagen{
+    margin-left: auto;
+    margin-right: 150px;
+    width: 192px;
+    height: 45px;
+    margin-top: 15px;
+}
 #map{
     height: calc(100vh - 4.3rem);
 }
@@ -49,7 +184,7 @@ body{
 
 thead tr{
     font-size: 1.1em;
-    background-color: rgb(255, 130, 5);
+    background-color: #00aae4;
     color: white;
 
 }
@@ -58,11 +193,11 @@ th{
     font-size: 1.1em;
 }
 .table tbody tr:nth-child(even){
-    background-color: rgb(246, 246, 246);
+    background-color: #f6f6f6;
 
 }
 .table tbody tr:hover{
-    background-color: rgba(255, 187, 61, 0.2);
+    background-color: #3dc8ff33;
 }
 
 .signal-direction{

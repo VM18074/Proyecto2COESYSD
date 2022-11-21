@@ -1,35 +1,45 @@
-<nav class="navbar navbar-expand-lg px-4 navbar-light bg-white ">
-    <div class="container-fluid ">
-        <a class="navbar-brand fs-3" href="/">COESYSD</a>
+<!--INICIO DE MI BARRA DE NAVEGACION-->
+<nav class="navbar navbar-expand-lg head__custom-nav shadow">
+    <div class="container">
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="/img/impacto.png" class="logo-brand" alt="website logo">
+            <span>COESYSD</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <ion-icon name="menu-outline"></ion-icon>
         </button>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            
-                
-                    {{#if logueado}}
-                    <div class="d-flex navbar-nav justify-content-center w-75">
-                    {{#if admin}}
-                    <a class="nav-link" aria-current="page" href="/users">Usuarios</a>
-                    <a class="nav-link" aria-current="page" href="/institucion">Instituciones</a>
-                    <a class="nav-link" href="/alerta/admin">Alertas Admin</a>
-                    </div>
-                    <div class="navbar-nav w-100 justify-content-center">
-                    <a class="btn btn-light" href="/logout">Cerrar Sesión</a>
-                     </div>
+
+        <div class="collapse navbar-collapse justify-content-end ms-3" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                {{#if logueado}}
+                    {{#if admin}}                           
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/users">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/institucion">Instituciones</a>                            
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/alerta/admin">Alertas Admin</a>
+                        </li>
+
+                        <a class="btn btn-light" href="/logout">Cerrar Sesión</a>                                                  
                     {{else}}
-                    <a class="nav-link" href="/alerta">Alertas</a>
-                    <div class="navbar-nav w-100 justify-content-center">
-                    <a class="btn btn-light ms-6" href="/logout">Cerrar Sesión</a>
-                    </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/alerta">Alertas</a>                               
+                        </li>
+                        
+                        <a class="btn btn-light ms-6" href="/logout">Cerrar Sesión</a>
                     {{/if}}
                     {{else}}
-                    <div class=" navbar-nav  justify-content-center w-75">
-                    <a class="btn btn-light" href="/login">Login</a>
-                    </div>
-                     {{/if}} 
+                        <a class="btn btn-light" href="/login">Login</a>                         
+                {{/if}} 
+            </ul>
         </div>
     </div>
-</nav>
+</nav> 
+<!-- FINAL DE MI BARRA DE NAVEGACION-->

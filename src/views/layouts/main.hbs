@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/leaflet.css">
     <link rel="stylesheet" href="/css/styles.css">
@@ -20,16 +22,25 @@
     <!-- Para envio de informes -->
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     
-
+    <!-- TITULO -->
     <title>PROYECTO 2 COESYSD</title>
+    <link rel="shortcut icon" href="/img/iconito.png">
 </head>
 
+<!-- INICIO DEL BODY -->
 <body class="bg-light">
 
-    {{>navbar}}
-    {{>messages}}
+  <!--INICIO DE MI BARRA DE NAVEGACION-->
+  {{>navbar}}
+  <!-- FINAL DE MI BARRA DE NAVEGACION-->
 
-    {{{body}}}
+  {{>messages}}
+
+  {{{body}}}
+    
+  <!-- COSAS VARIAS Y SCRIPTS-->
+
+  <!-- Option 1: Bootstrap Bundle -->
     <script src="/js/bootstrap.bundle.min.js"></script>
 
  <!-- para envio de informes -->
@@ -38,5 +49,6 @@
     <script src="/js/main.js"></script>
 
 </body>
+<!-- FINAL DEL BODY-->
 
 </html>
