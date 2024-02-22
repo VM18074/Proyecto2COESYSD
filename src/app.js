@@ -37,8 +37,8 @@ app.use(bodyParser.json())
 // Conexion bd
 
 // Conexion con sequelize segundo paso.
-const sequelize = new Sequelize('heroku_01168058e370731', 'b616b7af1f99aa', '265388ed', {
-    host: 'us-cdbr-east-06.cleardb.net',
+const sequelize = new Sequelize('dfmzkywdqncqxd4i', 'x5vg5cn4u5rgloi7', 'zfljidnl1d1t0lpy', {
+    host: 'y5s2h87f6ur56vae.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     dialect: 'mysql',
     //storage: "./session.mysql",
 });
